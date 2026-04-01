@@ -5,6 +5,8 @@
   --primary:#eaf1fb;
   --secondary:#7cc4ff;
   --tertiary:#9effc8;
+  --quaternary:#fff27c;
+  --quinary:#be7cff;
   --bg:var(--background);
   --panel:#121821;
   --panel-2:#171f2b;
@@ -30,6 +32,17 @@ h1{margin:14px 0 8px;font-size:40px;line-height:1.08}
 .stat .v{display:block;margin-top:4px;font-size:22px;font-weight:700}
 .section{margin-top:26px}
 .section h2{margin:0 0 14px;font-size:22px}
+.section-header{
+  margin:22px 0 10px;
+  font-size:18px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  font-weight:600;
+}
+.section-header--secondary{color:var(--secondary);}
+.section-header--tertiary{color:var(--tertiary);}
+.section-header--quaternary{color:var(--quaternary);}
+.section-header--quinary{color:var(--quinary);}
 .card{padding:22px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,var(--panel),var(--panel-2));box-shadow:var(--shadow);margin-bottom:16px}
 .top{display:flex;flex-wrap:wrap;gap:10px 12px;align-items:center;margin-bottom:10px}
 .pub{font-size:13px;font-weight:700;color:var(--accent)}

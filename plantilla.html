@@ -1,0 +1,197 @@
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{{PAGE_TITLE}}</title>
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=Y5VF2SZHTvG4V1AIPbAqJuQ4ttfrMj7vccJwHhJAY38qiTdfqjyoqPhwB-SF_BYwYRt2s2gizUf5XDgobSvZatOQP-Q-5xYeBNyE6hNY4D-grpxYaoq6mljAZsG0nlQVRFwHLJhohT1IoxOqCppMP78QNE86jKiRYN7Q59KYSGtJCD1YgW62WZXKw85HILMo5oABAUHUVkFZZROSCqSXX-DNe1GAW2H2ZFY637SV_3jSUrewgPyvSlf-7TQPOjQnbK9ow-9Riaxr035VPuTiig" charset="UTF-8"></script>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <span class="eyebrow">Digest diario de newsletters</span>
+      <h1>{{MAIN_TITLE}}</h1>
+      <p class="subtitle">
+        {{INTRO}}
+      </p>
+      <p class="subtitle">
+        {{HUMAN_DATE}}
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Contenido de hoy</h2>
+
+      {{NEWSLETTER_CARDS}}
+
+      <!--
+        ======================================================
+        EJEMPLOS DE ESTRUCTURA PARA {{NEWSLETTER_CARDS}}
+        ======================================================
+
+        ORDEN EDITORIAL:
+        1. Noticias generales
+        2. Divulgación / información
+        3. Opinión
+        4. Tech / IT (incluido TLDR y similares)
+
+        1) EJEMPLO: NOTICIAS GENERALES (GENERAL-INTEREST)
+
+        <h2 class="section-header section-header--quinary">Noticias generales</h2>
+
+        <article class="card">
+          <div class="top">
+            <span class="pub">1440 Daily Digest</span>
+            <span class="tag">Actualidad</span>
+          </div>
+          <h3 class="title">Resumen general del día</h3>
+          <ul>
+            <li><strong>Tema central:</strong> resumen del día en política y economía de Estados Unidos, con énfasis en una decisión judicial relevante y un dato de mercado.</li>
+            <li><strong>Qué dice la newsletter:</strong> explica de forma sintética el fallo judicial, quién lo impulsa y qué efectos inmediatos puede tener, y lo coloca en contexto con otras decisiones recientes.</li>
+            <li><strong>Por qué importa:</strong> útil para tener un mapa rápido de titulares sin entrar en análisis ideológico; funciona como base para profundizar después en medios locales.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="top">
+            <span class="pub">Newsletter económica X</span>
+            <span class="tag">Actualidad</span>
+          </div>
+          <h3 class="title">Inflación y banco central</h3>
+          <ul>
+            <li><strong>Tema central:</strong> repaso a los últimos datos de inflación en la zona euro y cómo los está leyendo el banco central.</li>
+            <li><strong>Qué dice la newsletter:</strong> desglosa en español las cifras clave, resume las declaraciones oficiales y aclara qué partes son ruido de corto plazo y qué partes apuntan a una tendencia más duradera.</li>
+            <li><strong>Por qué importa:</strong> buena pieza para entender si lo que lees en titulares de prensa está respaldado por los datos o solo por el tono del mercado del día.</li>
+          </ul>
+        </article>
+
+        2) EJEMPLO: DIVULGACIÓN / INFORMACIÓN (EXPLANATORY / EDUCATIONAL)
+
+        <h2 class="section-header section-header--tertiary">Divulgación / información</h2>
+
+        <article class="card">
+          <div class="top">
+            <span class="pub">Newsletter de IA práctica</span>
+            <span class="tag">Divulgación</span>
+          </div>
+          <h3 class="title">Integrar modelos de lenguaje con seguridad</h3>
+          <ul>
+            <li><strong>Tema central:</strong> guía paso a paso sobre cómo integrar un modelo de lenguaje en un flujo de trabajo interno sin exponer datos sensibles.</li>
+            <li><strong>Qué dice la newsletter:</strong> describe en detalle los riesgos típicos (logs, prompts, datos de entrenamiento) y propone un esquema sencillo de segmentación de datos y revisiones técnicas.</li>
+            <li><strong>Qué te llevas:</strong> una lista clara de buenas prácticas que puedes aplicar de inmediato si estás probando herramientas de IA en una empresa pequeña o equipo técnico.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="top">
+            <span class="pub">Artículo de salud y hábitos</span>
+            <span class="tag">Divulgación</span>
+          </div>
+          <h3 class="title">Sueño irregular y rendimiento</h3>
+          <ul>
+            <li><strong>Tema central:</strong> explicación de por qué el sueño irregular tiene más impacto en el rendimiento diario que dormir poco pero de forma constante.</li>
+            <li><strong>Qué dice la newsletter:</strong> traduce al español los hallazgos principales de varios estudios, aclara los conceptos sin jerga y enumera señales prácticas para saber si estás durmiendo mal.</li>
+            <li><strong>Qué te llevas:</strong> 2 o 3 ideas accionables muy concretas que puedes probar durante la semana para estabilizar horarios y calidad de sueño.</li>
+          </ul>
+        </article>
+
+        3) EJEMPLO: OPINIÓN / ENSAYO
+
+        <h2 class="section-header section-header--quaternary">Opinión</h2>
+
+        <article class="card">
+          <div class="top">
+            <span class="pub">Noahpinion</span>
+            <span class="tag">Opinión</span>
+          </div>
+          <h3 class="title">Cómo ha cambiado un país en 20 años</h3>
+          <ul>
+            <li><strong>Tesis central:</strong> el autor argumenta que cierto país ha pasado de ser percibido como una rareza exótica a parecerse mucho más a otras democracias avanzadas, con ventajas y pérdidas asociadas.</li>
+            <li><strong>Cómo lo desarrolla:</strong> recorre cambios en demografía, cultura urbana, vivienda y salario real, y utiliza ejemplos concretos de barrios, empresas y datos históricos.</li>
+            <li><strong>Por qué guardarlo:</strong> sirve como marco mental para entender noticias dispersas sobre ese país sin verlas como curiosidades aisladas.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="top">
+            <span class="pub">Columna económica</span>
+            <span class="tag">Opinión</span>
+          </div>
+          <h3 class="title">Política monetaria vs. productividad</h3>
+          <ul>
+            <li><strong>Tesis central:</strong> defiende que la discusión pública se centra demasiado en la política monetaria y muy poco en la productividad real.</li>
+            <li><strong>Cómo lo desarrolla:</strong> compara países con políticas monetarias distintas pero trayectorias similares de productividad, y concluye que el foco debería ponerse en instituciones, competencia y adopción tecnológica.</li>
+            <li><strong>Qué te llevas:</strong> una forma más estructurada de leer cualquier debate sobre tipos de interés y bancos centrales sin quedarse en la superficie.</li>
+          </ul>
+        </article>
+
+        4) EJEMPLO: TECH / IT (NO TLDR)
+
+        <h2 class="section-header section-header--secondary">Tech / IT</h2>
+
+        <article class="card">
+          <div class="top">
+            <span class="pub">Newsletter de ingeniería</span>
+            <span class="tag">Tech</span>
+          </div>
+          <h3 class="title">Incidente en producción y lecciones</h3>
+          <ul>
+            <li><strong>Tema central:</strong> análisis de un incidente real en producción en una gran plataforma y cómo lo investigaron.</li>
+            <li><strong>Qué dice la newsletter:</strong> describe la cadena de fallos, qué métricas fallaron en alertar, qué herramientas funcionaron y qué cambios permanentes aplicaron al sistema.</li>
+            <li><strong>Qué te llevas:</strong> lecciones aplicables sobre diseño de alertas, límites de dashboards y la importancia de los ensayos de incidentes.</li>
+          </ul>
+        </article>
+
+        5) EJEMPLO ESPECÍFICO: TECH / IT TIPO TLDR (TRADUCCIÓN CASI LITERAL DE TITULARES Y DESCRIPCIONES)
+
+        Para TLDR, TLDR Dev y newsletters similares, la sección debe parecer una edición traducida, no un único párrafo comprimido:
+
+        <article class="block">
+          <h3>Tech / IT · TLDR</h3>
+          <ul>
+            <li>
+              <strong>Fuga de código de una herramienta de asistente de programación</strong><br>
+              La newsletter cuenta que se publicó por error un paquete con mapas de origen que dejaban ver el código completo. Resume qué partes del sistema se pueden inspeccionar y qué tipo de lecciones técnicas se extraen.
+            </li>
+            <li>
+              <strong>Nueva función de un asistente de voz que admite varios comandos encadenados</strong><br>
+              Se explica en español qué permite exactamente la función, en qué mejora el uso diario y cómo se compara con versiones anteriores más limitadas.
+            </li>
+            <li>
+              <strong>Investigación sobre computación cuántica y seguridad de cifrado</strong><br>
+              Traducción del titular y descripción donde se explica qué nivel de recursos podrían necesitarse en escenarios realistas y qué implicaciones tiene para ciertos algoritmos de cifrado.
+            </li>
+          </ul>
+        </article>
+
+        <article class="block">
+          <h3>Tech / IT · TLDR Dev</h3>
+          <ul>
+            <li>
+              <strong>Ataque a la cadena de suministro mediante paquete de JavaScript</strong><br>
+              El texto traduce el título y la descripción del caso real, aclara qué hizo el atacante y qué señales habría podido detectar un equipo de desarrollo atento.
+            </li>
+            <li>
+              <strong>Guía de depuración interna en una gran empresa</strong><br>
+              Recoge en español los puntos principales: cómo organizan los incidentes, quién toma decisiones en cada fase y qué herramientas usan en el día a día.
+            </li>
+            <li>
+              <strong>Pequeñas utilidades para mejorar la calidad de vida del desarrollador</strong><br>
+              Lista breve donde se traducen los nombres y descripciones de herramientas destacadas, con una nota rápida sobre para qué tipo de trabajo sirven mejor.
+            </li>
+          </ul>
+        </article>
+
+        FIN DE EJEMPLOS
+      -->
+    </section>
+
+    <p class="footer">
+      {{FOOTER}}
+    </p>
+  </main>
+</body>
+</html>
