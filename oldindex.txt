@@ -1,0 +1,160 @@
+<!doctype html>
+
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Digest diario de newsletters · 1 de abril de 2026</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <h1>Digest diario de newsletters por JOS</h1>
+      <p class="subtitle">
+        Hoy entraron 8 newsletters editoriales reales, con un claro dominio de IA, seguridad, tooling y negocio tecnológico, además de una pieza generalista y dos textos de opinión. Varias copias llegaron con el cuerpo mal decodificado, así que el resumen se limita a lo que era legible con confianza y deja fuera el ruido de bienvenida, confirmación y alta.
+      </p>
+      <p class="subtitle">
+        Miércoles, 1 de abril de 2026
+      </p>
+    </section>
+
+<section class="section">
+  <h2>1 de abril de 2026</h2>
+
+  <h2 class="section-header section-header--secondary">Noticias generales</h2>
+
+  <article class="block">
+    <h3>1440 Daily Digest</h3>
+    <ul>
+      <li><strong>Tema central:</strong> la edición abre con el primer vuelo tripulado cerca de la Luna en 50 años.</li>
+      <li><strong>Qué se ha podido leer:</strong> el asunto y el fragmento visible confirman además una pieza sobre un litigio ligado a Trump y otra sobre “mentally active sitting”, pero el cuerpo del correo llegó mal decodificado y no permite resumir esos apartados con fiabilidad.</li>
+      <li><strong>Por qué importa:</strong> sigue funcionando como portada general del día, pero esta copia concreta no permite extraer el resto del contenido con el nivel de precisión que exige el digest.</li>
+    </ul>
+  </article>
+
+  <h2 class="section-header section-header--tertiary">Divulgación</h2>
+
+  <h2 class="section-header section-header--quaternary">Opinión</h2>
+
+  <article class="block">
+    <h3>Noahpinion · How Japan has changed in the last 20 years</h3>
+    <ul>
+      <li><strong>Tesis central:</strong> Noah Smith sostiene que Japón se está convirtiendo en un país mucho más normal de lo que era a comienzos de los 2000, y que buena parte de su rareza cultural visible se está erosionando.</li>
+      <li><strong>Cómo lo desarrolla:</strong> parte de un cambio reciente en X, que empezó a traducir automáticamente tuits japoneses al inglés, y lo usa para hablar de la apertura de la cultura japonesa al exterior, con el mismo riesgo de homogeneización y degradación que ya han sufrido algunos destinos turísticos del país.</li>
+      <li><strong>Cambios sociales y urbanos:</strong> describe la desaparición paulatina de la cultura callejera más excéntrica, de muchos negocios pequeños e independientes y de parte del ecosistema juvenil que definía al Japón urbano de hace dos décadas.</li>
+      <li><strong>Qué permanece y qué mejora:</strong> al mismo tiempo, dice que Tokio se ha convertido en una ciudad extraordinaria por su arquitectura y su escena gastronómica, aunque esa excelencia convive con envejecimiento, estancamiento y una vida urbana menos singular.</li>
+      <li><strong>Idea de fondo:</strong> el envejecimiento ha desplazado peso cultural y comercial desde lo juvenil hacia restaurantes, marcas de lujo y consumos más propios de una población mayor.</li>
+      <li><strong>Por qué guardarlo:</strong> ofrece un marco útil para leer Japón no como una postal congelada, sino como una sociedad que cambia mucho, aunque desde fuera se la siga imaginando inmóvil.</li>
+    </ul>
+  </article>
+
+  <article class="block">
+    <h3>Made in Ancapia · El libre mercado ni existe ni puede existir</h3>
+    <ul>
+      <li><strong>Tesis central:</strong> el autor acepta la mitad de la frase y rechaza la otra mitad: sostiene que hoy no hay libre mercado, pero niega que sea correcto afirmar que no pueda existir.</li>
+      <li><strong>Cómo argumenta a favor:</strong> dice que, si para abrir un negocio hace falta permiso y existe coacción estatal, no hay libertad real de intercambio.</li>
+      <li><strong>Cómo argumenta en contra:</strong> considera aberrante afirmar que el libre mercado sea imposible y rehace la discusión definiendo “libertad” como ausencia de coacción y “mercado” como grupo de individuos intercambiando.</li>
+      <li><strong>Conclusión doctrinal:</strong> con esas definiciones, incluso un Estado mínimo compromete el libre mercado; por eso distingue entre mercados más o menos libres y reserva el libre mercado absoluto para la anarquía de mercado con propiedad privada, es decir, el anarcocapitalismo.</li>
+      <li><strong>Contexto del texto:</strong> la pieza está escrita como preparación para un debate contra Armesilla y deja claro que el autor quiere mantener el marco en el individuo y no perderse en geopolítica.</li>
+    </ul>
+  </article>
+
+  <h2 class="section-header section-header--quinary">Tech</h2>
+
+  <article class="block">
+    <h3>Xataka · Volvemos a la Luna, la PS6 a 1.000 dólares, código filtrado de Claude Code y más</h3>
+    <ul>
+      <li><strong>Artemis II:</strong> Xataka abre con el inminente lanzamiento de Artemis II, una misión de 10 días que no aterrizará en la Luna, pero sí hará un sobrevuelo y servirá para probar soporte vital, navegación y comunicaciones.</li>
+      <li><strong>Filtración de Claude Code:</strong> resume la filtración masiva del código de la herramienta de programación de Anthropic como uno de los temas del día: más de 500.000 líneas quedaron expuestas por un error interno reconocido por la propia empresa y el código se replicó rápidamente en GitHub.</li>
+      <li><strong>Precio de la próxima PlayStation:</strong> conecta la reciente subida de precio de PS5 y PS5 Pro con una discusión más amplia sobre la siguiente generación, y recoge estimaciones de analistas que ya contemplan una PS6 en torno a 1.000 dólares.</li>
+      <li><strong>OpenAI:</strong> destaca la nueva ronda récord de 122.000 millones de dólares y una valoración de 852.000 millones, subrayando la paradoja de una empresa enormemente valiosa que sigue quemando cantidades muy altas de dinero.</li>
+      <li><strong>Infancia y móviles:</strong> cierra con el caso de Greystones, en Irlanda, como ejemplo de comunidad que intenta contener la normalización total del smartphone en la infancia.</li>
+      <li><strong>Tono de la edición:</strong> es una portada rápida y bien compactada del día en tecnología y ciencia, con mezcla de espacio, IA, consumo y hábitos sociales.</li>
+    </ul>
+  </article>
+
+  <article class="block">
+    <h3>TLDR</h3>
+    <ul>
+      <li><strong>Se filtra todo el código fuente de Claude Code CLI</strong><br>
+        La edición explica que Anthropic publicó una versión del paquete npm de Claude Code con un source map que permitía acceder a todo el código fuente. El resultado fue una filtración de más de 512.000 líneas, ya replicadas miles de veces, y un escrutinio inmediato de cómo funciona la herramienta por dentro.
+      </li>
+      <li><strong>Apple prueba un Siri capaz de manejar varias órdenes en una sola petición</strong><br>
+        TLDR cuenta que Apple está probando una versión de Siri que puede encadenar varias acciones en un único prompt, por ejemplo consultar el tiempo, crear una cita y enviar un mensaje sin trocear la interacción en pasos separados. La ventana temporal que menciona la newsletter apunta a la WWDC del 8 de junio.
+      </li>
+      <li><strong>Microburbujas para llevar tratamientos exactamente donde hacen falta</strong><br>
+        Resume una pieza sobre microburbujas capaces de transportar fármacos o material genético por el torrente sanguíneo y liberar la carga al reventar bajo control. La misma lógica sirve también para romper cálculos renales y atravesar barreras biológicas de forma localizada.
+      </li>
+      <li><strong>La computación cuántica podría necesitar menos recursos de lo esperado para romper cifrado crítico</strong><br>
+        La newsletter recoge dos whitepapers que convergen en una idea inquietante: harían falta menos recursos de los que se creía para atacar curvas elípticas con ordenadores cuánticos útiles a escala real. Aclara también que esos trabajos todavía no han sido revisados por pares.
+      </li>
+      <li><strong>Lectura general de la edición:</strong> hoy TLDR giró más alrededor de filtraciones, asistentes de voz y tecnología científica de frontera que alrededor de programación práctica, al menos en la parte plenamente legible del correo.</li>
+    </ul>
+  </article>
+
+  <article class="block">
+    <h3>TLDR IT</h3>
+    <ul>
+      <li><strong>Ataque a la cadena de suministro de Axios vía npm comprometido</strong><br>
+        TLDR IT abre con un caso serio: una cuenta de mantenedor de Axios fue comprometida y se publicaron versiones maliciosas que inyectaban una dependencia oculta con un RAT multiplataforma. La newsletter subraya el impacto potencial sobre entornos de desarrollo y pipelines de CI/CD, con robo silencioso de credenciales y tokens sin tocar el código de la aplicación.
+      </li>
+      <li><strong>La filtración de Claude Code amplía la superficie de ataque</strong><br>
+        La edición usa el caso de Claude Code para remarcar que las propias herramientas de IA ya forman parte de la superficie de riesgo, no solo el software que ayudan a generar.
+      </li>
+      <li><strong>Qué hace falta para vender IA a empresa de verdad</strong><br>
+        Resume una pieza que dice que los compradores empresariales están dejando de aceptar demos brillantes y pilotos artificiales. Prefieren pruebas limitadas, con datos reales, alcance acotado y gobierno claro de agentes, y valoran a los fundadores que tratan al CIO como aliado estratégico desde el principio.
+      </li>
+      <li><strong>Seguridad de IA agéntica: lo básico sigue mandando</strong><br>
+        Otra pieza insiste en identidad, zero trust y estándares como SPIFFE para gobernar agentes que operan más rápido que los humanos. El mensaje es claro: sin trazabilidad y responsabilidad no hay adopción seria en entornos adversariales.</li>
+      <li><strong>El SOC agéntico sigue teniendo un punto ciego</strong><br>
+        Aunque CrowdStrike, Cisco y Palo Alto ya empujan productos de SOC con agentes, la newsletter señala que sigue sin resolverse bien el problema de establecer líneas base de comportamiento y observar agentes autónomos con suficiente madurez.</li>
+      <li><strong>Consolidación y suites empresariales:</strong> también destaca la compra de BetterCloud por CoreStack para unificar gobierno sobre cloud, SaaS e IA, y el movimiento de Microsoft con Copilot Cowork y una nueva capa de licencia empresarial centrada en IA.</li>
+    </ul>
+  </article>
+
+  <article class="block">
+    <h3>TLDR AI</h3>
+    <ul>
+      <li><strong>Modelos de 1 bit y compresión extrema</strong><br>
+        La edición abre con una pieza sobre modelos de 1 bit y técnicas de compresión muy agresivas que apuntan a ejecutar IA localmente en dispositivos de borde sin sacrificar tanto rendimiento como cabría esperar. El argumento central es que esta eficiencia no solo abarata el edge, sino también la operación de centros de datos.
+      </li>
+      <li><strong>Qué revela de verdad la filtración de Claude Code</strong><br>
+        En la parte legible, TLDR AI sostiene que la filtración no interesa solo por el código, sino por la inteligencia competitiva que deja ver: arquitectura de memoria por capas, estrategias para contener la entropía del contexto y detalles de producto aún no lanzados.</li>
+      <li><strong>OpenAI y la escala de capital</strong><br>
+        La newsletter recoge la nueva ronda de 122.000 millones de dólares y la valoración de 852.000 millones como señal de una apuesta gigantesca por infraestructura, cómputo, APIs y sistemas empresariales de IA.</li>
+      <li><strong>Dos años después, la economía de la IA sigue premiando vender palas</strong><br>
+        Una de las piezas de análisis defiende que la capa de infraestructura sigue capturando una parte desproporcionada del valor económico de la IA, mientras muchas aplicaciones todavía dependen de esa base y no han consolidado una ventaja equivalente.</li>
+      <li><strong>La ventaja de Claude Code probablemente no es solo el modelo</strong><br>
+        Otra lectura del día argumenta que el rendimiento del producto se explica en gran parte por la envolvente de software: herramientas de navegación del repositorio, deduplicación de contexto, memoria de sesión estructurada y subagentes bifurcados para paralelizar trabajo sin contaminar el hilo principal.</li>
+      <li><strong>Más piezas destacadas de la edición:</strong> aparecen también una versión de menor coste de Veo 3.1 Lite para generación de vídeo, una nota sobre un framework llamado Aurora para acelerar inferencia y una lectura sobre el alza de valoraciones en startups de IA en fase semilla.</li>
+      <li><strong>Nota de calidad:</strong> esta copia del correo llegó parcialmente dañada; el resumen solo recoge los bloques que se podían leer con seguridad.</li>
+    </ul>
+  </article>
+
+  <article class="block">
+    <h3>TLDR Dev</h3>
+    <ul>
+      <li><strong>La lectura del leak de Claude Code va más allá del código</strong><br>
+        La parte recuperable de la edición insiste en que lo interesante del leak no es únicamente acceder al código fuente, sino ver modos de agente aún no lanzados, planes de attestation del cliente y pistas sobre la estrategia del producto. El valor sería más de inteligencia competitiva que de reutilización literal del código.</li>
+      <li><strong>Cómo Meta convirtió la depuración en una disciplina automatizable</strong><br>
+        Una de las piezas más claras resume un sistema interno con el que Meta transforma experiencia humana de debugging en analizadores versionados. Según la newsletter, el sistema ejecuta miles de análisis diarios en decenas de equipos y reduce tiempos de resolución manteniendo la aprobación final en manos humanas.</li>
+      <li><strong>React 19 y el hook use()</strong><br>
+        TLDR Dev explica el patrón de React 19 donde <code>use()</code> permite leer promesas durante el render y delegar carga y error en Suspense y Error Boundary. La advertencia importante es que la promesa debe conservar identidad estable entre renders o se puede caer en suspensión infinita.</li>
+      <li><strong>La calidad del desarrollo asistido por IA depende del estándar del equipo</strong><br>
+        Otra pieza defiende que el verdadero salto no llega de pedir mejor a la IA de forma aislada, sino de fijar instrucciones compartidas sobre arquitectura, seguridad, revisión y estilo. El punto es que los mejores resultados aparecen cuando esos criterios se vuelven sistemáticos.</li>
+      <li><strong>GitHub Copilot Applied Science y desarrollo dirigido por agentes</strong><br>
+        La newsletter recoge un enfoque práctico: tratar a los agentes como si fueran ingenieros junior, darles prompts ricos en contexto y obsesionarse con una arquitectura limpia. El caso descrito apunta a una productividad notable en muy poco tiempo cuando ese marco está bien diseñado.</li>
+      <li><strong>Nota de calidad:</strong> también aquí el correo llegó parcialmente mal decodificado, así que solo se incluyen las piezas que podían leerse con claridad.</li>
+    </ul>
+  </article>
+
+</section>
+
+<p class="footer">
+  Filtrado sobre la etiqueta newsletters en las últimas 24 horas. Se han excluido correos de bienvenida, confirmaciones, altas y otros mensajes sin contenido editorial real.
+</p>
+
+  </main>
+</body>
+</html>
