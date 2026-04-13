@@ -200,165 +200,166 @@ Before returning HTML, verify:
 - Every claim is specific and grounded in the newsletter text
 - The HTML is clean, readable, polished, and shareable
 
-HTML TEMPLATE START
+Example:
+```html
 
 <!doctype html>
+
 <html lang="es">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>{{PAGE_TITLE}}</title>
+  <title>Digest diario de newsletters · 2 de abril de 2026</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <main class="wrap">
     <section class="hero">
-      <span class="eyebrow">Digest diario de newsletters</span>
-      <h1>{{MAIN_TITLE}}</h1>
+      <h1>Digest diario de newsletters por JOS</h1>
       <p class="subtitle">
-        {{INTRO}}
+        Hoy entraron 15 newsletters editoriales reales, con un reparto muy claro entre actualidad general, divulgación sobre IA, dinero y carrera, dos piezas de opinión marcadas y un bloque final muy fuerte en producto, seguridad, agentes, tooling y estrategia tecnológica.
       </p>
       <p class="subtitle">
-        {{HUMAN_DATE}}
+        Jueves, 2 de abril de 2026
       </p>
     </section>
 
-    <section class="section">
-      <h2>Contenido de hoy</h2>
+<section class="section">
+  <h2>2 de abril de 2026</h2>
 
-      {{NEWSLETTER_CARDS}}
+  <h2 class="section-header section-header--secondary">Noticias generales</h2>
 
-      <!--
-        ======================================================
-        EJEMPLOS DE ESTRUCTURA PARA {{NEWSLETTER_CARDS}}
-        ======================================================
+  <article class="block">
+    <h3>1440 Daily Digest</h3>
+    <ul>
+      <li>Se introduciría aquí un resumen por puntos (varios li) de cada apartado de la newsletter.</li>
+    </ul>
+    <p><a href="https://link.join1440.com/view/68fa8a1e6766d4be4a0289a0qsicg.3hsfs/9f7c9ee5" target="_blank" rel="noreferrer">Leer artículo completo</a></p>
+  </article>
 
-        ORDEN EDITORIAL:
-        1. Noticias generales
-        2. Divulgación / información
-        3. Opinión
-        4. Tech / IT (incluido TLDR y similares)
+  <article class="block">
+    <h3>The Objective · La última hora</h3>
+    <ul>
+      <li>Se introduciría aquí un resumen por puntos (varios li) de cada apartado de la newsletter.</li>
+    </ul>
+    <p><a href="https://theobjective.com/etiqueta/la-ultima-hora/" target="_blank" rel="noreferrer">Leer artículo completo</a></p>
+  </article>
 
-        1) EJEMPLO: NOTICIAS GENERALES (GENERAL-INTEREST)
+  <h2 class="section-header section-header--tertiary">Divulgación</h2>
 
-        <article class="block">
-          <h3>Noticias generales · 1440 Daily Digest</h3>
-          <ul>
-            <li><strong>Tema central:</strong> resumen del día en política y economía de Estados Unidos, con énfasis en una decisión judicial relevante y un dato de mercado.</li>
-            <li><strong>Qué dice la newsletter:</strong> explica de forma sintética el fallo judicial, quién lo impulsa y qué efectos inmediatos puede tener, y lo coloca en contexto con otras decisiones recientes.</li>
-            <li><strong>Por qué importa:</strong> útil para tener un mapa rápido de titulares sin entrar en análisis ideológico; funciona como base para profundizar después en medios locales.</li>
-          </ul>
-        </article>
+  <article class="block">
+    <h3>SPICY4TUNA · Negocio billonario en vacas</h3>
+    <ul>
+      <li>Se introduciría aquí un resumen por puntos (varios li) de cada apartado de la newsletter.</li>
+    </ul>
+    <p><a href="https://newsletter.spicy4tuna.com/p/130-negocio-billonario-en-vacas?utm_source=newsletter.spicy4tuna.com&utm_medium=newsletter&utm_campaign=130-negocio-billonario-en-vacas&_bhlid=07a0850b08653d853a9d18e59a0a4920bc1545b9" target="_blank" rel="noreferrer">Leer artículo completo</a></p>
+  </article>
 
-        <article class="block">
-          <h3>Noticias generales · Newsletter económica X</h3>
-          <ul>
-            <li><strong>Tema central:</strong> repaso a los últimos datos de inflación en la zona euro y cómo los está leyendo el banco central.</li>
-            <li><strong>Qué dice la newsletter:</strong> desglosa en español las cifras clave, resume las declaraciones oficiales y aclara qué partes son ruido de corto plazo y qué partes apuntan a una tendencia más duradera.</li>
-            <li><strong>Por qué importa:</strong> buena pieza para entender si lo que lees en titulares de prensa está respaldado por los datos o solo por el tono del mercado del día.</li>
-          </ul>
-        </article>
+  <article class="block">
+    <h3>Superhuman AI · Anthropic has a major leak again</h3>
+    <ul>
+      <li>Se introduciría aquí un resumen por puntos (varios li) de cada apartado de la newsletter.</li>
+    </ul>
+    <p><a href="https://superhuman.ai/p/claude-code-s-secrets-are-out?utm_source=superhuman&utm_medium=newsletter&utm_campaign=claude-code-s-secrets-are-out&_bhlid=e48d647240d025a79b1919218b5061c26670c6bc&last_resource_guid=Post%3Ab8388290-5382-4f56-bb01-c32fe1dc667d" target="_blank" rel="noreferrer">Leer artículo completo</a></p>
+  </article>
 
-        2) EJEMPLO: DIVULGACIÓN / INFORMACIÓN (EXPLANATORY / EDUCATIONAL)
+  <article class="block">
+    <h3>IA para todos · Los agentes de IA ya actúan solos y nadie sabe muy bien con qué ética</h3>
+    <ul>
+      <li>Se introduciría aquí un resumen por puntos (varios li) de cada apartado de la newsletter.</li>
+    </ul>
+    <p><a href="https://iaparatodo.substack.com/p/los-agentes-de-ia-ya-actuan-solos?utm_source=post-email-title&publication_id=2995809&post_id=192605340&utm_campaign=email-post-title&isFreemail=true&r=1zf5ex&triedRedirect=true&utm_medium=email" target="_blank" rel="noreferrer">Leer artículo completo</a></p>
+  </article>
 
-        <article class="block">
-          <h3>Divulgación / información · Newsletter de IA práctica</h3>
-          <ul>
-            <li><strong>Tema central:</strong> guía paso a paso sobre cómo integrar un modelo de lenguaje en un flujo de trabajo interno sin exponer datos sensibles.</li>
-            <li><strong>Qué dice la newsletter:</strong> describe en detalle los riesgos típicos (logs, prompts, datos de entrenamiento) y propone un esquema sencillo de segmentación de datos y revisiones técnicas.</li>
-            <li><strong>Qué te llevas:</strong> una lista clara de buenas prácticas que puedes aplicar de inmediato si estás probando herramientas de IA en una empresa pequeña o equipo técnico.</li>
-          </ul>
-        </article>
+  <article class="block">
+    <h3>Álvaro García · Jardín Mental · Cómo dominar cualquier habilidad</h3>
+    <ul>
+      <li>Se introduciría aquí un resumen por puntos (varios li) de cada apartado de la newsletter.</li>
+    </ul>
+    <p><a href="https://jardinmental.substack.com/p/jiro-ono-practica-deliberada?utm_campaign=email-half-post&r=1zf5ex&utm_source=substack&utm_medium=email" target="_blank" rel="noreferrer">Leer artículo completo</a></p>
+  </article>
 
-        <article class="block">
-          <h3>Divulgación / información · Artículo de salud y hábitos</h3>
-          <ul>
-            <li><strong>Tema central:</strong> explicación de por qué el sueño irregular tiene más impacto en el rendimiento diario que dormir poco pero de forma constante.</li>
-            <li><strong>Qué dice la newsletter:</strong> traduce al español los hallazgos principales de varios estudios, aclara los conceptos sin jerga y enumera señales prácticas para saber si estás durmiendo mal.</li>
-            <li><strong>Qué te llevas:</strong> 2 o 3 ideas accionables muy concretas que puedes probar durante la semana para estabilizar horarios y calidad de sueño.</li>
-          </ul>
-        </article>
+  <article class="block">
+    <h3>No Solo Suerte · Malas noticias: producir ya no vale nada</h3>
+    <ul>
+      <li>Se introduciría aquí un resumen por puntos (varios li) de cada apartado de la newsletter.</li>
+    </ul>
+    <p><a href="https://www.nosolosuerte.com/p/166-malas-noticias-producir-ya-no?utm_source=post-email-title&publication_id=42386&post_id=192462225&utm_campaign=email-post-title&isFreemail=true&r=1zf5ex&triedRedirect=true&utm_medium=email" target="_blank" rel="noreferrer">Leer artículo completo</a></p>
+  </article>
 
-        3) EJEMPLO: OPINIÓN / ENSAYO
+  <article class="block">
+    <h3>Alberto Mera UPSB · ¿Gana Bitcoin si la ignorancia es cero?</h3>
+    <ul>
+      <li>Se introduciría aquí un resumen por puntos (varios li) de cada apartado de la newsletter.</li>
+    </ul>
+    <p><a href="https://albertomeraupsb.substack.com/p/gana-bitcoin-si-la-ignorancia-es?utm_source=post-email-title&publication_id=3502670&post_id=192112937&utm_campaign=email-post-title&isFreemail=true&r=1zf5ex&triedRedirect=true&utm_medium=email" target="_blank" rel="noreferrer">Leer artículo completo</a></p>
+  </article>
 
-        <article class="block">
-          <h3>Opinión · Noahpinion</h3>
-          <ul>
-            <li><strong>Tesis central:</strong> el autor argumenta que cierto país ha pasado de ser percibido como una rareza exótica a parecerse mucho más a otras democracias avanzadas, con ventajas y pérdidas asociadas.</li>
-            <li><strong>Cómo lo desarrolla:</strong> recorre cambios en demografía, cultura urbana, vivienda y salario real, y utiliza ejemplos concretos de barrios, empresas y datos históricos.</li>
-            <li><strong>Por qué guardarlo:</strong> sirve como marco mental para entender noticias dispersas sobre ese país sin verlas como curiosidades aisladas.</li>
-          </ul>
-        </article>
+  <article class="block">
+    <h3>Libertad Individual · El dinero que nos expropiaron</h3>
+    <ul>
+      <li>Se introduciría aquí un resumen por puntos (varios li) de cada apartado de la newsletter.</li>
+    </ul>
+    <p><a href="https://articulos.libertadindividuo.com/p/titulo-b9acb85497ce8a6d?utm_source=articulos.libertadindividuo.com&utm_medium=newsletter&utm_campaign=el-dinero-que-nos-expropiaron&_bhlid=4d233ed262757382c927eca5860ea271b1e588d9&last_resource_guid=Post%3A4c05fe9d-a5f9-4f2b-9d05-9016acdf55ba&jwt_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWJzY3JpYmVyX2lkIjoiZWU5ZDMzMDUtZjJlMi00MmRkLWEzYjAtNzdiNDY4MWFiOTNjIiwicHVibGljYXRpb25faWQiOiI5ZTI0ZjkzZi1kMWI3LTRiNTEtYTk2YS01MGFiMDdmYzNkMTIiLCJhY2Nlc3NfdHlwZSI6InJlYWQtb25seSIsImV4cCI6MTc3NDc3MTIyMCwiaXNzIjoiaHR0cHM6Ly9hcHAuYmVlaGlpdi5jb20iLCJpYXQiOjE3NzQ1OTg0MjB9.Lld_vDnvW4cTKj_a7tj4toUP9AkvkVrgxT_T4x-IY7s" target="_blank" rel="noreferrer">Leer artículo completo</a></p>
+  </article>
 
-        <article class="block">
-          <h3>Opinión · Columna económica</h3>
-          <ul>
-            <li><strong>Tesis central:</strong> defiende que la discusión pública se centra demasiado en la política monetaria y muy poco en la productividad real.</li>
-            <li><strong>Cómo lo desarrolla:</strong> compara países con políticas monetarias distintas pero trayectorias similares de productividad, y concluye que el foco debería ponerse en instituciones, competencia y adopción tecnológica.</li>
-            <li><strong>Qué te llevas:</strong> una forma más estructurada de leer cualquier debate sobre tipos de interés y bancos centrales sin quedarse en la superficie.</li>
-          </ul>
-        </article>
+  <h2 class="section-header section-header--quaternary">Opinión</h2>
 
-        4) EJEMPLO: TECH / IT (NO TLDR)
+  <article class="block">
+    <h3>Made in Ancapia · El libre mercado ni existe ni puede existir</h3>
+    <ul>
+      <li>Se introduciría aquí un resumen por puntos (varios li) de cada apartado de la newsletter.</li>
+    </ul>
+  </article>
 
-        <article class="block">
-          <h3>Tech / IT · Newsletter de ingeniería</h3>
-          <ul>
-            <li><strong>Tema central:</strong> análisis de un incidente real en producción en una gran plataforma y cómo lo investigaron.</li>
-            <li><strong>Qué dice la newsletter:</strong> describe la cadena de fallos, qué métricas fallaron en alertar, qué herramientas funcionaron y qué cambios permanentes aplicaron al sistema.</li>
-            <li><strong>Qué te llevas:</strong> lecciones aplicables sobre diseño de alertas, límites de dashboards y la importancia de los ensayos de incidentes.</li>
-          </ul>
-        </article>
+  <article class="block">
+    <h3>Noahpinion · How Japan has changed in the last 20 years</h3>
+    <ul>
+      <li>Se introduciría aquí un resumen por puntos (varios li) de cada apartado de la newsletter.</li>
+    </ul>
+    <p><a href="https://www.noahpinion.blog/p/how-japan-has-changed-in-the-last?utm_source=post-email-title&publication_id=35345&post_id=192567812&utm_campaign=email-post-title&isFreemail=true&r=1zf5ex&triedRedirect=true&utm_medium=email" target="_blank" rel="noreferrer">Leer artículo completo</a></p>
+  </article>
 
-        5) EJEMPLO ESPECÍFICO: TECH / IT TIPO TLDR (TRADUCCIÓN CASI LITERAL DE TITULARES Y DESCRIPCIONES)
+  <h2 class="section-header section-header--quinary">Tech</h2>
 
-        Para TLDR, TLDR Dev y newsletters similares, la sección debe parecer una edición traducida, no un único párrafo comprimido:
+  <article class="block">
+    <h3>Lenny's Newsletter · How to Navigate Org Drama</h3>
+    <ul>
+      <li>Se introduciría aquí un resumen por puntos (varios li) de cada apartado de la newsletter.</li>
+    </ul>
+    <p><a href="https://theskip.substack.com/p/how-to-navigate-org-drama?utm_source=cross-post&publication_id=92860&post_id=192141839&utm_campaign=10845&isFreemail=true&r=1zf5ex&triedRedirect=true&utm_medium=email" target="_blank" rel="noreferrer">Leer artículo completo</a></p>
+  </article>
 
-        <article class="block">
-          <h3>Tech / IT · TLDR</h3>
-          <ul>
-            <li>
-              <strong>Fuga de código de una herramienta de asistente de programación</strong><br>
-              La newsletter cuenta que se publicó por error un paquete con mapas de origen que dejaban ver el código completo. Resume qué partes del sistema se pueden inspeccionar y qué tipo de lecciones técnicas se extraen.
-            </li>
-            <li>
-              <strong>Nueva función de un asistente de voz que admite varios comandos encadenados</strong><br>
-              Se explica en español qué permite exactamente la función, en qué mejora el uso diario y cómo se compara con versiones anteriores más limitadas.
-            </li>
-            <li>
-              <strong>Investigación sobre computación cuántica y seguridad de cifrado</strong><br>
-              Traducción del titular y descripción donde se explica qué nivel de recursos podrían necesitarse en escenarios realistas y qué implicaciones tiene para ciertos algoritmos de cifrado.
-            </li>
-          </ul>
-        </article>
+  <article class="block">
+    <h3>TLDR</h3>
+    <ul>
+      <li>Se introduciría aquí un resumen por puntos (varios li) de cada apartado de la newsletter.</li>
+    </ul>
+  </article>
 
-        <article class="block">
-          <h3>Tech / IT · TLDR Dev</h3>
-          <ul>
-            <li>
-              <strong>Ataque a la cadena de suministro mediante paquete de JavaScript</strong><br>
-              El texto traduce el título y la descripción del caso real, aclara qué hizo el atacante y qué señales habría podido detectar un equipo de desarrollo atento.
-            </li>
-            <li>
-              <strong>Guía de depuración interna en una gran empresa</strong><br>
-              Recoge en español los puntos principales: cómo organizan los incidentes, quién toma decisiones en cada fase y qué herramientas usan en el día a día.
-            </li>
-            <li>
-              <strong>Pequeñas utilidades para mejorar la calidad de vida del desarrollador</strong><br>
-              Lista breve donde se traducen los nombres y descripciones de herramientas destacadas, con una nota rápida sobre para qué tipo de trabajo sirven mejor.
-            </li>
-          </ul>
-        </article>
+  <article class="block">
+    <h3>TLDR IT</h3>
+    <ul>
+      <li>Se introduciría aquí un resumen por puntos (varios li) de cada apartado de la newsletter.</li>
+    </ul>
+  </article>
 
-        FIN DE EJEMPLOS
-      -->
-    </section>
+  <article class="block">
+    <h3>TLDR AI</h3>
+    <ul>
+      <li>Se introduciría aquí un resumen por puntos (varios li) de cada apartado de la newsletter.</li>
+    </ul>
+  </article>
 
-    <p class="footer">
-      {{FOOTER}}
-    </p>
+</section>
+
+<p class="footer">
+  Filtrado y ordenado según la jerarquía definida para newsletters editoriales. Se han excluido mensajes de bienvenida, confirmación, alta y otros correos sin contenido editorial real. Cuando había enlace fiable, se ha añadido un acceso directo para leer el artículo completo.
+</p>
+
   </main>
 </body>
 </html>
 
-HTML TEMPLATE END
+
+```
