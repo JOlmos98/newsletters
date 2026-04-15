@@ -1,3 +1,5 @@
+PROMPT 4
+
 You are generating the final daily HTML digest from newsletter summaries that are already present in this conversation.
 
 Your job is to use only those already-available summaries, normalize metadata if needed, and output a polished, reader-friendly HTML page using the exact HTML template provided below.

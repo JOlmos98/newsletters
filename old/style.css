@@ -67,6 +67,111 @@ h1 {
   color: var(--text);
 }
 
+.digest-index {
+  margin: 0 0 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: var(--text);
+  background: transparent;
+}
+
+.digest-index a {
+  color: var(--text);
+}
+
+.digest-index summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.digest-index summary::-webkit-details-marker {
+  display: none;
+}
+
+.digest-index__title {
+  margin: 0;
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  opacity: 0.68;
+}
+
+.digest-index__label--open {
+  display: none;
+}
+
+.digest-index[open] .digest-index__title {
+  margin-bottom: 6px;
+}
+
+.digest-index + .section-header {
+  margin-top: 14px;
+}
+
+.digest-index[open] .digest-index__label--closed {
+  display: none;
+}
+
+.digest-index[open] .digest-index__label--open {
+  display: inline;
+}
+
+.digest-index__sections {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.digest-index__sections > li > a {
+  display: inline-block;
+  margin-bottom: 4px;
+  font-family: "Oswald", sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+}
+
+.digest-index__sections > li > a:hover {
+  color: var(--title);
+  text-decoration: none;
+}
+
+.digest-index__sections > li > ul {
+  margin: 0;
+  padding: 0 0 0 12px;
+  list-style: none;
+  display: grid;
+  gap: 4px;
+}
+
+.digest-index__sections > li > ul li {
+  margin: 0;
+}
+
+.digest-index__sections > li > ul a {
+  font-size: 0.83rem;
+  text-decoration: none;
+}
+
+.digest-index__sections a:hover {
+  color: var(--title);
+  text-decoration: none;
+}
+
+.card > p:last-child a,
+.footer a {
+  text-decoration: none;
+}
+
+.card > p:last-child a:hover,
+.footer a:hover {
+  color: var(--text);
+  text-decoration: none;
+}
+
 .section h2.section-header {
   margin: 40px 0 14px;
   padding-top: 18px;
@@ -157,6 +262,7 @@ li {
   font-size: 0.9rem;
   color: var(--text);
   opacity: 0.9;
+  text-align: center;
 }
 
 @media (max-width: 760px) {
@@ -174,5 +280,13 @@ li {
 
   .section h2.section-header {
     font-size: 1.35rem;
+  }
+
+  .digest-index {
+    padding: 0;
+  }
+
+  .digest-index__sections > li > ul {
+    gap: 3px;
   }
 }
