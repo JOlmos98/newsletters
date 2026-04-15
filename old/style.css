@@ -72,7 +72,7 @@ h1 {
   padding-top: 18px;
   border-top: 0;
   font-family: "Oswald", sans-serif;
-  font-size: 1.55rem;
+  font-size: 1.80rem;
   letter-spacing: 0.04em;
   font-weight: 500;
   text-transform: uppercase;
@@ -108,10 +108,33 @@ article,
 h3,
 .title {
   margin: 0 0 8px;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 600;
   font-family: "Oswald", sans-serif;
   color: var(--title);
+}
+
+.newsletter-sender {
+  margin: 0 0 12px;
+  color: var(--title);
+  font-style: italic;
+  font-weight: 500;
+}
+
+.newsletter-original-title {
+  margin: 0 0 16px;
+  color: var(--text);
+  font-size: 0.70rem;
+}
+
+.card h3,
+.block h3 {
+  margin: 0 0 10px;
+}
+
+.card ul,
+.block ul {
+  margin-top: 12px;
 }
 
 p {
@@ -129,8 +152,8 @@ li {
 
 .footer {
   margin-top: 24px;
-  padding-top: 14px;
-  border-top: 1px solid var(--divider-soft);
+  padding-top: 0;
+  border-top: 0;
   font-size: 0.9rem;
   color: var(--text);
   opacity: 0.9;

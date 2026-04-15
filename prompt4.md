@@ -1,6 +1,6 @@
 You are generating the final daily HTML digest from newsletter summaries that are already present in this conversation.
 
-Your job is to use only those already-available summaries, normalize metadata if needed, write the digest in Spanish, and output a polished, reader-friendly HTML page using the exact HTML template provided below.
+Your job is to use only those already-available summaries, normalize metadata if needed, and output a polished, reader-friendly HTML page using the exact HTML template provided below.
 
 PRIMARY GOAL
 Produce a clean, professional HTML digest that highlights the real editorial content from the summaries already provided in the chat.
@@ -11,6 +11,8 @@ SCOPE
 - Use only the newsletter summaries already present in this conversation context.
 - Use only editorial newsletter summaries.
 - Prioritize summaries with real substantive content.
+- Do NOT re-summarize from scratch: only format and compile the already-written summaries from the chat.
+- Do NOT perform additional analysis of email content. Treat the provided summaries as the source of truth.
 
 FORWARDED EMAIL HANDLING
 If a source newsletter was forwarded:
@@ -23,7 +25,10 @@ If a source newsletter was forwarded:
 DISPLAY METADATA RULES
 For each item shown in the HTML:
 - displayTitle = original newsletter title if available; otherwise the cleaned title present in the provided summary context
+- displayTitle must be shown translated to Spanish as the main visible newsletter title
+- displayOriginalTitle = show original title only when the original title is in English; if the original is already Spanish, do not render an original-title line
 - displaySender = original sender/publication if available; otherwise the sender name present in the provided summary context
+- Display sender as plain text only (example: "TLDR Dev"), never with prefixes like "De:".
 - isForwarded = true only when clearly forwarded
 - category = short category label only if useful for the reader
 - Never expose private forwarding addresses prominently if they are not the true sender
@@ -70,8 +75,11 @@ If a newsletter from the strict list is missing that day, skip it. Keep the rela
 
 Any newsletter not listed above must be classified into the most appropriate section and placed at the end of that section.
 
-SUMMARY RULES
-For every included newsletter, write in Spanish.
+SUMMARY HANDLING RULES
+For every included newsletter:
+- Keep the content in Spanish.
+- Do not invent a new summary.
+- Reuse the already available summarized points from the conversation and only edit minimally for consistency, clarity, and formatting.
 
 GENERAL RULES
 - Be specific.
@@ -83,8 +91,8 @@ GENERAL RULES
 - Do not re-interpret previous summaries; compile them faithfully into HTML.
 
 STRICT FIDELITY RULE
-When summarizing, prioritize factual fidelity over stylistic flourish:
-- State what the newsletter says in well-written Spanish
+When formatting the final digest, prioritize factual fidelity over stylistic flourish:
+- Keep what the existing summary already says
 - Preserve the real emphasis of the original piece
 - Do not convert a concrete point into a vague generalization
 - Do not exaggerate or soften the claims
@@ -93,17 +101,15 @@ When summarizing, prioritize factual fidelity over stylistic flourish:
 
 - If a TLDR-like newsletter contains many items, include EVERY important item mentioned in the newsletter.
 - Use one bullet point per article/story.
-- Provide a brief summary for each item.
+- Keep the already-provided brief point for each item; only polish wording lightly if needed.
 - Ensure the section feels substantial and useful, not skeletal.
-- For multi-story formats such as 1440, TLDR variants, The Objective (Alvaro Nieto), or similar briefings: keep one bullet per story/article and preserve the brief per-item explanation style from the prior summaries.
+- For multi-story formats such as 1440, TLDR variants, The Objective (Alvaro Nieto), or similar briefings: keep one bullet per story/article and preserve the prior summary structure.
 
 NON-TLDR NEWSLETTERS
 For general, explanatory, and opinion newsletters:
-- Summarize clearly in Spanish.
-- Provide AT LEAST 5 bullet points per newsletter.
+- Keep the bullets already available in the conversation.
+- Do not create new points that are not present in the prior summaries.
 - Be concise, but not skeletal.
-- Capture the central thesis, notable ideas, useful insights, and key takeaways.
-- Avoid repeating the newsletter’s self-description unless that is the only meaningful content.
 - Preserve the tone and intent of the piece without becoming flowery.
 
 NO EMOJIS RULE
@@ -126,15 +132,34 @@ HTML AND CSS RULES
 - The CSS is handled by the external style.css file already linked in the head. You do not need to know its contents, just use the correct class names specified.
 - Do NOT include <script> tags or any JavaScript logic at all.
 - Use only standard semantical HTML5.
+- Do not explain CSS decisions and do not add new CSS classes unless explicitly specified in this prompt.
 
 HTML STRUCTURE RULES
 - Use <article class="card"> for standard newsletters (General, Explanatory, Opinion).
 - Use <article class="block"> ONLY for TLDR and similar link-heavy tech newsletters.
+- Inside each article, metadata must be rendered in this order:
+  1) sender first line: `<p class="newsletter-sender">...</p>` (italic, color `--title`)
+  2) translated title: `<h3>...</h3>` (non-italic, color `--title`)
+  3) optional original title line only if original is English: `<p class="newsletter-original-title">...</p>` (smaller size, color `--text`)
 - Section headers must be <h2> with the appropriate class:
   - <h2 class="section-header section-header--secondary">NOTICIAS GENERALES</h2>
   - <h2 class="section-header section-header--tertiary">DIVULGACIÓN</h2>
   - <h2 class="section-header section-header--quaternary">OPINIÓN</h2>
   - <h2 class="section-header section-header--quinary">TECH</h2>
+- Main title must be exactly: `Digest Diario de Newsletters de Jesús Olmos Soler`
+- Immediately after the date `<h2>{{HUMAN_DATE}}</h2>`, include a collapsible index block using this exact structure:
+  - `<details class="digest-index">`
+  - `<summary class="digest-index__title">`
+  - `<span class="digest-index__label digest-index__label--closed">Mostrar índice</span>`
+  - `<span class="digest-index__label digest-index__label--open">Ocultar índice</span>`
+  - A `<nav aria-label="Indice de newsletters">` containing:
+    - section links (`#noticias-generales`, `#divulgacion`, `#opinion`, `#tech`) only for sections that exist that day
+    - nested links to each newsletter article id in that section
+- Add `id` attributes to section headers and articles so index links work:
+  - section ids: `noticias-generales`, `divulgacion`, `opinion`, `tech`
+  - article ids: stable slug-style ids based on sender/newsletter name; if duplicated sender appears twice, suffix with `-1`, `-2`, etc.
+- Footer must be exactly:
+  - `<p class="footer"><a href="old.html">Ver ediciones antiguas</a></p>`
 
 HTML TEMPLATE RULES
 - Use the exact HTML template provided below.
@@ -148,9 +173,10 @@ You must use the HTML template below and replace these placeholders with the new
 
 - {{PAGE_TITLE}} = must follow this exact format: "Digest diario de newsletters · 2 de abril de 2026" (same pattern, changing only the date)
 - {{HUMAN_DATE}} = human-readable Spanish date
-- {{MAIN_TITLE}} = main visible title of the digest
+- {{MAIN_TITLE}} = must be exactly "Digest Diario de Newsletters de Jesús Olmos Soler"
 - {{NEWSLETTER_CARDS}} = full HTML for the newsletter cards/sections in the required order
-- {{FOOTER}} = short footer text
+- {{DIGEST_INDEX}} = collapsible index nav with section links + sender links, pointing to real ids in headers/articles
+- {{FOOTER}} = `<a href="old.html">Ver ediciones antiguas</a>`
 
 If the provided template uses different placeholders, preserve that exact placeholder scheme and replace accordingly.
 
@@ -184,9 +210,12 @@ DO NOT
 FINAL CHECK BEFORE OUTPUT
 Before returning HTML, verify:
 - No inbox/email access was performed; only in-conversation summaries were used.
+- No new summarization was performed; only existing chat summaries were formatted into HTML.
 - Forwarded emails have normalized metadata
 - The digest is written in Spanish
 - The `<title>` uses this format: `Digest diario de newsletters · <fecha en español>`
+- The `<h1>` is exactly: `Digest Diario de Newsletters de Jesús Olmos Soler`
+- The collapsible index exists immediately after the date and uses `Mostrar índice` / `Ocultar índice`
 - There is no intro paragraph block; content starts directly with the newsletter section after the main title
 - The ordering is: NOTICIAS GENERALES first, DIVULGACIÓN second, OPINIÓN third, TECH last.
 - Follow the specific priority list for newsletters within each section.
@@ -211,6 +240,13 @@ MINIMAL TEMPLATE (use this exact structure and classes):
 
     <section class="section">
       <h2>{{HUMAN_DATE}}</h2>
+      <details class="digest-index">
+        <summary class="digest-index__title">
+          <span class="digest-index__label digest-index__label--closed">Mostrar índice</span>
+          <span class="digest-index__label digest-index__label--open">Ocultar índice</span>
+        </summary>
+        {{DIGEST_INDEX}}
+      </details>
       {{NEWSLETTER_CARDS}}
     </section>
 
@@ -230,7 +266,15 @@ MINIMAL TEMPLATE (use this exact structure and classes):
 - Use `<article class="block">` for TLDR-like / link-heavy editions.
 - Use `<article class="card">` for regular newsletters.
 - Article structure:
-  - `<h3>Newsletter title</h3>`
+  - `<p class="newsletter-sender">Sender Name</p>` (first line, italic, without prefixes like `De:`)
+  - `<h3>Newsletter title translated to Spanish</h3>` (main title)
+  - Optional: `<p class="newsletter-original-title">Original title in English</p>` (only when original title is English)
   - `<ul><li>...</li></ul>`
   - Optional clean external link paragraph:
     - `<p><a href="https://..." target="_blank" rel="noreferrer">Leer artículo completo</a></p>`
+
+`{{DIGEST_INDEX}}` must follow this pattern:
+- `<nav aria-label="Indice de newsletters">`
+- top-level section links in the required order (include only sections that exist that day)
+- under each section link, nested sender links for each rendered article in that section
+- all href targets must match the real `id` values rendered in section headers and articles
