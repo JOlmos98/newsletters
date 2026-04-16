@@ -56,12 +56,14 @@ The final HTML must order newsletters in this exact editorial sequence:
    9) Superhuman AI Zain Kahn
    10) Spicy4Tuna
    11) The Substack Post
+   12) Lord Draugr
 
 3. OPINIÓN third (color --quaternary, class section-header--quaternary)
    Strict internal order:
    1) Noahpinion
    2) Edward Zitron
    3) Made in Ancapia
+   4) Mathsurf Club
 
 4. TECH last (color --quinary, class section-header--quinary)
    Strict internal order:

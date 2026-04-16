@@ -50,12 +50,14 @@ Si un dia no llega ninguna newsletter de una seccion, esa seccion simplemente no
 9. Superhuman AI Zain Kahn
 10. Spicy4Tuna
 11. The Substack Post
+12. Lord Draugr
 
 ### 3. Opinion
 
 1. Noahpinion
 2. Edward Zitron
 3. Made in Ancapia
+4. Mathsurf Club
 
 ### 4. Tech
 
