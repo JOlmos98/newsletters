@@ -66,6 +66,7 @@ FIELD MAPPING
 - `<h3>`: use a Spanish title for display.
   - If `Title` is already in Spanish, keep it.
   - If `Title` is in English, translate it to natural Spanish for `<h3>`.
+  - If the title is almost the same as its own bullet description (redundant phrasing), shorten `<h3>` aggressively to a much more concise headline that preserves the core topic.
 - `<p class="newsletter-original-title">`:
   - Include only when the original `Title` is in English.
   - If included, use the original English title exactly (cleaned only if needed).
@@ -76,7 +77,16 @@ SUMMARY TO BULLETS
 - Prefer this pattern for each bullet:
   - `<li><strong>Etiqueta corta:</strong> explicación concreta.</li>`
 - If the newsletter is a multi-article/news-roundup format (for example TLDR-like, 1440-like, or similar), each `<li>` MUST use:
-  - `<li><strong>Article title:</strong> short description of what that specific article says.</li>`
+  - `<li><strong>Spanish subarticle title:</strong> short description of what that specific article says.</li>`
+- The text inside `<strong>...</strong>` must always be in Spanish (never in English), concise, and aligned with the corresponding bullet content.
+- For TLDR-style bullets, preserve this structure when mapping from summary to HTML:
+  - Source summary format expected: `**Título traducido (Original title):** breve resumen en español.`
+  - In HTML, keep only the translated short title inside `<strong>...</strong>` and move the original title to the beginning of the description in parentheses.
+  - Target pattern: `<li><strong>Título traducido:</strong> (Original title) breve resumen en español.</li>`
+- Do not copy the full source headline verbatim inside `<strong>` when it repeats the description.
+- Compress `<strong>` into a short thematic label (about 3-7 words), preserving the key entities/topics.
+  - Good pattern: `Julio Martínez, Zapatero y Plus Ultra`
+  - Avoid: repeating a long full sentence that is nearly identical to the description.
 - In multi-article/news-roundup formats, do NOT write a generic summary point; each bullet must clearly map to one concrete article/item.
 - Keep claims faithful to the provided summary. Do not invent facts.
 - Keep one bullet per key item (especially for TLDR-like summaries).
@@ -97,6 +107,7 @@ FINAL CHECK BEFORE OUTPUT
 - Correct class (`card`).
 - Correct sender line, title handling, bullet list, optional link.
 - For multi-article/news-roundup inputs, each bullet starts with a concrete article title inside `<strong>...</strong>`.
+- Strong labels are always in Spanish.
 - No hallucinated content.
 - No text outside the HTML block.
 

@@ -26,6 +26,10 @@ For the pasted newsletter/article:
 
 BULLET DEPTH
 - If the text is a multi-story digest (for example TLDR-like, 1440-like, or similar): use one bullet per relevant story/item, covering all key items.
+- For TLDR-style digests specifically, start each bullet with this pattern:
+  - `- **Título traducido (Original title):** breve resumen en español.`
+  - Translate the subarticle title to natural Spanish first, then include the original title in parentheses.
+  - Keep the description concise and factual in Spanish after the colon.
 - If the text is an essay/opinion/explainer style piece: provide at least 5 bullets with the main ideas and takeaways.
 - For each bullet, prioritize concrete points over generic phrasing.
 - Do not drop editorial items just because they seem repetitive or low-priority.

@@ -4,6 +4,7 @@ You must execute the daily digest update workflow in this exact order:
 - Take the current `index.html` (it is likely yesterday's digest).
 - Copy its full HTML content into a new dated file inside `old/` (following the same naming convention as existing files in `old/`).
 - Register that new archived file by adding its route/link entry into `old.html`, consistent with how previous archived digests are listed.
+- Update the footer link inside the moved archived file so it points correctly to `old.html` from `old/` (`"old.html"` -> `"../old.html"`).
 
 2) Reset `index.html` to the base template:
 - Delete ALL content currently inside `index.html`.
@@ -14,6 +15,7 @@ You must execute the daily digest update workflow in this exact order:
 - Take only the HTML article content from that file (ignore instruction text around it).
 - Move that HTML content into `index.html`.
 - Order the articles strictly according to the newsletter order list defined in `gpt/articles.md` (the list appears before the HTML content).
+- After moving the HTML articles into `index.html`, DELETE those moved `<article>...</article>` blocks from `gpt/articles.md` and leave only the initial short guide up to and including the line `El html de los articles:`.
 
 4) Finalize daily metadata:
 - Update the date in `index.html` to today's date.
@@ -27,3 +29,8 @@ git commit -m "Digest YYYY-MM-DD"
 git push origin main
 ```
 - Replace `YYYY-MM-DD` with the current day date (for example, `Digest 2026-04-16`).
+
+Task summary:
+1) Archive the current `index.html` into `old/2026_04_15.html`.
+2) Update `old.html`.
+3) Rebuild `index.html` with template + ordered articles + today's date and index.
