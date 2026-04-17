@@ -1,9 +1,7 @@
 
+HTML template without the articles:
 
-
-Plantilla del html sin los artículos:
-
-Habría que insertar aquí los resumenes de cada newsletter que sería una sección <article> entera por cada newsletter y después actualizar la fecha y el índice.
+You should insert the summary of each newsletter here, as one complete `<article>` section per newsletter, and then update the date and the index.
 
 ```html
 

@@ -8,14 +8,14 @@ You must execute the daily digest update workflow in this exact order:
 
 2) Reset `index.html` to the base template:
 - Delete ALL content currently inside `index.html`.
-- Paste the full HTML template from `htmlTemplate.md` into `index.html`.
+- Paste the full HTML template from `agent/htmlTemplate.md` into `index.html`.
 
 3) Insert prepared articles into the new digest:
-- Open `gpt/articles.md`.
+- Open `agent/articles.md`.
 - Take only the HTML article content from that file (ignore instruction text around it).
 - Move that HTML content into `index.html`.
-- Order the articles strictly according to the newsletter order list defined in `gpt/articles.md` (the list appears before the HTML content).
-- After moving the HTML articles into `index.html`, DELETE those moved `<article>...</article>` blocks from `gpt/articles.md` and leave only the initial short guide up to and including the line `El html de los articles:`.
+- Order the articles strictly according to the newsletter order list defined in `agent/articles.md` (the list appears before the HTML content).
+- After moving the HTML articles into `index.html`, DELETE those moved `<article>...</article>` blocks from `agent/articles.md` and leave only the initial short guide up to and including the line `El html de los articles:`.
 
 4) Finalize daily metadata:
 - Update the date in `index.html` to today's date.
