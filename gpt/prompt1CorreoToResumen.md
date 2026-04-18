@@ -40,11 +40,8 @@ Links:
 - Lenny's Newsletter: https://www.lennysnewsletter.com/
 
 TASK
-I will paste the full content of one newsletter or article below.
+I will paste the full content of one newsletter or article below, right after this prompt.
 Analyze only the pasted text and produce the summary in the required format.
-
-SOURCE TEXT
-{{PASTE_ARTICLE_HERE}}
 
 CONTENT RULES
 - Use only information explicitly present in the pasted text.
@@ -92,4 +89,5 @@ FINAL CHECK
 - Summary is in Spanish.
 - No invented facts.
 
-Text:
+SOURCE TEXT:
+{{PASTE_ARTICLE_HERE}}

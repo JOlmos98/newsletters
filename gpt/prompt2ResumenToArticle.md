@@ -6,7 +6,7 @@ Repository handoff (for the human operator): each generated `<article>` block is
 `agent/articles.md` is **only** context (section and newsletter ordering); it does **not** contain HTML article snippets.
 
 TASK
-I will paste one summary in Markdown format.
+With the summary from the latest newsletter in the previous message, I will paste one summary in Markdown format.
 You must transform it into ONE HTML `<article>` block following the exact style of my digest template.
 
 INPUT FORMAT I WILL PASTE
@@ -114,5 +114,3 @@ FINAL CHECK BEFORE OUTPUT
 - No hallucinated content.
 - No text outside the HTML block.
 
-PASTE SUMMARY BELOW:
-{{SUMMARY_INPUT}}
