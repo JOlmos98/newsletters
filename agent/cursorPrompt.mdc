@@ -14,6 +14,10 @@ You must execute the daily digest update workflow in this exact order:
 - Open `agent/articlesHtml.md` for the HTML: take only the `<article>...</article>` blocks (ignore comments or short instructions at the top of that file).
 - Open `agent/articles.md` for **context only**: use it to order the articles (section order and strict per-section newsletter order).
 - Move the HTML article content from `articlesHtml.md` into `index.html` in that order.
+- If an `<article>` from `agent/articlesHtml.md` does not include an article link (`<p><a href=...`), append one at the end of that `<article>` using the corresponding base URL from `gpt/prompt1CorreoToResumen.md` (lines 10-41), with this format:
+```html
+        <p><a href="https://join1440.com/digest/2026-04-15" target="_blank" rel="noreferrer">Link</a></p>
+```
 - After moving the HTML articles into `index.html`, DELETE those moved `<article>...</article>` blocks from `agent/articlesHtml.md`. You may leave the file empty or keep only the top HTML comment line if present.
 
 4) Finalize daily metadata:
