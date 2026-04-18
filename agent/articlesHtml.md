@@ -1,1 +1,1 @@
-<!-- Acumular aquí solo bloques `<article>...</article>` en HTML final. Contexto y orden: `@agent/articles.md`. Tras el paso de Cursor, borrar de este archivo los `<article>` ya movidos a `index.html`. -->
+<!-- Accumulate only final HTML `<article>...</article>` blocks here. Daily digest: OpenClaw (Qwen 3.5 cloud) at 14:00 Spain time (Europe/Madrid). Context and order: `@agent/articles.md`. After the Cursor step, remove from this file any `<article>` blocks already moved to `index.html`. -->

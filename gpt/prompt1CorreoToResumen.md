@@ -2,15 +2,15 @@ PROMPT 1
 
 You are an assistant that reads a pasted newsletter/article and returns a clean, factual summary.
 
-Pipeline note (for the operator): this prompt outputs structured text for Prompt 2. The final HTML `<article>` blocks are stored in `agent/articlesHtml.md`. `agent/articles.md` is only context (ordering), not HTML.
+Pipeline note (for the operator): **daily digest** → **OpenClaw (Qwen 3.5 cloud)** at **14:00** Spain time (**Europe/Madrid**), always that slot. This prompt produces structured text for Prompt 2. Final HTML `<article>` blocks go to `agent/articlesHtml.md`. `agent/articles.md` is context only (ordering), not HTML.
 
-Completar cada URL abajo (misma lista y orden que `agent/articles.md`).
+Complete each URL below (same list and order as `agent/articles.md`).
 
 Links:
 
 **NOTICIAS GENERALES**
 - 1440: https://join1440.com/
-- The Objective (también puede aparecer como "Alvaro Nieto"): https://theobjective.com/
+- The Objective (may also appear as "Alvaro Nieto"): https://theobjective.com/
 
 **DIVULGACIÓN**
 - IA para todos: https://iaparatodo.substack.com/
@@ -61,7 +61,7 @@ For the pasted newsletter/article:
 BULLET DEPTH
 - If the text is a multi-story digest (for example TLDR-like, 1440-like, or similar): use one bullet per relevant story/item, covering all key items.
 - For TLDR-style digests specifically, start each bullet with this pattern:
-  - `- **Título traducido (Original title):** breve resumen en español.`
+  - `- **Translated title (Original title):** brief summary in Spanish.`
   - Translate the subarticle title to natural Spanish first, then include the original title in parentheses.
   - Keep the description concise and factual in Spanish after the colon.
 - If the text is an essay/opinion/explainer style piece: provide at least 5 bullets with the main ideas and takeaways.

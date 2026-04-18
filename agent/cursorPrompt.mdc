@@ -1,4 +1,6 @@
-You must execute the daily digest update workflow in this exact order:
+You must execute the daily digest update workflow in this exact order.
+
+**Context:** the daily digest is covered by **OpenClaw (Qwen 3.5 cloud)** in the fixed **14:00** Spain time window (**Europe/Madrid**). This prompt is the assembly step in Cursor within that same daily flow.
 
 1) Archive the current digest:
 - Take the current `index.html` (it is likely yesterday's digest).

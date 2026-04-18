@@ -1,7 +1,10 @@
 # Newsletter Digest - Agent Playbook
 
 This repository is a daily newsletter pipeline for a static site published on GitHub Pages.
-The operational flow now uses OpenClaw (Llama) + ChatGPT Web + Cursor in sequence.
+
+**Daily digest:** run by **OpenClaw** with the **Qwen 3.5 (cloud)** model. Generation/publication of the day’s digest is fixed **always** at **14:00** Spain time (**Europe/Madrid**, Madrid reference).
+
+The operational flow combines that automated step with **ChatGPT Web** and **Cursor** as needed (summaries, HTML, assembly, and commit), in the order described below.
 
 ## Objective
 
@@ -12,6 +15,7 @@ Process all incoming newsletters from email, transform each one into a final HTM
 
 | File | Purpose |
 |---|---|
+| `openClaw.md` | Concrete steps for OpenClaw: Gmail → frozen checklist → ChatGPT → `articlesHtml.md` → Cursor Agents |
 | `agent/AGENTS.md` | This operational guide for the agent workflow |
 | `gpt/prompt1CorreoToResumen.md` | Prompt 1: convert raw newsletter email into structured summary |
 | `gpt/prompt2ResumenToArticle.md` | Prompt 2: convert structured summary into final HTML `<article>` |
@@ -23,6 +27,8 @@ Process all incoming newsletters from email, transform each one into a final HTM
 | `old.html` + `old/*.html` | Historical archive pages |
 
 ## End-To-End Workflow (Required Order)
+
+> **Schedule:** the day’s digest must be produced in the daily **14:00 (Spain/Madrid)** cycle with OpenClaw (Qwen 3.5 cloud); the remaining steps fit in that same cycle.
 
 1. Read one newsletter email from inbox (raw content).
 2. Open ChatGPT Web.

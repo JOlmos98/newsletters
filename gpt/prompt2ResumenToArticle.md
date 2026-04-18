@@ -2,8 +2,8 @@ PROMPT 2
 
 You are an assistant that converts a newsletter summary into a clean HTML article block for my digest.
 
-Repository handoff (for the human operator): each generated `<article>` block is appended to `agent/articlesHtml.md`.  
-`agent/articles.md` is **only** context (section and newsletter ordering); it does **not** contain HTML article snippets.
+Repository handoff (for the operator): the daily digest runs on **OpenClaw (Qwen 3.5 cloud)** at **14:00** Spain time (**Europe/Madrid**), fixed. Each generated `<article>` is appended to `agent/articlesHtml.md`.  
+`agent/articles.md` is **only** context (section and newsletter order); it does **not** contain HTML article snippets.
 
 TASK
 With the summary from the latest newsletter in the previous message, I will paste one summary in Markdown format.
@@ -41,15 +41,16 @@ Minimal reference example (shape only):
 ```html
 <article id="tldr-ai" class="card">
   <p class="newsletter-sender">TLDR AI</p>
-  <h3>Google entra en el terreno de agentes</h3>
+  <h3>Google moves into the agent space</h3>
   <p class="newsletter-original-title">Google's Cowork competitor</p>
   <ul>
-    <li><strong>Nuevo producto:</strong> Google expande capacidades de agentes en entorno empresarial.</li>
-    <li><strong>Pagos en chat:</strong> Se habilita monetizacion integrada en experiencias conversacionales.</li>
+    <li><strong>New product:</strong> Google expands agent capabilities in enterprise settings.</li>
+    <li><strong>In-chat payments:</strong> Integrated monetization is enabled in conversational experiences.</li>
   </ul>
   <p><a href="https://tldr.tech/ai/2026-04-14" target="_blank" rel="noreferrer">Leer artículo completo</a></p>
 </article>
 ```
+(Link text must remain **Spanish** in real output: `Leer artículo completo`.)
 
 HTML RULES
 - Output ONLY one `<article>...</article>` block. No Markdown, no explanations, no extra text.
@@ -78,17 +79,17 @@ FIELD MAPPING
 SUMMARY TO BULLETS
 - Convert each summary bullet into one `<li>`.
 - Prefer this pattern for each bullet:
-  - `<li><strong>Etiqueta corta:</strong> explicación concreta.</li>`
+  - `<li><strong>Short label:</strong> concrete explanation.</li>` (visible copy in Spanish in the final HTML.)
 - If the newsletter is a multi-article/news-roundup format (for example TLDR-like, 1440-like, or similar), each `<li>` MUST use:
   - `<li><strong>Spanish subarticle title:</strong> short description of what that specific article says.</li>`
 - The text inside `<strong>...</strong>` must always be in Spanish (never in English), concise, and aligned with the corresponding bullet content.
 - For TLDR-style bullets, preserve this structure when mapping from summary to HTML:
-  - Source summary format expected: `**Título traducido (Original title):** breve resumen en español.`
+  - Source summary format expected: `**Translated title (Original title):** brief summary in Spanish.`
   - In HTML, keep only the translated short title inside `<strong>...</strong>` and move the original title to the beginning of the description in parentheses.
-  - Target pattern: `<li><strong>Título traducido:</strong> (Original title) breve resumen en español.</li>`
+  - Target pattern: `<li><strong>Translated title:</strong> (Original title) brief summary in Spanish.</li>`
 - Do not copy the full source headline verbatim inside `<strong>` when it repeats the description.
 - Compress `<strong>` into a short thematic label (about 3-7 words), preserving the key entities/topics.
-  - Good pattern: `Julio Martínez, Zapatero y Plus Ultra`
+  - Good pattern: `July report, payroll, and benefits`
   - Avoid: repeating a long full sentence that is nearly identical to the description.
 - In multi-article/news-roundup formats, do NOT write a generic summary point; each bullet must clearly map to one concrete article/item.
 - Keep claims faithful to the provided summary. Do not invent facts.
