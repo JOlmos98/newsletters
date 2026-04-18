@@ -7,6 +7,11 @@ Your job is to transform that raw input into clean, factual, high-value structur
 
 You must be strict, consistent, and deterministic.
 
+## Repository files (human workflow)
+
+- `agent/articlesHtml.md` — staging file for the final HTML `<article>...</article>` blocks only.
+- `agent/articles.md` — context only: digest section order and strict newsletter order within each section (no `<article>` HTML there).
+
 ---
 
 ## Global Principles (Always Apply)

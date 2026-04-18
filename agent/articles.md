@@ -1,4 +1,10 @@
-New articles will go here (to be moved into `index.html`) as final-version `<article>` blocks, so Cursor can move and place them correctly in `index.html` and update the date and index; after that, the commit can be pushed to the `main` branch. They can be grouped together and out of order: Cursor will sort them exclusively in this order (some may always be missing; in that case, they are not included in the final HTML; use `@agent/htmlTemplate.md` as the reference and update date and index after inserting the articles in the proper order):
+Este archivo solo da **contexto**: orden de secciones y orden estricto de newsletters dentro de cada sección. **No** contiene los bloques HTML `<article>`.
+
+Los trocitos de HTML (solo los `<article>...</article>` generados) van en `agent/articlesHtml.md`. Cursor los moverá a `index.html` siguiendo el orden definido aquí abajo.
+
+Tras publicar el digest del día, los bloques ya movidos se borran de `agent/articlesHtml.md`; este archivo (`articles.md`) se mantiene como referencia de contexto.
+
+They can be grouped together and out of order in `articlesHtml.md`: Cursor will sort them exclusively in this order (some may always be missing; in that case, they are not included in the final HTML; use `@agent/htmlTemplate.md` as the reference and update date and index after inserting the articles in the proper order):
 
 1. NOTICIAS GENERALES first (color --secondary, class section-header--secondary)
    Strict internal order:
@@ -34,6 +40,3 @@ New articles will go here (to be moved into `index.html`) as final-version `<art
    3. Manfred
    4. La Bonilista
    5. Lenny's Newsletter
-
-Articles list (html, only the <articles>):
-

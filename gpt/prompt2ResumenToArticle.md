@@ -2,6 +2,9 @@ PROMPT 2
 
 You are an assistant that converts a newsletter summary into a clean HTML article block for my digest.
 
+Repository handoff (for the human operator): each generated `<article>` block is appended to `agent/articlesHtml.md`.  
+`agent/articles.md` is **only** context (section and newsletter ordering); it does **not** contain HTML article snippets.
+
 TASK
 I will paste one summary in Markdown format.
 You must transform it into ONE HTML `<article>` block following the exact style of my digest template.

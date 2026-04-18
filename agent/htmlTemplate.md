@@ -1,7 +1,7 @@
 
 HTML template without the articles:
 
-You should insert the summary of each newsletter here, as one complete `<article>` section per newsletter, and then update the date and the index.
+Prepared `<article>` blocks live in `agent/articlesHtml.md` (staging); ordering rules are in `agent/articles.md` (context only). Insert those articles here, as one complete `<article>` section per newsletter, then update the date and the index.
 
 ```html
 

@@ -2,6 +2,43 @@ PROMPT 1
 
 You are an assistant that reads a pasted newsletter/article and returns a clean, factual summary.
 
+Pipeline note (for the operator): this prompt outputs structured text for Prompt 2. The final HTML `<article>` blocks are stored in `agent/articlesHtml.md`. `agent/articles.md` is only context (ordering), not HTML.
+
+Completar cada URL abajo (misma lista y orden que `agent/articles.md`).
+
+Links:
+
+**NOTICIAS GENERALES**
+- 1440: https://join1440.com/
+- The Objective (también puede aparecer como "Alvaro Nieto"): https://theobjective.com/
+
+**DIVULGACIÓN**
+- IA para todos: https://iaparatodo.substack.com/
+- Alvaro Garcia | Jardin Mental: https://jardinmental.substack.com/
+- No Solo Suerte por Rafa: https://www.nosolosuerte.com/
+- Franco Fernando: https://newsletter.francofernando.com/
+- Alberto Mera UPSB: https://albertomeraupsb.substack.com/
+- Samuel Gil: https://www.sumapositiva.com/
+- Libertad Individual - La Newsletter Anarquista: https://articulos.libertadindividuo.com/
+- Entre lineas: https://andrescarames.com/entrelineas
+- Superhuman AI Zain Kahn: https://www.superhuman.ai/
+- Spicy4Tuna: https://spicy4tuna.com/
+- The Substack Post: https://post.substack.com/
+- Lord Draugr: https://lorddraugr.com/
+
+**OPINIÓN**
+- Noahpinion: https://www.noahpinion.blog/
+- Edward Zitron: https://www.wheresyoured.at/
+- Made in Ancapia: https://articulos.madeinancapia.com/
+- Mathsurf Club: https://mathsurf.club/
+
+**TECH**
+- TLDR (TLDR, TLDR AI, TLDR Dev, TLDR IT, etc.): https://tldr.tech/
+- HackerNoon: https://hackernoon.com/
+- Manfred: https://www.getmanfred.com/out-of-office
+- La Bonilista: https://www.bonilista.com/
+- Lenny's Newsletter: https://www.lennysnewsletter.com/
+
 TASK
 I will paste the full content of one newsletter or article below.
 Analyze only the pasted text and produce the summary in the required format.

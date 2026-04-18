@@ -1,0 +1,1 @@
+<!-- Acumular aquí solo bloques `<article>...</article>` en HTML final. Contexto y orden: `@agent/articles.md`. Tras el paso de Cursor, borrar de este archivo los `<article>` ya movidos a `index.html`. -->
