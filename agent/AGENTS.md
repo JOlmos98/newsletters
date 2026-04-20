@@ -1,20 +1,25 @@
 # Newsletter Digest - Agent Playbook
 
 This repository is a daily newsletter pipeline for a static site published on GitHub Pages.
-The operational flow now uses OpenClaw (Llama) + ChatGPT Web + Cursor in sequence.
+
+**Daily digest:** run by **OpenClaw** with the **Qwen 3.5 (cloud)** model. Generation/publication of the day’s digest is fixed **always** at **14:00** Spain time (**Europe/Madrid**, Madrid reference).
+
+The operational flow combines that automated step with **ChatGPT Web** and **Cursor** as needed (summaries, HTML, assembly, and commit), in the order described below.
 
 ## Objective
 
-Process all incoming newsletters from email, transform each one into a final HTML `<article>` block, append all generated articles into `agent/articlesHtml.md`, then rebuild and publish the daily digest.
+Process all incoming newsletters from email, transform each one into a final HTML `<article>` block, append all generated articles into `agent/articlesHtml.md`, then rebuild and publish the daily digest.  
+`agent/articles.md` holds **only context** (section order and strict per-section newsletter order), not the HTML snippets.
 
 ## Source Of Truth Files
 
 | File | Purpose |
 |---|---|
+| `openClaw.md` | Concrete steps for OpenClaw: Gmail → frozen checklist → ChatGPT → `articlesHtml.md` → Cursor Agents |
 | `agent/AGENTS.md` | This operational guide for the agent workflow |
 | `gpt/prompt1CorreoToResumen.md` | Prompt 1: convert raw newsletter email into structured summary |
 | `gpt/prompt2ResumenToArticle.md` | Prompt 2: convert structured summary into final HTML `<article>` |
-| `agent/articles.md` | Operational note + ordering guide for the workflow |
+| `agent/articles.md` | Context only: ordering rules and newsletter list (no `<article>` HTML here) |
 | `agent/articlesHtml.md` | Staging file that accumulates many `<article>...</article>` blocks |
 | `agent/htmlTemplate.md` | Base digest HTML template used to regenerate `index.html` |
 | `agent/cursorPrompt.mdc` | Final Cursor execution instructions to archive, rebuild, order, and publish |
@@ -22,6 +27,8 @@ Process all incoming newsletters from email, transform each one into a final HTM
 | `old.html` + `old/*.html` | Historical archive pages |
 
 ## End-To-End Workflow (Required Order)
+
+> **Schedule:** the day’s digest must be produced in the daily **14:00 (Spain/Madrid)** cycle with OpenClaw (Qwen 3.5 cloud); the remaining steps fit in that same cycle.
 
 1. Read one newsletter email from inbox (raw content).
 2. Open ChatGPT Web.
@@ -36,11 +43,11 @@ Process all incoming newsletters from email, transform each one into a final HTM
 
 ## Strict Rules For Article Collection
 
-- `agent/articlesHtml.md` must contain only article snippets in final HTML format.
+- `agent/articlesHtml.md` must contain only article snippets in final HTML format plus its short header/comment if present.
 - Never paste summaries, analysis text, markdown bullets, or explanations into `agent/articlesHtml.md`.
 - Every inserted block must be a complete `<article>...</article>` element.
 - Append new articles at the bottom; do not reorder manually there.
-- Do not edit section ordering logic manually in `index.html`; ordering is enforced later by the Cursor prompt flow.
+- Do not edit section ordering logic manually in `index.html`; ordering is enforced later by the Cursor prompt flow, using the order list in `agent/articles.md` as the single source of truth for sequencing.
 
 ## Digest Structure Constraints
 

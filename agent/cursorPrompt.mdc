@@ -1,4 +1,6 @@
-You must execute the daily digest update workflow in this exact order:
+You must execute the daily digest update workflow in this exact order.
+
+**Context:** the daily digest is covered by **OpenClaw (Qwen 3.5 cloud)** in the fixed **14:00** Spain time window (**Europe/Madrid**). This prompt is the assembly step in Cursor within that same daily flow.
 
 1) Archive the current digest:
 - Take the current `index.html` (it is likely yesterday's digest).
@@ -11,11 +13,14 @@ You must execute the daily digest update workflow in this exact order:
 - Paste the full HTML template from `agent/htmlTemplate.md` into `index.html`.
 
 3) Insert prepared articles into the new digest:
-- Open `agent/articlesHtml.md` and `agent/articles.md`.
-- Take only the HTML article content from `agent/articlesHtml.md` (ignore any non-HTML instruction text).
-- Move that HTML content into `index.html`.
-- Order the articles strictly according to the newsletter order list defined in `agent/articles.md`.
-- After moving the HTML articles into `index.html`, DELETE those moved `<article>...</article>` blocks from `agent/articlesHtml.md` (leave it empty or ready for the next batch).
+- Open `agent/articlesHtml.md` for the HTML: take only the `<article>...</article>` blocks (ignore comments or short instructions at the top of that file).
+- Open `agent/articles.md` for **context only**: use it to order the articles (section order and strict per-section newsletter order).
+- Move the HTML article content from `articlesHtml.md` into `index.html` in that order.
+- If an `<article>` from `agent/articlesHtml.md` does not include an article link (`<p><a href=...`), append one at the end of that `<article>` using the corresponding base URL from `gpt/prompt1CorreoToResumen.md` (lines 10-41), with this format:
+```html
+        <p><a href="https://join1440.com/digest/2026-04-15" target="_blank" rel="noreferrer">Link</a></p>
+```
+- After moving the HTML articles into `index.html`, DELETE those moved `<article>...</article>` blocks from `agent/articlesHtml.md`. You may leave the file empty or keep only the top HTML comment line if present.
 
 4) Finalize daily metadata:
 - Update the date in `index.html` to today's date.
