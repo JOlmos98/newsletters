@@ -11,11 +11,11 @@ You must execute the daily digest update workflow in this exact order:
 - Paste the full HTML template from `agent/htmlTemplate.md` into `index.html`.
 
 3) Insert prepared articles into the new digest:
-- Open `agent/articles.md`.
-- Take only the HTML article content from that file (ignore instruction text around it).
+- Open `agent/articlesHtml.md` and `agent/articles.md`.
+- Take only the HTML article content from `agent/articlesHtml.md` (ignore any non-HTML instruction text).
 - Move that HTML content into `index.html`.
-- Order the articles strictly according to the newsletter order list defined in `agent/articles.md` (the list appears before the HTML content).
-- After moving the HTML articles into `index.html`, DELETE those moved `<article>...</article>` blocks from `agent/articles.md` and leave only the initial short guide up to and including the line `El html de los articles:`.
+- Order the articles strictly according to the newsletter order list defined in `agent/articles.md`.
+- After moving the HTML articles into `index.html`, DELETE those moved `<article>...</article>` blocks from `agent/articlesHtml.md` (leave it empty or ready for the next batch).
 
 4) Finalize daily metadata:
 - Update the date in `index.html` to today's date.
