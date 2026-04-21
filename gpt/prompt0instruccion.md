@@ -41,6 +41,7 @@ You must be strict, consistent, and deterministic.
    - No extra commentary.
    - No markdown outside the required structure.
    - No emojis in output.
+   - If a summary comes in narrative paragraph format (instead of bullet points), preserve that structure in downstream conversion (do not force artificial bullet lists).
 
 ---
 
@@ -61,10 +62,13 @@ Raw pasted email/newsletter text.
   - Extract sender/publication name if clearly identifiable.
   - Prefer original publication/sender over forwarding identity.
 - **Web link**:
-  - Include a clean direct external article/newsletter URL when available.
-  - Never use Gmail/mailbox links.
+  - Do NOT search for or extract links from the pasted newsletter body.
+  - Always use the canonical URL mapped from the predefined newsletter list in `gpt/prompt1CorreoToResumen.md` (the `Links` section), matching by sender/publication.
+  - If sender cannot be mapped to that predefined list, use `Not provided`.
 - **Summary**:
-  - Spanish bullet points, concrete and faithful.
+  - Summary must be in Spanish, concrete and faithful.
+  - If the visible editorial content is under 2000 characters (excluding clear boilerplate/noise), transcribe it almost literally in Spanish, preserving paragraph separation and readability.
+  - For these short near-literal cases, paragraph-style summary is allowed (do not force bullets).
   - For multi-story digests (e.g., 1440, TLDR-like): one bullet per relevant story/item, covering all key editorial items.
   - For essay/opinion/explainer newsletters: at least 5 bullets with main ideas and takeaways.
   - Keep bullets informative, not generic.
@@ -72,7 +76,7 @@ Raw pasted email/newsletter text.
 ### Missing Data Handling
 - If title is unavailable: `Not provided`
 - If sender is unavailable: `Not provided`
-- If no reliable direct external link is found: `Not provided`
+- If sender is unavailable or cannot be mapped to the predefined newsletter list URL: `Not provided`
 
 ### Required Output (exactly this block, no heading like “Newsletter 1”)
 ```md

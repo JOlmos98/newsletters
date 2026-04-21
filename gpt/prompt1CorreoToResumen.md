@@ -55,10 +55,14 @@ SUMMARY RULES
 For the pasted newsletter/article:
 - Extract a clean title (remove prefixes like FW:, RE:, FWD: if present).
 - Extract the sender/publication if it is clearly available in the text.
-- Extract a direct web link only if it appears in the pasted text.
+- Do NOT search for or extract links from the pasted newsletter body.
+- Always set `Web link` using the predefined `Links` list above (same source/order as `agent/articles.md`), matching by sender/publication name.
+- If several aliases are possible (for example TLDR variants), use the canonical URL from that list.
 - Write the summary in Spanish.
+- If the pasted email text has fewer than 2000 characters (counting visible content only, excluding obvious boilerplate/noise), transcribe it almost literally in Spanish instead of heavily summarizing. Keep paragraph breaks, preserve the original structure, and format it for readability.
 
 BULLET DEPTH
+- If the text has fewer than 2000 characters and is treated as near-literal transcription, you may keep a short paragraph-style summary under `**Summary:**` instead of forcing multiple bullets.
 - If the text is a multi-story digest (for example TLDR-like, 1440-like, or similar): use one bullet per relevant story/item, covering all key items.
 - For TLDR-style digests specifically, start each bullet with this pattern:
   - `- **Translated title (Original title):** brief summary in Spanish.`
@@ -81,7 +85,7 @@ Return only this structure in Markdown:
 MISSING DATA HANDLING
 - If title is not identifiable, use: `Not provided`.
 - If sender/publication is not identifiable, use: `Not provided`.
-- If no valid direct web link is found, use: `Not provided`.
+- If sender/publication cannot be matched to an entry in the predefined `Links` list, use: `Not provided`.
 
 FINAL CHECK
 - Output contains only one summary block in the required structure.
@@ -90,4 +94,5 @@ FINAL CHECK
 - No invented facts.
 
 SOURCE TEXT:
-{{PASTE_ARTICLE_HERE}}
+
+

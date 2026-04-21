@@ -77,6 +77,7 @@ FIELD MAPPING
   - If title is already Spanish, omit this line entirely.
 
 SUMMARY TO BULLETS
+- If the incoming `Summary` is paragraph-style (not bullet points), preserve that narrative format in HTML using one or more `<p>` blocks instead of forcing a `<ul>`. Keep paragraph separation and readability, and do not over-restructure the text.
 - Convert each summary bullet into one `<li>`.
 - Prefer this pattern for each bullet:
   - `<li><strong>Short label:</strong> concrete explanation.</li>` (visible copy in Spanish in the final HTML.)
@@ -110,6 +111,7 @@ FINAL CHECK BEFORE OUTPUT
 - Exactly one `<article>` block.
 - Correct class (`card`).
 - Correct sender line, title handling, bullet list, optional link.
+- If input summary is paragraph-style (for example, near-literal transcription from a short email), preserve paragraph-style output and avoid converting it into artificial bullet points.
 - For multi-article/news-roundup inputs, each bullet starts with a concrete article title inside `<strong>...</strong>`.
 - Strong labels are always in Spanish.
 - No hallucinated content.
