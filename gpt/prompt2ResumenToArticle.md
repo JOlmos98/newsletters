@@ -33,7 +33,7 @@ Return HTML like this structure (same idea and ordering):
     <li><strong>...</strong> ...</li>
     <li><strong>...</strong> ...</li>
   </ul>
-  <p><a href="https://..." target="_blank" rel="noreferrer">Leer artículo completo</a></p>
+  <p><a href="https://..." target="_blank" rel="noreferrer">Link</a></p>
 </article>
 
 Minimal reference example (shape only):
@@ -47,10 +47,10 @@ Minimal reference example (shape only):
     <li><strong>New product:</strong> Google expands agent capabilities in enterprise settings.</li>
     <li><strong>In-chat payments:</strong> Integrated monetization is enabled in conversational experiences.</li>
   </ul>
-  <p><a href="https://tldr.tech/ai/2026-04-14" target="_blank" rel="noreferrer">Leer artículo completo</a></p>
+  <p><a href="https://tldr.tech/ai/2026-04-14" target="_blank" rel="noreferrer">Link</a></p>
 </article>
 ```
-(Link text must remain **Spanish** in real output: `Leer artículo completo`.)
+(Link text must be: `Link`.)
 
 HTML RULES
 - Output ONLY one `<article>...</article>` block. No Markdown, no explanations, no extra text.
@@ -98,7 +98,7 @@ SUMMARY TO BULLETS
 
 LINK RULES
 - If `Web link` is a valid external URL, include:
-  - `<p><a href="URL" target="_blank" rel="noreferrer">Leer artículo completo</a></p>`
+- `<p><a href="URL" target="_blank" rel="noreferrer">Link</a></p>`
 - If `Web link` is missing, `Not provided`, invalid, or not a real external article URL, omit the whole link paragraph.
 - If the URL comes wrapped in Markdown like `[https://...](https://...)`, extract and use the real URL only once.
 

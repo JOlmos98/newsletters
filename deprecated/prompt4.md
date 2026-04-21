@@ -275,7 +275,7 @@ MINIMAL TEMPLATE (use this exact structure and classes):
   - Optional: `<p class="newsletter-original-title">Original title in English</p>` (only when original title is English)
   - `<ul><li>...</li></ul>`
   - Optional clean external link paragraph:
-    - `<p><a href="https://..." target="_blank" rel="noreferrer">Leer artículo completo</a></p>`
+    - `<p><a href="https://..." target="_blank" rel="noreferrer">Link</a></p>`
 
 `{{DIGEST_INDEX}}` must follow this pattern:
 - `<nav aria-label="Indice de newsletters">`
