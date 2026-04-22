@@ -42,9 +42,5 @@ They can be grouped together and out of order in `articlesHtml.md`: Cursor will 
    3. Manfred
    4. La Bonilista
    5. Lenny's Newsletter
-<<<<<<< HEAD
 
 Articles list (html, only `<article>...</article>` blocks) is in `agent/articlesHtml.md`.
-
-=======
->>>>>>> cfc8af9bd6a2bff1c4e09fdd0cd2c915063f6cd0
