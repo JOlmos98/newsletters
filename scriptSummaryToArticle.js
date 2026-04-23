@@ -8,6 +8,8 @@ function parseArgs(argv) {
   const args = {
     input: null,
     output: path.join(process.cwd(), "agent", "articlesHtml.md"),
+    runsDir: path.join(process.cwd(), "runs"),
+    summaryDir: null,
     stdout: true,
   };
 
@@ -21,6 +23,16 @@ function parseArgs(argv) {
 
     if (arg === "-o" || arg === "--output") {
       args.output = argv[++i];
+      continue;
+    }
+
+    if (arg === "--runs-dir") {
+      args.runsDir = argv[++i];
+      continue;
+    }
+
+    if (arg === "--summary-dir") {
+      args.summaryDir = argv[++i];
       continue;
     }
 
@@ -49,6 +61,67 @@ function readInput(inputPath) {
   throw new Error(
     "No input provided. Usa: node scripts/summaryToArticle.js resumen.md"
   );
+}
+
+function resolveSummaryFiles(args) {
+  if (args.input) {
+    return [path.resolve(args.input)];
+  }
+
+  if (args.summaryDir) {
+    const explicitSummaryDir = path.resolve(args.summaryDir);
+    if (!fs.existsSync(explicitSummaryDir)) {
+      throw new Error(
+        `Summary directory not found: ${explicitSummaryDir}.`
+      );
+    }
+
+    if (!fs.statSync(explicitSummaryDir).isDirectory()) {
+      throw new Error(
+        `Summary directory path is not a directory: ${explicitSummaryDir}.`
+      );
+    }
+
+    return fs
+      .readdirSync(explicitSummaryDir, { withFileTypes: true })
+      .filter((entry) => entry.isFile() && /\.md$/i.test(entry.name))
+      .map((entry) => path.join(explicitSummaryDir, entry.name))
+      .sort((a, b) => a.localeCompare(b));
+  }
+
+  const runsDir = path.resolve(args.runsDir);
+  if (!fs.existsSync(runsDir) || !fs.statSync(runsDir).isDirectory()) {
+    throw new Error(`Runs directory not found: ${runsDir}.`);
+  }
+
+  const dayDirs = fs
+    .readdirSync(runsDir, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name)
+    .sort((a, b) => a.localeCompare(b));
+
+  if (dayDirs.length === 0) {
+    throw new Error(`No day folder found inside runs directory: ${runsDir}.`);
+  }
+
+  if (dayDirs.length > 1) {
+    throw new Error(
+      `Expected exactly one day folder inside runs directory (${runsDir}), found ${dayDirs.length}: ${dayDirs.join(
+        ", "
+      )}.`
+    );
+  }
+
+  const summaryDir = path.join(runsDir, dayDirs[0], "summary");
+  if (!fs.existsSync(summaryDir) || !fs.statSync(summaryDir).isDirectory()) {
+    throw new Error(`Summary directory not found: ${summaryDir}.`);
+  }
+
+  return fs
+    .readdirSync(summaryDir, { withFileTypes: true })
+    .filter((entry) => entry.isFile() && /\.md$/i.test(entry.name))
+    .map((entry) => path.join(summaryDir, entry.name))
+    .sort((a, b) => a.localeCompare(b));
 }
 
 function stripOuterCodeFences(text) {
@@ -423,14 +496,22 @@ function appendArticle(outputPath, articleHtml) {
 
 function main() {
   const args = parseArgs(process.argv.slice(2));
-  const rawInput = readInput(args.input);
-  const parsed = parseStructuredSummary(rawInput);
-  const articleHtml = renderArticle(parsed);
+  const summaryFiles = resolveSummaryFiles(args);
 
-  appendArticle(args.output, articleHtml);
+  if (summaryFiles.length === 0) {
+    throw new Error("No .md summary files were found to process.");
+  }
 
-  if (args.stdout) {
-    process.stdout.write(`${articleHtml}\n`);
+  for (const summaryFile of summaryFiles) {
+    const rawInput = args.input ? readInput(summaryFile) : fs.readFileSync(summaryFile, "utf8");
+    const parsed = parseStructuredSummary(rawInput);
+    const articleHtml = renderArticle(parsed);
+
+    appendArticle(args.output, articleHtml);
+
+    if (args.stdout) {
+      process.stdout.write(`${articleHtml}\n`);
+    }
   }
 }
 

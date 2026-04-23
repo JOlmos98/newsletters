@@ -17,7 +17,7 @@ jobs:
           secure: true
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
-          subject: "[OK] Autodespliegue en main - ${{ github.repository }}"
+          subject: "[OK] ${{ github.event.head_commit.message }} - ${{ github.repository }}"
           to: ${{ secrets.MAIL_TO }}
           from: GitHub Actions
           body: |
@@ -26,5 +26,6 @@ jobs:
             Repo: ${{ github.repository }}
             Rama: ${{ github.ref_name }}
             Commit: ${{ github.sha }}
+            Mensaje commit: ${{ github.event.head_commit.message }}
             Autor: ${{ github.actor }}
             Run: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}

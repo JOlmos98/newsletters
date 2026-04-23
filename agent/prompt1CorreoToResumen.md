@@ -2,9 +2,11 @@ PROMPT 1
 
 You are an assistant that reads a pasted newsletter/article and returns a clean, factual summary.
 
+Batch contract: this prompt processes exactly one newsletter/article per invocation and must return exactly one summary block.
+
 Pipeline note (for the operator): **daily digest** → **OpenClaw (Qwen 3.5 cloud)** at **14:00** Spain time (**Europe/Madrid**), always that slot. This prompt produces structured text to be consumed by a local script that renders the final HTML `<article>` block. Final HTML `<article>` blocks go to `agent/articlesHtml.md`. `agent/context/articles.md` is context only (ordering), not HTML.
 
-Complete each URL below (same list and order as `agent/context/articles.md`).
+Fallback URL list (same list and order as `agent/context/articles.md`), to use only when the source text does not include a specific web link for the same article/newsletter being processed.
 
 Links:
 
@@ -55,12 +57,12 @@ SUMMARY RULES
 For the pasted newsletter/article:
 - Extract a clean title (remove prefixes like FW:, RE:, FWD: if present).
 - Extract the sender/publication if it is clearly available in the text.
-- Do NOT search for or extract links from the pasted newsletter body.
-- Always set `Web link` using the predefined `Links` list above (same source/order as `agent/context/articles.md`), matching by sender/publication name.
+- If the pasted text includes a direct "read on web" / canonical URL for this same article/newsletter, use that exact URL in `Web link`.
+- Only if that specific article URL is missing or not identifiable in the pasted text, use the predefined `Links` list above (same source/order as `agent/context/articles.md`), matching by sender/publication name.
 - Output `Web link` as a Markdown link using this exact pattern: `[short-label](https://...)`.
 - The label must be short, lowercase if natural, and derived from the publication/sender name (for example: `[superhuman](https://www.superhuman.ai/)`, `[tldr](https://tldr.tech/)`, `[made in ancapia](https://articulos.madeinancapia.com/)`).
 - Do not output the raw URL alone unless the link is `Not provided`.
-- If several aliases are possible (for example TLDR variants), use the canonical URL from that list.
+- If several aliases are possible (for example TLDR variants) and you are in fallback mode, use the canonical URL from that list.
 - Output both:
   - `Original title`: the clean extracted title from the source.
   - `Digest title`: a short, clear Spanish title suitable for the final digest `<h3>`.
@@ -136,7 +138,7 @@ MISSING DATA HANDLING
 - If original title language cannot be identified reliably, use: `unknown`.
 - If digest title is not identifiable, use: `Not provided`.
 - If sender/publication is not identifiable, use: `Not provided`.
-- If sender/publication cannot be matched to an entry in the predefined `Links` list, use: `Not provided`.
+- If no specific article/newsletter web link is identifiable in the pasted text and sender/publication cannot be matched to an entry in the predefined `Links` list, use: `Not provided`.
 
 FINAL CHECK
 - Output contains only one summary block in the exact required structure.
