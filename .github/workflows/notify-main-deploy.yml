@@ -20,14 +20,14 @@ jobs:
           subject: "[OK] ${{ github.event.head_commit.message }} - ${{ github.repository }}"
           to: ${{ secrets.MAIL_TO }}
           from: GitHub Actions
-          body: |
-            Se ha hecho push a main y se ha lanzado el autodespliegue.
-
-            Repo: ${{ github.repository }}
-            Rama: ${{ github.ref_name }}
-            Commit: ${{ github.sha }}
-            Mensaje commit: ${{ github.event.head_commit.message }}
-            Autor: ${{ github.actor }}
-            Run: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
-            
-            [JOS Digest](https://jolmos98.github.io/newsletters/).
+          html_body: |
+            <h2>Se ha hecho push a main y se ha lanzado el autodespliegue.</h2>
+            <p>
+              Repo: ${{ github.repository }}<br />
+              Rama: ${{ github.ref_name }}<br />
+              Commit: ${{ github.sha }}<br />
+              Mensaje commit: ${{ github.event.head_commit.message }}<br />
+              Autor: ${{ github.actor }}<br />
+              Run: <a href="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}">Ver ejecución</a>
+            </p>
+            <p><a href="https://jolmos98.github.io/newsletters/">JOS Digest</a>.</p>
