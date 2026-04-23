@@ -1,0 +1,16 @@
+node_modules/**
+runs/**
+credentials/**
+**/credentials.json
+**/token.json
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+content.md
+resumen.md
+*.log
+.DS_Store
+Thumbs.db

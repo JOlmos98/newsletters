@@ -1,0 +1,17 @@
+---
+description: Prompt contract and output structure
+globs: agent/**/*.md
+alwaysApply: false
+---
+
+# Prompt contract
+
+- Respect the output structure defined in `agent/prompt1CorreoToResumen.md`.
+- Keep required fields and a stable format for downstream processing.
+- Use `agent/context/articles.md` for strict section/newsletter ordering.
+- Use `agent/context/htmlTemplate.md` as the base for rebuilding `index.html`.
+
+# Step 2 integrity
+
+- When iterating across multiple raw files, produce one summary per input with deterministic naming.
+- Avoid ad-hoc formats that break `summary -> article` parsing.

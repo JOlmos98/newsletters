@@ -1,0 +1,19 @@
+---
+description: Main publishing and email notification
+alwaysApply: true
+---
+
+# Mandatory publishing on main
+
+- The daily digest is published by pushing to `main` after archiving and rebuild are complete.
+- Do not alter this policy without explicit user instruction.
+
+# Mandatory email notification
+
+- The workflow `/.github/workflows/notify-main-deploy.yml` must exist and be maintained.
+- It must trigger on `push` to branch `main`.
+- It must keep the email sending job that notifies every push to `main`.
+
+# Operational hygiene
+
+- If a change breaks this workflow, prioritize fixing it before closing the task.

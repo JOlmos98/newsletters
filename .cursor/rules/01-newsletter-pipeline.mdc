@@ -1,0 +1,19 @@
+---
+description: Canonical newsletter pipeline flow
+alwaysApply: true
+---
+
+# Source-of-truth flow
+
+Follow this sequence as the project contract:
+
+1. `scriptFetchNewsletters.js` to populate `runs/`.
+2. Summary generation per newsletter (step 2).
+3. `scriptSummaryToArticle.js` to consolidate into `agent/articlesHtml.md`.
+4. `agent/cursorPrompt.mdc` for archiving, rebuilding `index.html`, and publishing.
+
+# Consistency rules
+
+- Do not reference non-existing legacy paths without validation (for example `gpt/*` or `script.js`).
+- Before editing prompts/scripts, verify the path exists in the current repository.
+- Preserve compatibility with GitHub Pages deployment on `main`.

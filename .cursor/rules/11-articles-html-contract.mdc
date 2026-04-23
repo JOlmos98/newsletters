@@ -1,0 +1,16 @@
+---
+description: HTML contract for articlesHtml
+globs: agent/articlesHtml.md
+alwaysApply: false
+---
+
+# `agent/articlesHtml.md` contract
+
+- Contain only `<article>...</article>` blocks ready for injection.
+- Do not include operational text, instructions, or markdown outside expected HTML.
+- Keep links with `target="_blank"` and `rel="noreferrer"` when applicable.
+- Preserve valid HTML and ordering based on target sections.
+
+# Cleanup rule
+
+- After moving articles into `index.html`, clean consumed blocks according to the daily flow.

@@ -1,0 +1,16 @@
+---
+description: Global safety for critical changes
+alwaysApply: true
+---
+
+# Security and secrets
+
+- Do not read or expose content from `credentials/**`, `.env*`, keys, or tokens.
+- Never propose commits that include secrets, credentials, or temporary OAuth material.
+- If plaintext secrets are detected, stop execution and recommend immediate sanitization.
+
+# Git operations
+
+- Do not use destructive commands (`reset --hard`, `checkout --`, force push) without explicit request.
+- Do not mix unrelated technical changes with the daily digest publish commit.
+- Keep commit messages clear and aligned with the actual change.
