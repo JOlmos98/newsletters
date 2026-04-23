@@ -41,10 +41,9 @@ Opciones:
   --credentials <path>   JSON de credenciales OAuth de Google (obligatorio)
   --token <path>         JSON de token OAuth ya autorizado (obligatorio)
   --run-date <YYYY-MM-DD> Fecha de carpeta run (por defecto: hoy local)
-  --days <n>             Ventana de búsqueda en días (por defecto: 1)
+  --hours <n>            Ventana de búsqueda en horas exactas (por defecto: 24)
   --max-results <n>      Máximo de mensajes por ejecución (por defecto: 100)
-  --query <q>            Query Gmail adicional (por defecto: is:unread)
-  --include-read         Incluye también mensajes ya leídos
+  --query <q>            Query Gmail adicional (por defecto: vacía)
   --mark-read            Marca como leído lo procesado correctamente
   --output-dir <path>    Directorio base para runs (por defecto: ./runs)
   --help                 Muestra esta ayuda
@@ -56,10 +55,9 @@ function parseArgs(argv) {
     credentials: null,
     token: null,
     runDate: localDateString(),
-    days: 1,
+    hours: 24,
     maxResults: 100,
-    query: "is:unread",
-    includeRead: false,
+    query: "",
     markRead: false,
     outputDir: path.join(process.cwd(), "runs"),
   };
@@ -84,7 +82,12 @@ function parseArgs(argv) {
       continue;
     }
     if (arg === "--days") {
-      args.days = Number(argv[++i]);
+      throw new Error(
+        "--days ya no está soportado. Usa --hours <n> (por ejemplo, --hours 24)."
+      );
+    }
+    if (arg === "--hours") {
+      args.hours = Number(argv[++i]);
       continue;
     }
     if (arg === "--max-results") {
@@ -96,8 +99,9 @@ function parseArgs(argv) {
       continue;
     }
     if (arg === "--include-read") {
-      args.includeRead = true;
-      continue;
+      throw new Error(
+        "--include-read no está soportado en este flujo. Solo se procesan no leídos."
+      );
     }
     if (arg === "--mark-read") {
       args.markRead = true;
@@ -120,8 +124,8 @@ function parseArgs(argv) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(args.runDate)) {
     throw new Error("--run-date debe tener formato YYYY-MM-DD.");
   }
-  if (!Number.isInteger(args.days) || args.days < 1) {
-    throw new Error("--days debe ser entero >= 1.");
+  if (!Number.isInteger(args.hours) || args.hours < 1) {
+    throw new Error("--hours debe ser entero >= 1.");
   }
   if (!Number.isInteger(args.maxResults) || args.maxResults < 1) {
     throw new Error("--max-results debe ser entero >= 1.");
@@ -305,10 +309,17 @@ async function buildGmailClient(credentialsPath, tokenPath) {
 }
 
 function buildGmailQuery(args) {
-  const timeClause = `newer_than:${args.days}d`;
-  const unreadClause = args.includeRead ? "" : "is:unread";
+  const afterUnixSeconds = Math.floor(
+    (Date.now() - args.hours * 60 * 60 * 1000) / 1000
+  );
+  const timeClause = `after:${afterUnixSeconds}`;
+  const unreadClause = "is:unread";
+  const newsletterLabelClause = "label:newsletters";
   const extraQuery = String(args.query || "").trim();
-  return [unreadClause, timeClause, extraQuery].filter(Boolean).join(" ").trim();
+  return [newsletterLabelClause, unreadClause, timeClause, extraQuery]
+    .filter(Boolean)
+    .join(" ")
+    .trim();
 }
 
 function buildManifestBaseEntry({
@@ -346,102 +357,122 @@ async function main() {
   const gmail = await buildGmailClient(args.credentials, args.token);
   const query = buildGmailQuery(args);
 
-  const listResponse = await gmail.users.messages.list({
-    userId: "me",
-    q: query,
-    maxResults: args.maxResults,
-  });
-
-  const listedMessages = listResponse.data.messages || [];
-
   let totalFetched = 0;
   let skippedAlreadyInManifest = 0;
   let skippedByDomain = 0;
   let failed = 0;
   const processedMessageIds = [];
+  let pageToken = undefined;
+  let exhausted = false;
 
-  for (const messageRef of listedMessages) {
-    const messageId = String(messageRef.id || "").trim();
-    if (!messageId) continue;
+  while (!exhausted && totalFetched < args.maxResults) {
+    const listResponse = await gmail.users.messages.list({
+      userId: "me",
+      q: query,
+      maxResults: Math.min(100, args.maxResults),
+      pageToken,
+    });
 
-    if (manifestById.has(messageId)) {
-      skippedAlreadyInManifest += 1;
-      continue;
+    const listedMessages = listResponse.data.messages || [];
+    pageToken = listResponse.data.nextPageToken || undefined;
+    if (listedMessages.length === 0 && !pageToken) {
+      exhausted = true;
+      break;
     }
 
-    try {
-      const messageResponse = await gmail.users.messages.get({
-        userId: "me",
-        id: messageId,
-        format: "full",
-      });
+    for (const messageRef of listedMessages) {
+      if (totalFetched >= args.maxResults) {
+        break;
+      }
 
-      const data = messageResponse.data || {};
-      const payload = data.payload || {};
-      const headers = payload.headers || [];
-      const from = extractHeaderValue(headers, "From");
-      const subject = extractHeaderValue(headers, "Subject");
-      const dateHeader = extractHeaderValue(headers, "Date");
-      const senderDomain = extractEmailDomain(from);
+      const messageId = String(messageRef.id || "").trim();
+      if (!messageId) continue;
 
-      if (!isAllowedNewsletterDomain(senderDomain)) {
-        skippedByDomain += 1;
+      if (manifestById.has(messageId)) {
+        skippedAlreadyInManifest += 1;
         continue;
       }
 
-      const bodyText = extractBody(payload);
-      const safeId = sanitizeFileName(messageId) || `msg_${Date.now()}`;
-      const rawFileName = `${safeId}.md`;
-      const rawPath = path.join(rawDir, rawFileName);
-
-      const metadata = {
-        messageId,
-        threadId: String(data.threadId || ""),
-        internalDate: data.internalDate ? new Date(Number(data.internalDate)).toISOString() : "",
-        from,
-        subject,
-        dateHeader,
-      };
-
-      fs.writeFileSync(rawPath, buildRawContent(metadata, bodyText), "utf8");
-
-      const entry = buildManifestBaseEntry({
-        runDate: args.runDate,
-        messageId,
-        threadId: metadata.threadId,
-        internalDate: metadata.internalDate,
-        from,
-        subject,
-        dateHeader,
-        senderDomain,
-        rawPath: path.relative(process.cwd(), rawPath).replace(/\\/g, "/"),
-      });
-
-      appendManifest(manifestPath, entry);
-      manifestById.set(messageId, entry);
-      totalFetched += 1;
-      processedMessageIds.push(messageId);
-
-      if (args.markRead) {
-        await gmail.users.messages.modify({
+      try {
+        const messageResponse = await gmail.users.messages.get({
           userId: "me",
           id: messageId,
-          requestBody: {
-            removeLabelIds: ["UNREAD"],
-          },
+          format: "full",
         });
+
+        const data = messageResponse.data || {};
+        const payload = data.payload || {};
+        const headers = payload.headers || [];
+        const from = extractHeaderValue(headers, "From");
+        const subject = extractHeaderValue(headers, "Subject");
+        const dateHeader = extractHeaderValue(headers, "Date");
+        const senderDomain = extractEmailDomain(from);
+
+        if (!isAllowedNewsletterDomain(senderDomain)) {
+          skippedByDomain += 1;
+          continue;
+        }
+
+        const bodyText = extractBody(payload);
+        const safeId = sanitizeFileName(messageId) || `msg_${Date.now()}`;
+        const rawFileName = `${safeId}.md`;
+        const rawPath = path.join(rawDir, rawFileName);
+
+        const metadata = {
+          messageId,
+          threadId: String(data.threadId || ""),
+          internalDate: data.internalDate
+            ? new Date(Number(data.internalDate)).toISOString()
+            : "",
+          from,
+          subject,
+          dateHeader,
+        };
+
+        fs.writeFileSync(rawPath, buildRawContent(metadata, bodyText), "utf8");
+
+        const entry = buildManifestBaseEntry({
+          runDate: args.runDate,
+          messageId,
+          threadId: metadata.threadId,
+          internalDate: metadata.internalDate,
+          from,
+          subject,
+          dateHeader,
+          senderDomain,
+          rawPath: path.relative(process.cwd(), rawPath).replace(/\\/g, "/"),
+        });
+
+        appendManifest(manifestPath, entry);
+        manifestById.set(messageId, entry);
+        totalFetched += 1;
+        processedMessageIds.push(messageId);
+
+        if (args.markRead) {
+          await gmail.users.messages.modify({
+            userId: "me",
+            id: messageId,
+            requestBody: {
+              removeLabelIds: ["UNREAD"],
+            },
+          });
+        }
+      } catch (error) {
+        failed += 1;
+        const failureEntry = {
+          runDate: args.runDate,
+          messageId,
+          status: "error",
+          phase: "fetch",
+          error: String(error && error.message ? error.message : error),
+          failedAt: new Date().toISOString(),
+        };
+        appendManifest(manifestPath, failureEntry);
       }
-    } catch (error) {
-      failed += 1;
-      const failureEntry = {
-        runDate: args.runDate,
-        messageId,
-        status: "error",
-        phase: "fetch",
-        error: String(error && error.message ? error.message : error),
-        failedAt: new Date().toISOString(),
-      };
-      appendManifest(manifestPath, failureEntry);
+    }
+
+    if (!pageToken) {
+      exhausted = true;
     }
   }
 

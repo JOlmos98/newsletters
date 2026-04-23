@@ -192,7 +192,7 @@ cursor-agent -p --trust --force --workspace "C:\Users\jesus\Desktop\Escritorio\n
 
 # COMANDO 1: Fetch de newsletters (raw)
 ```bash
-node scriptFetchNewsletters.js --credentials "credentials/credentials.json" --token "credentials/token.json" --days 1 --max-results 100
+node scriptFetchNewsletters.js --credentials "credentials/credentials.json" --token "credentials/token.json" --hours 24 --max-results 100 --mark-read
 ```
 
 # COMANDO 2: Codex procesa TODOS los raw -> summary (1 fichero por newsletter)
