@@ -1,1 +1,0 @@
-Run @gpt/prompt1CorreoToResumen.md using @content.md as the content to process, and write the output to `resumen.md` at the project root. Then run the command `node script.js resumen.md --output agent/articlesHtml.md`. After completing the whole process, delete `content.md` and `resumen.md`.

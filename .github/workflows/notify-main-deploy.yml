@@ -1,0 +1,30 @@
+name: Notificar autodespliegue en main
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enviar correo de despliegue
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: "[OK] Autodespliegue en main - ${{ github.repository }}"
+          to: ${{ secrets.MAIL_TO }}
+          from: GitHub Actions
+          body: |
+            Se ha hecho push a main y se ha lanzado el autodespliegue.
+
+            Repo: ${{ github.repository }}
+            Rama: ${{ github.ref_name }}
+            Commit: ${{ github.sha }}
+            Autor: ${{ github.actor }}
+            Run: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}

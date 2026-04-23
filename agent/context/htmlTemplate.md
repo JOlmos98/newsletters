@@ -3,7 +3,7 @@ HTML template without the articles:
 
 The daily digest is generated with **OpenClaw (Qwen 3.5 cloud)** **always** at **14:00** Spain time (**Europe/Madrid**).
 
-Prepared `<article>` blocks live in `agent/articlesHtml.md` (staging); ordering rules are in `agent/articles.md` (context only). Insert those articles here, as one complete `<article>` section per newsletter, then update the date and the index.
+Prepared `<article>` blocks live in `agent/articlesHtml.md` (staging); ordering rules are in `agent/context/articles.md` (context only). Insert those articles here, as one complete `<article>` section per newsletter, then update the date and the index.
 
 ```html
 

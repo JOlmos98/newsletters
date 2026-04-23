@@ -6,7 +6,7 @@ Generated HTML snippets (only `<article>...</article>` blocks) go in `agent/arti
 
 After the day’s digest is published, moved blocks are removed from `agent/articlesHtml.md`; this file (`articles.md`) stays as reference context.
 
-They can be grouped together and out of order in `articlesHtml.md`: Cursor will sort them exclusively in this order (some may always be missing; in that case, they are not included in the final HTML; use `@agent/htmlTemplate.md` as the reference and update date and index after inserting the articles in the proper order):
+They can be grouped together and out of order in `articlesHtml.md`: Cursor will sort them exclusively in this order (some may always be missing; in that case, they are not included in the final HTML; use `@agent/context/htmlTemplate.md` as the reference and update date and index after inserting the articles in the proper order):
 
 1. NOTICIAS GENERALES first (color --secondary, class section-header--secondary)
    Strict internal order:

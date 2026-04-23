@@ -8,7 +8,7 @@ Operational guide for the **OpenClaw** agent (**Qwen 3.5 cloud** model). The day
 
 | Role | Path |
 |------|------|
-| Prompt 1 (email → structured summary) | `gpt/prompt1CorreoToResumen.md` |
+| Prompt 1 (email → structured summary) | `agent/prompt1CorreoToResumen.md` |
 | Prompt 2 (summary → HTML block) | `gpt/prompt2ResumenToArticle.md` |
 | Staging for `<article>...</article>` only | `agent/articlesHtml.md` |
 | Final assembly, archive, commit, and push | `agent/cursorPrompt.mdc` |
@@ -20,7 +20,7 @@ Operational guide for the **OpenClaw** agent (**Qwen 3.5 cloud** model). The day
 ## 1. Gmail: frozen inventory
 
 1. Open **Gmail**.
-2. Find all **unread** newsletters that belong in the digest pipeline (same logic as `agent/articles.md`).
+2. Find all **unread** newsletters that belong in the digest pipeline (same logic as `agent/context/articles.md`).
 3. **Before** opening the per-email processing flow, build a **closed list** of everything to handle in **this** run.
 
 ### 1.1 Local checklist (immutable list)
@@ -46,7 +46,7 @@ For **each** pending line (`- [ ]`), in the **same order** as the checklist:
 ### 2.1 ChatGPT — Prompt 1
 
 1. Open **ChatGPT Web** (new conversation or a thread dedicated to the day’s digest).
-2. Paste the **full** contents of `gpt/prompt1CorreoToResumen.md`.
+2. Paste the **full** contents of `agent/prompt1CorreoToResumen.md`.
 3. In the same message or immediately after, paste the newsletter **email body** (source text: message body as received; include useful metadata such as the original link if present in the email).
 4. Send and wait for the structured output block (Title, Sender, Web link, Summary).
 
@@ -58,7 +58,7 @@ For **each** pending line (`- [ ]`), in the **same order** as the checklist:
 ### 2.3 Repo — `articlesHtml.md`
 
 7. Copy **only** the complete `<article>...</article>` block.
-8. **Append it** to the end of `agent/articlesHtml.md` (no loose summaries or markdown; article HTML only, consistent with `agent/AGENTS.md`).
+8. **Append it** to the end of `agent/articlesHtml.md` (no loose summaries or markdown; article HTML only, consistent with `agent/context/AGENTS.md`).
 
 ### 2.4 Update the checklist
 
@@ -87,4 +87,4 @@ When **all** entries in `agent/openClaw-digest-checklist.md` are `- [x]`:
 
 - **One digest = one frozen checklist.** Nothing that arrives after the snapshot goes into this run.
 - Prompts live under `gpt/`; assembly and publication are defined **only** by `agent/cursorPrompt.mdc` via Cursor Agents at the end.
-- Section and newsletter order on the final page: `agent/articles.md` (context); the Cursor step applies that order when building `index.html`.
+- Section and newsletter order on the final page: `agent/context/articles.md` (context); the Cursor step applies that order when building `index.html`.

@@ -1,0 +1,11 @@
+{
+  "name": "newsletters",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "fetch:newsletters": "node scriptFetchNewsletters.js"
+  },
+  "dependencies": {
+    "googleapis": "^144.0.0"
+  }
+}

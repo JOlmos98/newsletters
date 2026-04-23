@@ -9,19 +9,19 @@ The operational flow combines that automated step with **ChatGPT Web** and **Cur
 ## Objective
 
 Process all incoming newsletters from email, transform each one into a final HTML `<article>` block, append all generated articles into `agent/articlesHtml.md`, then rebuild and publish the daily digest.  
-`agent/articles.md` holds **only context** (section order and strict per-section newsletter order), not the HTML snippets.
+`agent/context/articles.md` holds **only context** (section order and strict per-section newsletter order), not the HTML snippets.
 
 ## Source Of Truth Files
 
 | File | Purpose |
 |---|---|
-| `openClaw.md` | Concrete steps for OpenClaw: Gmail → frozen checklist → ChatGPT → `articlesHtml.md` → Cursor Agents |
-| `agent/AGENTS.md` | This operational guide for the agent workflow |
-| `gpt/prompt1CorreoToResumen.md` | Prompt 1: convert raw newsletter email into structured summary |
+| `agent/openClaw.md` | Concrete steps for OpenClaw: Gmail → frozen checklist → ChatGPT → `articlesHtml.md` → Cursor Agents |
+| `agent/context/AGENTS.md` | This operational guide for the agent workflow |
+| `agent/prompt1CorreoToResumen.md` | Prompt 1: convert raw newsletter email into structured summary |
 | `gpt/prompt2ResumenToArticle.md` | Prompt 2: convert structured summary into final HTML `<article>` |
-| `agent/articles.md` | Context only: ordering rules and newsletter list (no `<article>` HTML here) |
+| `agent/context/articles.md` | Context only: ordering rules and newsletter list (no `<article>` HTML here) |
 | `agent/articlesHtml.md` | Staging file that accumulates many `<article>...</article>` blocks |
-| `agent/htmlTemplate.md` | Base digest HTML template used to regenerate `index.html` |
+| `agent/context/htmlTemplate.md` | Base digest HTML template used to regenerate `index.html` |
 | `agent/cursorPrompt.mdc` | Final Cursor execution instructions to archive, rebuild, order, and publish |
 | `index.html` | Live page that will be regenerated and published |
 | `old.html` + `old/*.html` | Historical archive pages |
@@ -32,7 +32,7 @@ Process all incoming newsletters from email, transform each one into a final HTM
 
 1. Read one newsletter email from inbox (raw content).
 2. Open ChatGPT Web.
-3. Paste `gpt/prompt1CorreoToResumen.md` and then paste the raw newsletter email in the same chat.
+3. Paste `agent/prompt1CorreoToResumen.md` and then paste the raw newsletter email in the same chat.
 4. Wait for the structured summary output.
 5. In the same chat, paste `gpt/prompt2ResumenToArticle.md`.
 6. Get the final HTML output and extract only the complete `<article>...</article>` block.
@@ -47,7 +47,7 @@ Process all incoming newsletters from email, transform each one into a final HTM
 - Never paste summaries, analysis text, markdown bullets, or explanations into `agent/articlesHtml.md`.
 - Every inserted block must be a complete `<article>...</article>` element.
 - Append new articles at the bottom; do not reorder manually there.
-- Do not edit section ordering logic manually in `index.html`; ordering is enforced later by the Cursor prompt flow, using the order list in `agent/articles.md` as the single source of truth for sequencing.
+- Do not edit section ordering logic manually in `index.html`; ordering is enforced later by the Cursor prompt flow, using the order list in `agent/context/articles.md` as the single source of truth for sequencing.
 
 ## Digest Structure Constraints
 
@@ -58,7 +58,7 @@ Final article ordering in the published digest must follow this section order:
 3. OPINIÓN
 4. TECH
 
-Within each section, the strict newsletter order is defined in `agent/articles.md` and must be respected by the final assembly step.
+Within each section, the strict newsletter order is defined in `agent/context/articles.md` and must be respected by the final assembly step.
 
 ## Publication Checklist
 
