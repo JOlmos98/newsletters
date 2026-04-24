@@ -192,7 +192,7 @@ cursor-agent -p --trust --force --workspace "C:\Users\jesus\Desktop\Escritorio\n
 
 # COMANDO 1: Fetch de newsletters (raw)
 ```bash
-node scriptFetchNewsletters.js --credentials "credentials/credentials.json" --token "credentials/token.json" --hours 24 --max-results 100 --mark-read
+node scriptFetchNewsletters.js --credentials "credentials/credentials.json" --token "credentials/token.json" --hours 24 --max-results 50
 ```
 
 # COMANDO 2: Codex procesa TODOS los raw -> summary (1 fichero por newsletter)
@@ -209,4 +209,40 @@ node scriptSummaryToArticle.js --output agent/articlesHtml.md
 ```bash
 $prompt = Get-Content ".\agent\cursorPrompt.mdc" -Raw
 cursor-agent -p --trust --force --workspace "C:\Users\jesus\Desktop\Escritorio\newsletters" $prompt
+```
+
+
+Lanzar OpenClaw:
+
+```bash
+ollama serve
+ollama launch openclaw --model qwen3.5:cloud
+```
+
+## Para MX Linux:
+
+### COMANDO 0: Seguridad
+```bash
+codex login status && cursor-agent whoami
+```
+
+### COMANDO 1: Fetch de newsletters (raw)
+```bash
+node scriptFetchNewsletters.js --credentials "credentials/credentials.json" --token "credentials/token.json" --hours 24 --max-results 50
+```
+
+### COMANDO 2: Codex resume
+```bash
+codex exec "Execute @agent/codex.md" < /dev/null
+```
+
+### COMANDO 3: resúmenes de Codex se parsean a html
+```bash
+node scriptSummaryToArticle.js --output agent/articlesHtml.md
+```
+
+### COMANDO 4: Cursor termina todo el proceso formando los html y commiteando
+```bash
+prompt="$(cat "./agent/cursorPrompt.mdc")"
+cursor-agent -p --trust --force --workspace "/home/Jos/Desktop/newsletters" "$prompt"
 ```

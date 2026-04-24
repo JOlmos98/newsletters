@@ -6,33 +6,6 @@ const path = require("path");
 const os = require("os");
 const { google } = require("googleapis");
 
-const NEWSLETTER_DOMAIN_ALLOWLIST = new Set([
-  "join1440.com",
-  "theobjective.com",
-  "iaparatodo.substack.com",
-  "jardinmental.substack.com",
-  "nosolosuerte.com",
-  "francofernando.com",
-  "albertomeraupsb.substack.com",
-  "sumapositiva.com",
-  "articulos.libertadindividuo.com",
-  "andrescarames.com",
-  "superhuman.ai",
-  "spicy4tuna.com",
-  "post.substack.com",
-  "lorddraugr.com",
-  "noahpinion.blog",
-  "wheresyoured.at",
-  "articulos.madeinancapia.com",
-  "mathsurf.club",
-  "tldr.tech",
-  "hackernoon.com",
-  "getmanfred.com",
-  "bonilista.com",
-  "lennysnewsletter.com",
-  "substack.com",
-]);
-
 function printHelp() {
   console.log(`Uso:
   node scriptFetchNewsletters.js [opciones]
@@ -44,7 +17,6 @@ Opciones:
   --hours <n>            Ventana de búsqueda en horas exactas (por defecto: 24)
   --max-results <n>      Máximo de mensajes por ejecución (por defecto: 100)
   --query <q>            Query Gmail adicional (por defecto: vacía)
-  --mark-read            Marca como leído lo procesado correctamente
   --output-dir <path>    Directorio base para runs (por defecto: ./runs)
   --help                 Muestra esta ayuda
 `);
@@ -58,7 +30,6 @@ function parseArgs(argv) {
     hours: 24,
     maxResults: 100,
     query: "",
-    markRead: false,
     outputDir: path.join(process.cwd(), "runs"),
   };
 
@@ -102,10 +73,6 @@ function parseArgs(argv) {
       throw new Error(
         "--include-read no está soportado en este flujo. Solo se procesan no leídos."
       );
-    }
-    if (arg === "--mark-read") {
-      args.markRead = true;
-      continue;
     }
     if (arg === "--output-dir") {
       args.outputDir = argv[++i];
@@ -214,15 +181,6 @@ function extractEmailDomain(fromHeader) {
   const atIndex = email.lastIndexOf("@");
   if (atIndex < 0) return "";
   return email.slice(atIndex + 1).replace(/[^a-z0-9.-]/g, "");
-}
-
-function isAllowedNewsletterDomain(domain) {
-  if (!domain) return false;
-  if (NEWSLETTER_DOMAIN_ALLOWLIST.has(domain)) return true;
-  for (const allowed of NEWSLETTER_DOMAIN_ALLOWLIST) {
-    if (domain.endsWith(`.${allowed}`)) return true;
-  }
-  return false;
 }
 
 function ensureRunDirectories(baseOutputDir, runDate) {
@@ -359,7 +317,6 @@ async function main() {
 
   let totalFetched = 0;
   let skippedAlreadyInManifest = 0;
-  let skippedByDomain = 0;
   let failed = 0;
   const processedMessageIds = [];
   let pageToken = undefined;
@@ -408,11 +365,6 @@ async function main() {
         const dateHeader = extractHeaderValue(headers, "Date");
         const senderDomain = extractEmailDomain(from);
 
-        if (!isAllowedNewsletterDomain(senderDomain)) {
-          skippedByDomain += 1;
-          continue;
-        }
-
         const bodyText = extractBody(payload);
         const safeId = sanitizeFileName(messageId) || `msg_${Date.now()}`;
         const rawFileName = `${safeId}.md`;
@@ -448,15 +400,6 @@ async function main() {
         totalFetched += 1;
         processedMessageIds.push(messageId);
 
-        if (args.markRead) {
-          await gmail.users.messages.modify({
-            userId: "me",
-            id: messageId,
-            requestBody: {
-              removeLabelIds: ["UNREAD"],
-            },
-          });
-        }
       } catch (error) {
         failed += 1;
         const failureEntry = {
@@ -481,7 +424,6 @@ async function main() {
   console.log(`- run: runs/${args.runDate}`);
   console.log(`- fetched: ${totalFetched}`);
   console.log(`- skipped_in_manifest: ${skippedAlreadyInManifest}`);
-  console.log(`- skipped_by_domain: ${skippedByDomain}`);
   console.log(`- failed: ${failed}`);
   if (processedMessageIds.length > 0) {
     console.log(`- message_ids: ${processedMessageIds.join(", ")}`);
