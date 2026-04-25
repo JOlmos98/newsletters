@@ -74,14 +74,15 @@ For the pasted newsletter/article:
 - If no reformulation is needed, use the same value for `Original title` and `Digest title`.
 - Add a `Mode` field with exactly one of these values: `summary` or `verbatim`.
 - Add a `Summary format` field with exactly one of these values: `bullets` or `paragraphs`.
-- Write the summary in Spanish, **except** when the verbatim rule below applies (then the Summary body must stay identical to the source, including language).
-- **Short useful content (verbatim mode):** If the **useful editorial content**—after stripping boilerplate/noise per CONTENT RULES—has **fewer than 2000 characters**, **do not summarize, condense, paraphrase, or “improve”** that content. **Copy it exactly as it appears** (same words, punctuation, line breaks, lists, and **original language**) into `**Summary:**`. Your only job for that body is **faithful reproduction** inside the required Markdown shell (`**Original title:**`, `**Original title language:**`, `**Digest title:**`, `**Sender:**`, `**Web link:**`, `**Mode:**`, `**Summary format:**`, `**Summary:**`). If the source used paragraphs, keep those paragraphs; if it used bullets, keep the same bullets—**never replace the piece with a digest of it**.
+- Write the summary in Spanish in all cases.
+- **Short useful content (verbatim mode):** If the **useful editorial content**—after stripping boilerplate/noise per CONTENT RULES—has **fewer than 2000 characters**, **do not summarize, condense, paraphrase, or “improve”** that content. Reproduce it faithfully in `**Summary:**` (same meaning, structure, punctuation, line breaks, and lists). If the source is not in Spanish, translate it faithfully to Spanish without adding or removing information. If the source used paragraphs, keep paragraphs; if it used bullets, keep bullets—**never replace the piece with a digest of it**.
+- **Special case - Made in Ancapia:** always use verbatim mode for the useful editorial content, regardless of length. Transcribe all useful content completely (ignoring ads/noise) without summarizing or condensing. If source text is not in Spanish, provide a faithful full translation to Spanish.
 
 BULLET DEPTH
-- If the **verbatim mode** (useful content < 2000 characters) applies: under `**Summary:**`, output the copied text **as-is**—do **not** force a bullet list unless the source already used bullets; do **not** substitute a “short paragraph summary” for the real text.
+- If the **verbatim mode** (useful content < 2000 characters) applies: under `**Summary:**`, output the full faithful text (translated to Spanish when needed) preserving original structure—do **not** force a bullet list unless the source already used bullets; do **not** substitute a “short paragraph summary” for the real text.
 - If the text is a multi-story digest (for example TLDR-like, 1440-like, or similar): use one bullet per relevant story/item, covering all key items.
 - **Special case - 1440:** when multiple consecutive items refer to the same underlying story/theme, merge them into a single bullet that integrates the key facts (context, consequences, and relevant figures/dates) instead of splitting them across several bullets. A slightly longer paragraph is preferred over fragmented repetition.
-- **Special case - The Objective / Alvaro Nieto:** do not write bullets that only say an article is included (for example, "incluye la columna...") without explaining what happened or why it matters. If a listed item has no useful information beyond the title, omit it and prioritize items with concrete news content.
+- **Special case - The Objective / Alvaro Nieto:** in `Summary`, output exactly the first 10 listed articles as title + article link only (no narrative expansion, no interpretation, no extra commentary). Keep concise itemized formatting.
 - For TLDR-style digests specifically, start each bullet with this pattern:
   - `- **Translated title (Original title):** brief summary in Spanish.`
   - Translate the subarticle title to natural Spanish first, then include the original title in parentheses.
@@ -148,7 +149,7 @@ FINAL CHECK
 - `Mode` and `Summary format` are consistent with the actual body.
 - In non-verbatim bullet mode, every bullet follows `- **Short label:** text`.
 - No headings, no code fences, no extra commentary.
-- Summary is in Spanish **unless** verbatim mode applied (then Summary matches the source language and text exactly).
+- Summary is always in Spanish. In verbatim mode, keep faithful structure/content and translate to Spanish when source is in another language.
 - No invented facts.
 - No filler lead-ins or nervous-recado phrasing; if one appears, rewrite that bullet/sentence to direct factual wording.
 

@@ -175,6 +175,36 @@ function sanitizeFileName(value) {
     .slice(0, 180);
 }
 
+function buildMessageTimestamp(data, dateHeader) {
+  const internalDateMs = Number(data && data.internalDate);
+  const pad2 = (value) => String(value).padStart(2, "0");
+  const formatDateForFile = (date) =>
+    [
+      date.getFullYear(),
+      "-",
+      pad2(date.getMonth() + 1),
+      "-",
+      pad2(date.getDate()),
+      "_",
+      pad2(date.getHours()),
+      "-",
+      pad2(date.getMinutes()),
+      "-",
+      pad2(date.getSeconds()),
+    ].join("");
+
+  if (Number.isFinite(internalDateMs) && internalDateMs > 0) {
+    return formatDateForFile(new Date(internalDateMs));
+  }
+
+  const parsedDateMs = Date.parse(String(dateHeader || "").trim());
+  if (Number.isFinite(parsedDateMs) && parsedDateMs > 0) {
+    return formatDateForFile(new Date(parsedDateMs));
+  }
+
+  return formatDateForFile(new Date());
+}
+
 function extractEmailDomain(fromHeader) {
   const match = String(fromHeader || "").match(/<([^>]+)>/);
   const email = (match ? match[1] : fromHeader).trim().toLowerCase();
@@ -366,8 +396,9 @@ async function main() {
         const senderDomain = extractEmailDomain(from);
 
         const bodyText = extractBody(payload);
+        const messageTimestamp = buildMessageTimestamp(data, dateHeader);
         const safeId = sanitizeFileName(messageId) || `msg_${Date.now()}`;
-        const rawFileName = `${safeId}.md`;
+        const rawFileName = `${messageTimestamp}_${safeId}.md`;
         const rawPath = path.join(rawDir, rawFileName);
 
         const metadata = {
