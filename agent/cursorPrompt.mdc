@@ -27,6 +27,7 @@ You must execute the daily digest update workflow in this exact order.
 4) Finalize daily metadata:
 - Update the date in `index.html` to today's date.
 - Update/rebuild the digest index in `index.html` so it matches the final rendered sections and article anchors.
+- If any section has zero articles after assembly, do not include that section in `index.html` (neither in the index nor as a section header).
 
 5) Cleanup run artifacts:
 - After successfully rebuilding `index.html` and moving consumed articles, DELETE the `runs/` directory for this daily execution.
