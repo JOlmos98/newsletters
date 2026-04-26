@@ -30,3 +30,7 @@ node scriptSummaryToArticle.js --output agent/articlesHtml.md
 prompt="$(cat "./agent/cursorPrompt.mdc")"
 cursor-agent -p --trust --force --workspace "/home/Jos/Desktop/newsletters" "$prompt"
 ```
+
+bash "/home/Jos/Desktop/newsletters/run_daily_newsletters.sh"
+
+chmod +x "/home/Jos/Desktop/newsletters/run_daily_newsletters.sh" && "/home/Jos/Desktop/newsletters/run_daily_newsletters.sh"

@@ -39,6 +39,8 @@ git commit -m "Digest YYYY-MM-DD"
 git push origin main
 ```
 - Replace `YYYY-MM-DD` with the current day date (for example, `Digest 2026-04-16`).
+- Under NO circumstances add extra text in the commit message (e.g., "Made with Cursor" or similar).
+- The commit message must be EXCLUSIVELY this format: `Digest YYYY-MM-DD` (for example, `Digest 2026-04-16`).
 
 Task summary:
 1) Archive the current `index.html` into `old/YYYY_MM_DD.html` using the archived digest date from the current `index.html` header.
