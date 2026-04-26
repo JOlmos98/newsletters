@@ -497,22 +497,43 @@ function appendArticle(outputPath, articleHtml) {
 function main() {
   const args = parseArgs(process.argv.slice(2));
   const summaryFiles = resolveSummaryFiles(args);
+  let processedCount = 0;
+  let failedCount = 0;
 
   if (summaryFiles.length === 0) {
     throw new Error("No .md summary files were found to process.");
   }
 
   for (const summaryFile of summaryFiles) {
-    const rawInput = args.input ? readInput(summaryFile) : fs.readFileSync(summaryFile, "utf8");
-    const parsed = parseStructuredSummary(rawInput);
-    const articleHtml = renderArticle(parsed);
+    try {
+      const rawInput = args.input
+        ? readInput(summaryFile)
+        : fs.readFileSync(summaryFile, "utf8");
+      const parsed = parseStructuredSummary(rawInput);
+      const articleHtml = renderArticle(parsed);
 
-    appendArticle(args.output, articleHtml);
+      appendArticle(args.output, articleHtml);
+      processedCount += 1;
 
-    if (args.stdout) {
-      process.stdout.write(`${articleHtml}\n`);
+      if (args.stdout) {
+        process.stdout.write(`${articleHtml}\n`);
+      }
+    } catch (error) {
+      failedCount += 1;
+      console.error(
+        `Skipping file due to parse/render error: ${summaryFile}. ${error.message}`
+      );
     }
   }
+
+  if (failedCount > 0) {
+    console.error(
+      `Finished with partial success: ${processedCount} processed, ${failedCount} failed.`
+    );
+    return;
+  }
+
+  console.error(`Finished successfully: ${processedCount} processed, 0 failed.`);
 }
 
 try {

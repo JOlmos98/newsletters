@@ -6,6 +6,7 @@ You must execute the daily digest update workflow in this exact order.
 - Take the current `index.html` (it is likely yesterday's digest).
 - Read the digest date shown in the current `index.html` header (the digest being archived), and use that exact date for the archive filename in `old/YYYY_MM_DD.html`.
 - Copy its full HTML content into that new dated file inside `old/` (following the same naming convention as existing files in `old/`).
+- Important: when that current `index.html` is moved/copied into `old/`, update its footer link `Ver ediciones antiguas` (the link at the end of `index.html`, currently `href="old.html"`) so it becomes `href="../old.html"` in the archived file.
 - Register that new archived file by adding its route/link entry into `old.html`, consistent with how previous archived digests are listed.
 - Update the footer link inside the moved archived file so it points correctly to `old.html` from `old/` (`"old.html"` -> `"../old.html"`).
 
