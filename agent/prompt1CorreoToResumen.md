@@ -23,7 +23,6 @@ Links:
 - Samuel Gil: https://www.sumapositiva.com/
 - Libertad Individual - La Newsletter Anarquista: https://articulos.libertadindividuo.com/
 - Entre lineas: https://andrescarames.com/entrelineas
-- Superhuman AI Zain Kahn: https://www.superhuman.ai/
 - Spicy4Tuna: https://spicy4tuna.com/
 - The Substack Post: https://post.substack.com/
 - Lord Draugr: https://lorddraugr.com/
@@ -36,6 +35,7 @@ Links:
 
 **TECH**
 - TLDR (TLDR, TLDR AI, TLDR Dev, TLDR IT, etc.): https://tldr.tech/
+- Superhuman AI Zain Kahn: https://www.superhuman.ai/
 - HackerNoon: https://hackernoon.com/
 - Manfred: https://www.getmanfred.com/out-of-office
 - La Bonilista: https://www.bonilista.com/

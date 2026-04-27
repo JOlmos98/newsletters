@@ -23,10 +23,9 @@ They can be grouped together and out of order in `articlesHtml.md`: Cursor will 
    6. Samuel Gil
    7. Libertad Individual - La Newsletter Anarquista
    8. Entre lineas
-   9. Superhuman AI Zain Kahn
-   10. Spicy4Tuna
-   11. The Substack Post
-   12. Lord Draugr
+   9. Spicy4Tuna
+   10. The Substack Post
+   11. Lord Draugr
 
 3. OPINIÓN third (color --quaternary, class section-header--quaternary)
    Strict internal order:
@@ -38,9 +37,10 @@ They can be grouped together and out of order in `articlesHtml.md`: Cursor will 
 4. TECH last (color --quinary, class section-header--quinary)
    Strict internal order:
    1. TLDR (includes TLDR, TLDR AI, TLDR Dev, TLDR IT, etc.)
-   2. HackerNoon
-   3. Manfred
-   4. La Bonilista
-   5. Lenny's Newsletter
+   2. Superhuman AI Zain Kahn
+   3. HackerNoon
+   4. Manfred
+   5. La Bonilista
+   6. Lenny's Newsletter
 
 Articles list (html, only `<article>...</article>` blocks) is in `agent/articlesHtml.md`.
