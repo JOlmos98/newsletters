@@ -1,2 +1,4 @@
 /home/Jos/Desktop/newsletters/run_daily_newsletters.sh: line 11: codex: command not found
 /home/Jos/Desktop/newsletters/run_daily_newsletters.sh: line 14: node: command not found
+Error: comando no encontrado -> codex
+PATH actual: /home/Jos/.local/bin:/home/Jos/bin:/home/Jos/.cargo/bin:/home/Jos/.local/bin:/usr/bin:/bin
