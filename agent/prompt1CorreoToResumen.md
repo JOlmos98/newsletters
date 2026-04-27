@@ -94,7 +94,7 @@ BULLET DEPTH
   - Translate the subarticle title to natural Spanish first, then include the original title in parentheses.
   - Keep the description concise and factual in Spanish after the colon.
 - For multi-story digests (TLDR, The Objective, The Substack Post, HackerNoon-like), append the concrete link of each item at the end of its bullet when available, using this exact Markdown pattern:
-  - `- **Translated title (Original title):** brief summary in Spanish. [Leer artículo completo](https://...)`
+  - `- **Translated title (Original title):** brief summary in Spanish. [Link](https://...)`
 - If a concrete per-item URL is not available for that bullet, do not invent one; keep the bullet without that final link and rely only on the top-level `Web link` fallback rules.
 - In any non-verbatim bullet summary, every bullet must follow this exact pattern:
   - `- **Short label:** text`
