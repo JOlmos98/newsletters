@@ -18,9 +18,14 @@ You must execute the daily digest update workflow in this exact order.
 - Open `agent/articlesHtml.md` for the HTML: take only the `<article>...</article>` blocks (ignore comments or short instructions at the top of that file).
 - Open `agent/context/articles.md` for **context only**: use it to order the articles (section order and strict per-section newsletter order).
 - Move the HTML article content from `articlesHtml.md` into `index.html` in that order.
+- Ensure every article keeps its concrete source link when available; for multi-story sources (TLDR, The Objective, The Substack Post, HackerNoon-like), preserve the specific URL of each referenced story/item instead of collapsing to a generic homepage.
+- In each `<article>`, place the link right after the article description/content paragraph as a clear CTA, preferably:
+```html
+        <p><a href="https://..." target="_blank" rel="noreferrer">Leer artículo completo</a></p>
+```
 - If an `<article>` from `agent/articlesHtml.md` does not include an article link (`<p><a href=...`), append one at the end of that `<article>` using the corresponding base URL from `agent/prompt1CorreoToResumen.md` (lines 10-41), with this format:
 ```html
-        <p><a href="https://join1440.com/digest/2026-04-15" target="_blank" rel="noreferrer">Link</a></p>
+        <p><a href="https://join1440.com/digest/2026-04-15" target="_blank" rel="noreferrer">Leer artículo completo.</a></p>
 ```
 - After moving the HTML articles into `index.html`, DELETE those moved `<article>...</article>` blocks from `agent/articlesHtml.md`. You may leave the file empty or keep only the top HTML comment line if present.
 
