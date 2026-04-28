@@ -18,7 +18,12 @@ You must execute the daily digest update workflow in this exact order.
 - Open `agent/articlesHtml.md` for the HTML: take only the `<article>...</article>` blocks (ignore comments or short instructions at the top of that file).
 - Open `agent/context/articles.md` for **context only**: use it to order the articles (section order and strict per-section newsletter order).
 - Move the HTML article content from `articlesHtml.md` into `index.html` in that order.
-- Ensure every article keeps its concrete source link when available; for multi-story sources (TLDR, The Objective, The Substack Post, HackerNoon-like), preserve the specific URL of each referenced story/item instead of collapsing to a generic homepage.
+- Handle links in two layers:
+  - Newsletter-level (`Web link`): keep one top-level link per newsletter `<article>`; if missing, use the fallback mapping in `agent/prompt1CorreoToResumen.md` (lines 10-43).
+  - Article-level (per-item): for multi-story newsletters, keep each concrete link for each listed item.
+- Ensure every article keeps its concrete source link when available.
+- The multi-story newsletters that require one per-item link are exactly: 1440, The Objective, The Substack Post, TLDR, Superhuman, and HackerNoon.
+- For those newsletters, preserve the specific URL of each referenced story/item instead of collapsing to a generic homepage, and place the respective `Link` inside each corresponding `<li>` whenever the article body is rendered as a list.
 - In each `<article>`, place the link right after the article description/content paragraph as a clear CTA, preferably:
 ```html
         <p><a href="https://..." target="_blank" rel="noreferrer">Link</a></p>

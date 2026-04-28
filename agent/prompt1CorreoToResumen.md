@@ -55,11 +55,15 @@ CONTENT RULES
 
 SUMMARY RULES
 For the pasted newsletter/article:
+- Link model has two layers and both must be handled:
+  - `Web link` (newsletter-level): one top-level link for the current newsletter/article block.
+  - Per-item links (article-level): in multi-story newsletters, one concrete link for each listed sub-article/item whenever available.
 - Extract a clean title (remove prefixes like FW:, RE:, FWD: if present).
 - Extract the sender/publication if it is clearly available in the text.
-- If the pasted text includes a direct "read on web" / canonical URL for this same article/newsletter, use that exact URL in `Web link`.
-- Only if that specific article URL is missing or not identifiable in the pasted text, use the predefined `Links` list above (same source/order as `agent/context/articles.md`), matching by sender/publication name.
-- In multi-story newsletters that list several different articles (for example TLDR, The Objective, The Substack Post, and sometimes HackerNoon), treat each listed item as its own article and preserve the concrete URL of that exact item whenever it is available in the pasted text.
+- If the pasted text includes a direct "read on web" / canonical URL for this same article/newsletter, use that exact URL in `Web link` (newsletter-level).
+- Only if that specific article/newsletter URL is missing or not identifiable in the pasted text, use the predefined `Links` list above (same source/order as `agent/context/articles.md`), matching by sender/publication name.
+- In multi-story newsletters that list several different articles, treat each listed item as its own article and preserve the concrete URL of that exact item whenever it is available in the pasted text.
+- For this pipeline, those multi-story newsletters are exactly: 1440, The Objective, The Substack Post, TLDR, Superhuman, and HackerNoon.
 - For those multi-story newsletters, never replace an available per-item URL with only the generic newsletter homepage URL.
 - Output `Web link` as a Markdown link using this exact pattern: `[short-label](https://...)`.
 - The label must be short, lowercase if natural, and derived from the publication/sender name (for example: `[superhuman](https://www.superhuman.ai/)`, `[tldr](https://tldr.tech/)`, `[made in ancapia](https://articulos.madeinancapia.com/)`).
@@ -93,7 +97,7 @@ BULLET DEPTH
   - `- **Translated title (Original title):** brief summary in Spanish.`
   - Translate the subarticle title to natural Spanish first, then include the original title in parentheses.
   - Keep the description concise and factual in Spanish after the colon.
-- For multi-story digests (TLDR, The Objective, The Substack Post, HackerNoon-like), append the concrete link of each item at the end of its bullet when available, using this exact Markdown pattern:
+- For multi-story digests (exactly: 1440, The Objective, The Substack Post, TLDR, Superhuman, and HackerNoon), append the concrete link of each item at the end of its bullet when available, using this exact Markdown pattern:
   - `- **Translated title (Original title):** brief summary in Spanish. [Link](https://...)`
 - If a concrete per-item URL is not available for that bullet, do not invent one; keep the bullet without that final link and rely only on the top-level `Web link` fallback rules.
 - In any non-verbatim bullet summary, every bullet must follow this exact pattern:

@@ -48,6 +48,8 @@ Process all incoming newsletters from email, transform each one into a final HTM
 - Every inserted block must be a complete `<article>...</article>` element.
 - Append new articles at the bottom; do not reorder manually there.
 - Do not edit section ordering logic manually in `index.html`; ordering is enforced later by the Cursor prompt flow, using the order list in `agent/context/articles.md` as the single source of truth for sequencing.
+- Preserve concrete links in the final output for these multi-story newsletters exactly: 1440, The Objective, The Substack Post, TLDR, Superhuman, and HackerNoon.
+- For those newsletters, keep each item's specific URL and avoid collapsing to only a generic homepage URL; when the article body uses `<li>`, place the respective `Link` inside each corresponding list item.
 
 ## Digest Structure Constraints
 

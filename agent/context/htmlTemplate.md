@@ -5,6 +5,17 @@ The daily digest is generated with **OpenClaw (Qwen 3.5 cloud)** **always** at *
 
 Prepared `<article>` blocks live in `agent/articlesHtml.md` (staging); ordering rules are in `agent/context/articles.md` (context only). Insert those articles here, as one complete `<article>` section per newsletter, then update the date and the index.
 
+Link preservation rule for final `index.html`:
+- Handle links in two layers:
+  - Newsletter-level: keep one top-level link per newsletter `<article>` (or fallback to the newsletter URL map when missing in source).
+  - Article-level: for specific multi-story newsletters, keep one concrete link per listed sub-article/item when available.
+- Keep the concrete source URL for each article whenever available.
+- The multi-story newsletters that require one per-item link are exactly: 1440, The Objective, The Substack Post, TLDR, Superhuman, and HackerNoon.
+- For those newsletters, preserve the specific URL for each referenced sub-article/item, placing the respective `Link` inside each corresponding `<li>` whenever the article body is rendered as a list.
+- Never collapse available per-item links into only the newsletter homepage.
+- In each `<article>`, keep or add a visible CTA link after the description/content paragraph:
+  `<p><a href="https://..." target="_blank" rel="noreferrer">Link</a></p>`
+
 ```html
 
 <!doctype html>
