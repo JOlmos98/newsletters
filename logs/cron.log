@@ -5970,3 +5970,34 @@ Skipping file due to parse/render error: /home/Jos/Desktop/Dev/newsletters/runs/
 Finished with partial success: 9 processed, 1 failed.
 [2026-04-28 14:07:33] OK    COMANDO 3: Summary -> HTML
 [2026-04-28 14:07:33] START COMANDO 4: Cursor cierre (intento 1/2)
+## Hecho
+
+### 1) Archivo del digest del 27 de abril
+- Copiado el `index.html` anterior a `old/2026_04_27.html` (fecha tomada del encabezado: *Lunes, 27 de abril de 2026*).
+- En ese archivo archivado, el pie usa `href="../old.html"`.
+
+### 2) `old.html`
+- Añadida la entrada: `old/2026_04_27.html` → *27 de abril de 2026* (arriba de la lista).
+
+### 3) Nuevo `index.html` (28 de abril de 2026)
+- Plantilla base + fecha **Martes, 28 de abril de 2026**.
+- Artículos en el orden de `agent/context/articles.md`, con **The Code** en TECH entre Superhuman y Lenny (no aparece en la lista de contexto, pero sí en el staging).
+- **Enlaces:** TLDR y Superhuman con `Link` por ítem usando los resúmenes en `runs/.../summary/`; The Objective (Álvaro Nieto) con URL por titular; 1440 con CTA `https://join1440.com/digest/2026-04-28` (el raw del correo no traía URLs por historia).
+- Índice alineado con las secciones y anclas finales; sin secciones vacías.
+
+### 4) `agent/articlesHtml.md`
+- Dejado solo el comentario HTML inicial.
+
+### 5) `runs/`
+- Directorio eliminado (no estaba versionado; el árbol queda limpio).
+
+### 6) Git
+- Commit local: **`Digest 2026-04-28`** (`36171f4`), con `index.html`, `old.html`, `old/2026_04_27.html`, `agent/articlesHtml.md` y `logs/cron.log`.
+
+**Push:** falló por autenticación (`could not read Username for 'https://github.com'`). Tienes que publicar desde tu máquina cuando tengas credenciales/SSH configurados:
+
+```bash
+cd /home/Jos/Desktop/Dev/newsletters && git push origin main
+```
+[2026-04-28 14:09:19] OK    COMANDO 4: Cursor cierre
+[2026-04-28 14:09:19] Proceso terminado correctamente.
