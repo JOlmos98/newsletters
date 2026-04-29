@@ -25,6 +25,7 @@ You must execute the daily digest update workflow in this exact order.
 - Ensure every article keeps its concrete source link when available.
 - The multi-story newsletters that require one per-item link are exactly: 1440, The Objective, The Substack Post, TLDR, Superhuman, and HackerNoon.
 - For those newsletters, preserve the specific URL of each referenced story/item instead of collapsing to a generic homepage, and place the respective `Link` inside each corresponding `<li>` whenever the article body is rendered as a list.
+- In list-based items (`<li>`), always place a period before the inline `Link` anchor using this punctuation pattern: `... . <a href="...">Link</a>`.
 - In each `<article>`, place the link right after the article description/content paragraph as a clear CTA, preferably:
 ```html
         <p><a href="https://..." target="_blank" rel="noreferrer">Link</a></p>

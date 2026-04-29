@@ -99,6 +99,7 @@ BULLET DEPTH
   - Keep the description concise and factual in Spanish after the colon.
 - For multi-story digests (exactly: 1440, The Objective, The Substack Post, TLDR, Superhuman, and HackerNoon), append the concrete link of each item at the end of its bullet when available, using this exact Markdown pattern:
   - `- **Translated title (Original title):** brief summary in Spanish. [Link](https://...)`
+- In that multi-story bullet pattern, keep punctuation immediately before the link as shown: `... . [Link](https://...)` (period before the link).
 - If a concrete per-item URL is not available for that bullet, do not invent one; keep the bullet without that final link and rely only on the top-level `Web link` fallback rules.
 - In any non-verbatim bullet summary, every bullet must follow this exact pattern:
   - `- **Short label:** text`
