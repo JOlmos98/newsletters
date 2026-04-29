@@ -150,6 +150,52 @@ run_or_exit() {
   fi
 }
 
+resolve_ssh_key() {
+  local candidate
+  for candidate in "$HOME/.ssh/id_ed25519" "$HOME/.ssh/id_rsa" "$HOME/.ssh/id_ecdsa"; do
+    if [ -f "$candidate" ]; then
+      echo "$candidate"
+      return 0
+    fi
+  done
+  return 1
+}
+
+push_if_needed() {
+  local branch
+  local ahead_count
+  local key_path=""
+  local push_cmd="git push origin main"
+
+  branch="$(git branch --show-current 2>/dev/null || true)"
+  if [ "$branch" != "main" ]; then
+    log "Push automático omitido: rama actual '$branch' (se esperaba 'main')."
+    return 0
+  fi
+
+  ahead_count="$(git rev-list --count @{u}..HEAD 2>/dev/null || echo 0)"
+  if [ "$ahead_count" -eq 0 ]; then
+    log "No hay commits pendientes de push."
+    return 0
+  fi
+
+  # En cron suele faltar SSH_AUTH_SOCK; forzamos clave privada si existe.
+  if ! ssh-add -l >/dev/null 2>&1; then
+    key_path="$(resolve_ssh_key || true)"
+    if [ -n "$key_path" ]; then
+      push_cmd="GIT_SSH_COMMAND='ssh -i $key_path -o IdentitiesOnly=yes' git push origin main"
+    fi
+  fi
+
+  log "Hay $ahead_count commit(s) pendiente(s); intentando push automático."
+  if eval "$push_cmd"; then
+    log "Push automático completado."
+    return 0
+  fi
+
+  return 1
+}
+
 # COMANDO 0: Seguridad
 run_or_exit "COMANDO 0: Seguridad" 2 "$CODEX_BIN login status && $CURSOR_AGENT_BIN whoami"
 
@@ -167,5 +213,11 @@ run_or_exit "COMANDO 3: Summary -> HTML" 2 "$NODE_BIN scriptSummaryToArticle.js 
 
 # COMANDO 4: Cursor cierre
 run_or_exit "COMANDO 4: Cursor cierre" 2 "prompt=\"\$(< './agent/cursorPrompt.mdc')\"; $CURSOR_AGENT_BIN -p --trust --force --workspace '/home/Jos/Desktop/newsletters' \"\$prompt\""
+
+# COMANDO 5: Push automático de respaldo
+if ! run_step "COMANDO 5: Push automático" 2 "push_if_needed"; then
+  log "No se pudo completar el push automático. Revisa SSH/credenciales."
+  exit 1
+fi
 
 log "Proceso terminado correctamente."
