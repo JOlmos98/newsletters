@@ -1,7 +1,7 @@
 node_modules/**
-credentials/**
-**/credentials.json
-**/token.json
+#credentials/**
+#**/credentials.json
+#**/token.json
 .env
 .env.*
 *.pem

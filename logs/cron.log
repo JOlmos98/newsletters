@@ -6166,3 +6166,18 @@ Finished with partial success: 12 processed, 1 failed.
 desde `/home/Jos/Desktop/Dev/newsletters` (o el directorio enlazado).
 [2026-04-29 14:09:19] OK    COMANDO 4: Cursor cierre
 [2026-04-29 14:09:19] Proceso terminado correctamente.
+[2026-04-30 14:00:01] Entorno verificado:
+[2026-04-30 14:00:01] - codex: /home/Jos/.config/nvm/versions/node/v22.20.0/bin/codex
+[2026-04-30 14:00:01] - node: /home/Jos/.config/nvm/versions/node/v22.20.0/bin/node
+[2026-04-30 14:00:01] - cursor-agent: /home/Jos/.local/bin/cursor-agent
+[2026-04-30 14:00:01] START COMANDO 0: Seguridad (intento 1/2)
+Logged in using ChatGPT
+✓ Logged in as soler98@hotmail.es
+[2026-04-30 14:00:03] OK    COMANDO 0: Seguridad
+[2026-04-30 14:00:03] START COMANDO 1: Fetch raw (intento 1/2)
+Error: invalid_grant
+[2026-04-30 14:00:05] FAIL  COMANDO 1: Fetch raw (exit=1)
+[2026-04-30 14:00:08] START COMANDO 1: Fetch raw (intento 2/2)
+Error: invalid_grant
+[2026-04-30 14:00:08] FAIL  COMANDO 1: Fetch raw (exit=1)
+[2026-04-30 14:00:08] Abortando pipeline en: COMANDO 1: Fetch raw
