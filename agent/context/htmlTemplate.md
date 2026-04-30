@@ -67,6 +67,7 @@ Link preservation rule for final `index.html`:
                 <li><a href="#tldr-ai">TLDR AI</a></li>
                 <li><a href="#tldr-devops">TLDR DevOps</a></li>
                 <li><a href="#superhuman-ai">Superhuman</a></li>
+                <li><a href="#callstack-newsletter">Callstack Newsletter</a></li>
                 <li><a href="#lennys-newsletter-1">Lenny's Newsletter (Agentes)</a></li>
                 <li><a href="#lennys-newsletter-2">Lenny's Newsletter (Claude)</a></li>
               </ul>

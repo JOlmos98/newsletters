@@ -50,8 +50,9 @@ They can be grouped together and out of order in `articlesHtml.md`: Cursor will 
    2. Superhuman AI Zain Kahn
    3. HackerNoon
    4. Xataka
-   5. Manfred
-   6. La Bonilista
-   7. Lenny's Newsletter
+   5. Callstack
+   6. Manfred
+   7. La Bonilista
+   8. Lenny's Newsletter
 
 Articles list (html, only `<article>...</article>` blocks) is in `agent/articlesHtml.md`.

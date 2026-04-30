@@ -38,6 +38,7 @@ Links:
 - Superhuman AI Zain Kahn: https://www.superhuman.ai/
 - HackerNoon: https://hackernoon.com/
 - Xataka: https://www.xataka.com/
+- Callstack: https://www.callstack.com/newsletter
 - Manfred: https://www.getmanfred.com/out-of-office
 - La Bonilista: https://www.bonilista.com/
 - Lenny's Newsletter: https://www.lennysnewsletter.com/
