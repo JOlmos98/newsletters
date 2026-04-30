@@ -10,7 +10,8 @@ Link preservation rule for final `index.html`:
   - Newsletter-level: keep one top-level link per newsletter `<article>` (or fallback to the newsletter URL map when missing in source).
   - Article-level: for specific multi-story newsletters, keep one concrete link per listed sub-article/item when available.
 - Keep the concrete source URL for each article whenever available.
-- The multi-story newsletters that require one per-item link are exactly: 1440, The Objective, The Substack Post, TLDR, Superhuman, and HackerNoon.
+- The multi-story newsletters that require one per-item link are exactly: 1440, The Objective, The Substack Post, TLDR, Superhuman, HackerNoon, and Xataka.
+- Xataka is also treated as an articles newsletter: preserve each article title, include a brief description when available, and add one `Link` per listed item whenever available.
 - For those newsletters, preserve the specific URL for each referenced sub-article/item, placing the respective `Link` inside each corresponding `<li>` whenever the article body is rendered as a list.
 - Never collapse available per-item links into only the newsletter homepage.
 - In each `<article>`, keep or add a visible CTA link after the description/content paragraph:

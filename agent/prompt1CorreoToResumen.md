@@ -37,6 +37,7 @@ Links:
 - TLDR (TLDR, TLDR AI, TLDR Dev, TLDR IT, etc.): https://tldr.tech/
 - Superhuman AI Zain Kahn: https://www.superhuman.ai/
 - HackerNoon: https://hackernoon.com/
+- Xataka: https://www.xataka.com/
 - Manfred: https://www.getmanfred.com/out-of-office
 - La Bonilista: https://www.bonilista.com/
 - Lenny's Newsletter: https://www.lennysnewsletter.com/
@@ -63,7 +64,8 @@ For the pasted newsletter/article:
 - If the pasted text includes a direct "read on web" / canonical URL for this same article/newsletter, use that exact URL in `Web link` (newsletter-level).
 - Only if that specific article/newsletter URL is missing or not identifiable in the pasted text, use the predefined `Links` list above (same source/order as `agent/context/articles.md`), matching by sender/publication name.
 - In multi-story newsletters that list several different articles, treat each listed item as its own article and preserve the concrete URL of that exact item whenever it is available in the pasted text.
-- For this pipeline, those multi-story newsletters are exactly: 1440, The Objective, The Substack Post, TLDR, Superhuman, and HackerNoon.
+- For this pipeline, those multi-story newsletters are exactly: 1440, The Objective, The Substack Post, TLDR, Superhuman, HackerNoon, and Xataka.
+- Xataka is also treated as a multi-story/articles newsletter: keep each article title, include a brief description when available, and add its `Link` per item whenever available.
 - For those multi-story newsletters, never replace an available per-item URL with only the generic newsletter homepage URL.
 - Output `Web link` as a Markdown link using this exact pattern: `[short-label](https://...)`.
 - The label must be short, lowercase if natural, and derived from the publication/sender name (for example: `[superhuman](https://www.superhuman.ai/)`, `[tldr](https://tldr.tech/)`, `[made in ancapia](https://articulos.madeinancapia.com/)`).
@@ -97,7 +99,7 @@ BULLET DEPTH
   - `- **Translated title (Original title):** brief summary in Spanish.`
   - Translate the subarticle title to natural Spanish first, then include the original title in parentheses.
   - Keep the description concise and factual in Spanish after the colon.
-- For multi-story digests (exactly: 1440, The Objective, The Substack Post, TLDR, Superhuman, and HackerNoon), append the concrete link of each item at the end of its bullet when available, using this exact Markdown pattern:
+- For multi-story digests (exactly: 1440, The Objective, The Substack Post, TLDR, Superhuman, HackerNoon, and Xataka), append the concrete link of each item at the end of its bullet when available, using this exact Markdown pattern:
   - `- **Translated title (Original title):** brief summary in Spanish. [Link](https://...)`
 - In that multi-story bullet pattern, keep punctuation immediately before the link as shown: `... . [Link](https://...)` (period before the link).
 - If a concrete per-item URL is not available for that bullet, do not invent one; keep the bullet without that final link and rely only on the top-level `Web link` fallback rules.

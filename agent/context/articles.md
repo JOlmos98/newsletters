@@ -9,7 +9,8 @@ For link handling in the final digest:
   - Newsletter-level: one top-level link per newsletter `<article>` (using fallback map if source does not include it).
   - Article-level: one concrete per-item link inside each `<li>` when a multi-story newsletter includes listed sub-articles.
 - Preserve concrete article URLs whenever they are available.
-- The multi-story newsletters that require one per-item link are exactly: 1440, The Objective, The Substack Post, TLDR, Superhuman, and HackerNoon.
+- The multi-story newsletters that require one per-item link are exactly: 1440, The Objective, The Substack Post, TLDR, Superhuman, HackerNoon, and Xataka.
+- Xataka is also handled as an articles newsletter: keep each article title, include a brief description when available, and keep one `Link` per listed item whenever available.
 - For those newsletters, preserve each per-item URL and keep it visible in the final rendered article content, placing the respective `Link` inside each corresponding `<li>` whenever the article body is rendered as a list.
 - Do not replace available per-item URLs with only a generic newsletter homepage link.
 
@@ -48,8 +49,9 @@ They can be grouped together and out of order in `articlesHtml.md`: Cursor will 
    1. TLDR (includes TLDR, TLDR AI, TLDR Dev, TLDR IT, etc.)
    2. Superhuman AI Zain Kahn
    3. HackerNoon
-   4. Manfred
-   5. La Bonilista
-   6. Lenny's Newsletter
+   4. Xataka
+   5. Manfred
+   6. La Bonilista
+   7. Lenny's Newsletter
 
 Articles list (html, only `<article>...</article>` blocks) is in `agent/articlesHtml.md`.
