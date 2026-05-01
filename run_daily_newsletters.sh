@@ -202,11 +202,17 @@ run_or_exit "COMANDO 0: Seguridad" 2 "$CODEX_BIN login status && $CURSOR_AGENT_B
 # COMANDO 1: Fetch raw
 run_or_exit "COMANDO 1: Fetch raw" 2 "$NODE_BIN scriptFetchNewsletters.js --credentials 'credentials/credentials.json' --token 'credentials/token.json' --hours 24 --max-results 50"
 
-# COMANDO 2.1: Codex primera tanda (4)
-run_or_exit "COMANDO 2.1: Codex primera tanda (4)" 2 "$CODEX_BIN exec \"Execute @agent/codex.md. Run only this batch and stop after completing 4 pending newsletters in summary/codex-checklist.md.\" < /dev/null"
+# COMANDO 2.1: Codex tramo 1/4
+run_or_exit "COMANDO 2.1: Codex tramo 1/4" 2 "$CODEX_BIN exec \"Execute @agent/codex.md. Process exactly one tranche for this execution using summary/codex-checklist.md and then stop.\" < /dev/null"
 
-# COMANDO 2.2: Codex segunda tanda (restantes)
-run_or_exit "COMANDO 2.2: Codex segunda tanda (restantes)" 2 "$CODEX_BIN exec \"Execute @agent/codex.md. Resume using summary/codex-checklist.md and process all remaining pending newsletters until finished.\" < /dev/null"
+# COMANDO 2.2: Codex tramo 2/4
+run_or_exit "COMANDO 2.2: Codex tramo 2/4" 2 "$CODEX_BIN exec \"Execute @agent/codex.md. Process exactly one tranche for this execution using summary/codex-checklist.md and then stop.\" < /dev/null"
+
+# COMANDO 2.3: Codex tramo 3/4
+run_or_exit "COMANDO 2.3: Codex tramo 3/4" 2 "$CODEX_BIN exec \"Execute @agent/codex.md. Process exactly one tranche for this execution using summary/codex-checklist.md and then stop.\" < /dev/null"
+
+# COMANDO 2.4: Codex tramo 4/4
+run_or_exit "COMANDO 2.4: Codex tramo 4/4" 2 "$CODEX_BIN exec \"Execute @agent/codex.md. Process exactly one tranche for this execution using summary/codex-checklist.md and then stop.\" < /dev/null"
 
 # COMANDO 3: Summary -> HTML
 run_or_exit "COMANDO 3: Summary -> HTML" 2 "$NODE_BIN scriptSummaryToArticle.js --output agent/articlesHtml.md"
