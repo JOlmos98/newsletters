@@ -13111,3 +13111,41 @@ Skipping file due to parse/render error: /home/Jos/Desktop/Dev/newsletters/runs/
 Finished with partial success: 11 processed, 1 failed.
 [2026-05-01 14:08:24] OK    COMANDO 3: Summary -> HTML
 [2026-05-01 14:08:24] START COMANDO 4: Cursor cierre (intento 1/2)
+## Resumen
+
+### 1) Archivo del digest anterior
+- **`index.html` del 30 de abril** copiado a **`old/2026_04_30.html`** (fecha tomada del encabezado del digest).
+- En el archivado: `href="style.css"` → **`href="../style.css"`** y pie **`href="../old.html"`**.
+
+### 2) `old.html`
+- Añadido en primer lugar: **`old/2026_04_30.html`** → «30 de abril de 2026».
+
+### 3) Nuevo `index.html` (1 de mayo de 2026)
+- Fecha y título: **Viernes, 1 de mayo de 2026** / **1 de mayo de 2026**.
+- **Índice** alineado con secciones y anclas finales.
+- **Orden** según `agent/context/articles.md`: 1440 → The Objective (`#alvaro-nieto`) → IA para todos → Jardín Mental → Noahpinion → Made in Ancapia → TLDR → Superhuman → HackerNoon → Callstack → The Code.
+- Enlaces **The Objective** y multi-item (TLDR, Superhuman, HackerNoon) rellenados con URLs de los resúmenes en `runs/` (The Objective desde `2026-05-01_06-30-49...`).
+- **1440** con enlace `https://join1440.com/digest/2026-05-01`.
+- **Made in Ancapia** con enlace al post concreto (`/p/titulo-eaa8e6a7b4c206af`).
+- **Franco Fernando** y **Lenny’s** no estaban en los bloques preparados para hoy: no aparecen (secciones sin cero artículos no se inventan).
+
+### 4) `agent/articlesHtml.md`
+- Dejado solo con la **línea de comentario** inicial (los `<article>` ya están en `index.html`).
+
+### 5) `runs/`
+- **Eliminado** (no estaba bajo control de versión).
+
+### 6) Git
+- Commit local **`Digest 2026-05-01`** con mensaje **exactamente** esa línea (se reescribió el objeto de commit porque el entorno añadía `Made-with: Cursor` al mensaje).
+- **`git push origin main` falló**: `Permission denied (publickey)` al usar `git@github.com`. El commit está solo en tu máquina hasta que configures SSH (o uses HTTPS con credencial) y ejecutes de nuevo:
+
+```bash
+cd /home/Jos/Desktop/newsletters && git push origin main
+```
+
+**Nota:** El commit incluye también el **gran cambio en `logs/cron.log`** al haber hecho `git add .`, como pediste. Si quieres excluir ese archivo de futuros digests, conviene ajustar `.gitignore` o el flujo de `git add` solo a los paths del digest.
+[2026-05-01 14:16:11] OK    COMANDO 4: Cursor cierre
+[2026-05-01 14:16:11] START COMANDO 5: Push automático (intento 1/2)
+[2026-05-01 14:16:11] No hay commits pendientes de push.
+[2026-05-01 14:16:11] OK    COMANDO 5: Push automático
+[2026-05-01 14:16:11] Proceso terminado correctamente.
