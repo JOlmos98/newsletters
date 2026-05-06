@@ -152,7 +152,14 @@ run_or_exit() {
 
 resolve_ssh_key() {
   local candidate
-  for candidate in "$HOME/.ssh/id_ed25519" "$HOME/.ssh/id_rsa" "$HOME/.ssh/id_ecdsa"; do
+  # Prioriza una clave dedicada para automatizaciones (sin passphrase),
+  # configurable con NEWSLETTERS_SSH_KEY.
+  if [ -n "${NEWSLETTERS_SSH_KEY:-}" ] && [ -f "${NEWSLETTERS_SSH_KEY}" ]; then
+    echo "${NEWSLETTERS_SSH_KEY}"
+    return 0
+  fi
+
+  for candidate in "$HOME/.ssh/newsletters_automation" "$HOME/.ssh/id_ed25519" "$HOME/.ssh/id_rsa" "$HOME/.ssh/id_ecdsa"; do
     if [ -f "$candidate" ]; then
       echo "$candidate"
       return 0
@@ -165,6 +172,7 @@ push_if_needed() {
   local branch
   local ahead_count
   local key_path=""
+  local ssh_opts="-o IdentitiesOnly=yes -o BatchMode=yes -o ConnectTimeout=15"
   local push_cmd="git push origin main"
 
   branch="$(git branch --show-current 2>/dev/null || true)"
@@ -180,11 +188,16 @@ push_if_needed() {
   fi
 
   # En cron suele faltar SSH_AUTH_SOCK; forzamos clave privada si existe.
+  # BatchMode evita prompts bloqueantes en ejecuciones no interactivas.
   if ! ssh-add -l >/dev/null 2>&1; then
     key_path="$(resolve_ssh_key || true)"
     if [ -n "$key_path" ]; then
-      push_cmd="GIT_SSH_COMMAND='ssh -i $key_path -o IdentitiesOnly=yes' git push origin main"
+      push_cmd="GIT_SSH_COMMAND='ssh -i $key_path $ssh_opts' git push origin main"
+    else
+      push_cmd="GIT_SSH_COMMAND='ssh $ssh_opts' git push origin main"
     fi
+  else
+    push_cmd="GIT_SSH_COMMAND='ssh $ssh_opts' git push origin main"
   fi
 
   log "Hay $ahead_count commit(s) pendiente(s); intentando push automático."
@@ -192,6 +205,10 @@ push_if_needed() {
     log "Push automático completado."
     return 0
   fi
+
+  log "Push automático fallido. Si usas cron, configura una clave dedicada sin passphrase en:"
+  log "- $HOME/.ssh/newsletters_automation (o variable NEWSLETTERS_SSH_KEY)"
+  log "- y añade su pública a GitHub con permiso de escritura."
 
   return 1
 }

@@ -1,0 +1,61 @@
+La apuesta de Oracle, explicada para mi madre
+En España, el primer domingo de mayo celebramos el Día de la Madre y es un momento tan bueno como cualquier otro para recordar que siempre escribo la Bonilista procurando que sea accesible para la mía, mi suscriptora más fiel.
+ 
+También hoy, en el que intentaremos desgranar el tremendo quilombo en el que se ha metido Oracle. Una bomba de relojería financiera que, en caso de estallar, provocaría una onda expansiva, que afectaría no solo al sector tecnológico sino a la economía en general.
+ 
+Oracle es una empresa de software empresarial que ha convertido a su fundador, Larry Ellison, en uno de los hombres más ricos del mundo. Un referente de Silicon Valley que, sin embargo, ha decidido centrarse —a partir de ahora— en el sector hotelero.
+ 
+En unos «hoteles» muy especiales, eso sí: los gigantescos centros de datos —llenos de GPUs con un consumo eléctrico similar al de toda Galicia, sin exagerar— que se necesitan para entrenar y ejecutar modelos de inteligencia artificial.
+ 
+Y le ha ido excepcionalmente bien con las «reservas». Oracle tiene 553.000 millones de dólares de Remaining Performance Obligations o, lo que es lo mismo, compromisos de empresas tecnológicas para ocupar esos centros de datos, de los que espera obtener entre un 30 y un 40 % de rentabilidad.
+ 
+El problema es que aún no existen.
+ 
+Y, para construirlos, se está gastando un pastizal. En 2026, Oracle espera ventas por valor de 67.000 millones de dólares y una inversión de 50.000. Es decir, va a gastarse en construir infraestructura casi tres cuartas partes de todos los ingresos previstos del año.
+ 
+Para que podamos hacernos una idea de la magnitud de la inversión supone el 76 % de lo que España ha invertido en la red de alta velocidad ferroviaria… en las tres últimas décadas. O, si preferís verlo de otra manera, 35 veces lo que se va a gastar Naturgy en digitalizar su red eléctrica en España hasta 2029. O lo que les valdría comprarse Telefónica, dos veces.
+ 
+El problema es que esas «reservas» no son más que eso y, por mucho que contengan compromisos financieros, de nada sirven si la empresa que las realiza quiebra o desaparece.
+ 
+Un restaurante puede obligar a dejar una tarjeta de crédito al reservar una mesa y hacer un cargo si los comensales no aparecen, pero de nada le servirá si esa tarjeta ya no está activa o carece de fondos.
+ 
+Ahora, imaginad el riesgo que supondría que un solo cliente reservara el 54 % de todas las mesas disponibles de vuestra pizzería favorita durante los próximos 5 años. Porque eso es exactamente lo que está haciendo Oracle.
+ 
+De esos 552.600 millones, 300.000 corresponden a un único cliente, OpenAI. La dependencia es tal, que bastó con que The Wall Street Journal publicara que OpenAI había incumplido objetivos internos de usuarios e ingresos para que la valoración de Oracle cayera un 3,4 %.
+ 
+Y es que, cuando eres el casero, si tu inquilino no llega a fin de mes tienes un problema. Si OpenAI cae, Oracle tendría un problema enorme para cumplir sus propios compromisos de pago. Y si Oracle cae, podría llevarse la cotización de medio sector por delante.
+ 
+Supongo que, como mi madre, muchos os preguntaréis por qué asume Oracle un riesgo así, siendo como es una máquina de imprimir billetes.
+ 
+Por un lado, porque para Oracle esta puede ser la última gran ventana para dejar de ser el tercero incómodo de la nube.
+ 
+Amazon, Microsoft y Google han dominado la primera fase del cloud. Oracle llegó tarde y mal, pero la IA ha cambiado el paradigma.
+ 
+Antes la pregunta era «¿dónde despliego mi aplicación?». Ahora es «¿quién tiene suficientes GPUs, energía y ancho de banda para que mi modelo no se muera esperando?». Ya no se contratan plataformas como servicio sino, directamente, gigavatios.
+ 
+Y, mientras todas esas empresas compiten ofreciendo su propio modelo, Oracle ha renunciado a entrar en esa carrera para presentarse como el hotel The Continental de la inteligencia artificial: un alojamiento neutral para todos.
+ 
+Y no es que Oracle no crea en la IA. Simplemente está apostando a que, en el futuro, la escasez de potencia de cómputo será más valiosa que los propios modelos.
+ 
+Pero, por supuesto, hay algo más allá de las puras proyecciones financieras. Detrás de un movimiento tan audaz no hay ejecutivos corporativos arriesgando sus salarios multimillonarios en un todo o nada, sino Larry Ellison que, a sus 81 años, sigue al frente de la compañía que fundó y de la que aún posee el 40,6 %.
+ 
+En vez de retirarse a su isla privada en Hawái, Ellison ha decidido dar un último gran golpe encima de la mesa antes de levantarse de la misma. Quiere demostrar que aún es el «macho alfa» en El Valle, aunque eso suponga poner en riesgo muchas cosas.
+ 
+Sobre todo, su propio legado. Si la apuesta sale bien, Ellison será recordado como el gurú que resucitó Oracle a los 81, convirtiéndola en la inmobiliaria de la IA. Si sale mal, solo será el viejo que confundió una fiebre de demanda con demanda estructural arrastrando a su compañía a la tumba.
+ 
+Tenga sentido o no, nadie puede negar que Ellison no hace más que ser coherente con su forma de ver la vida y los negocios. Y, nos guste el personaje o no, hay que reconocer que hay que tener ganas de embarcarte en algo así con 81 años y tu vida hecha.
+ 
+¿Tú lo harías?
+
+Stackscale, patrocinador de la Bonilista 876
+ 
+Si quieres «escapar» de VMware, necesitas un buen plan
+
+Muchas empresas están buscando alternativas a VMware para reducir costes, evitar vendor lock-in y recuperar control sobre su infraestructura. Otras vienen del on-premise clásico o de una nube pública y quieren moverse a una plataforma privada con costes más previsibles.
+
+Sea cual sea vuestro caso, mis amigos de Stackscale os ayudarán a migrar a Proxmox VE sobre infraestructura cloud en Europa, con un proceso guiado: análisis, plan de migración, piloto, despliegue y soporte técnico.
+
+Infraestructura privada, servidores dedicados, red privada, almacenamiento de alto rendimiento, almacenamiento síncrono, soluciones de HA, misión critica, disaster recovery, acompañamiento técnico y, para lectores de La Bonilista, hasta 3 meses sin costes de infraestructura durante la migración desde VMware a Proxmox.
+
+Antes de renovar por inercia, quizá merece la pena que consideres todas las opciones. Puedes agendar una llamada con ellos o directamente escribir a su cofundador, mi amigo David Carrero ☺️
+¿Te gustaría patrocinar una Bonilista? Escríbeme a david@bonillaware.com y te informaré sobre disponibilidad y precios.
