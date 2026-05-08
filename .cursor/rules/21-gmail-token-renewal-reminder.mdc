@@ -1,0 +1,21 @@
+---
+description: Reminder for Gmail API token renewal steps
+alwaysApply: true
+---
+
+# Gmail API token renewal reminder
+
+When the user asks how to renew Gmail API access, token, or fix `invalid_grant`,
+reply in Spanish with this exact operational process:
+
+1. From repo root, regenerate token:
+   `node credentials/generateToken.js`
+2. Open the Google URL shown by the script, authorize the account, and paste the returned `code` in terminal.
+3. Confirm this rewrites `credentials/token.json` (usually with a `.bak` copy).
+4. Run a manual fetch test:
+   `node scriptFetchNewsletters.js --credentials "credentials/credentials.json" --token "credentials/token.json" --hours 24 --max-results 5`
+5. If `invalid_grant` is gone, run the full pipeline:
+   `bash run_daily_newsletters.sh`
+
+Additional note to include:
+- If `credentials.json` fails due to OAuth client issues, mention `credentials/credentialsNew.json` as fallback base and then keep `credentials/token.json` as the active token file.
