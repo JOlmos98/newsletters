@@ -91,7 +91,7 @@ For the pasted newsletter/article:
 BULLET DEPTH
 - If the **verbatim mode** (useful content < 2000 characters) applies: under `**Summary:**`, output the full faithful text (translated to Spanish when needed) preserving original structure—do **not** force a bullet list unless the source already used bullets; do **not** substitute a “short paragraph summary” for the real text.
 - If the text is a multi-story digest (for example TLDR-like, 1440-like, or similar): use one bullet per relevant story/item, covering all key items.
-- **Special case - 1440:** when multiple consecutive items refer to the same underlying story/theme, merge them into a single bullet that integrates the key facts (context, consequences, and relevant figures/dates) instead of splitting them across several bullets. A slightly longer paragraph is preferred over fragmented repetition.
+- **Special case - 1440:** the pasted text is usually a dense daily digest with many distinct stories. **Minimum depth:** in `**Summary:**`, output **at least 10 bullets**, each covering one of the **10 most interesting or editorially relevant** items/stories available in the source (prioritize impact, novelty, and substantive detail; skip ads, sponsors, and boilerplate). Never deliver a 1–2 bullet or ultra-condensed “headline-only” digest for 1440 when the pasted text has enough material to support fuller coverage. If the source lists more than 10 distinct stories, cover all key editorial items; the floor is 10 bullets, not the ceiling. When multiple consecutive items refer to the same underlying story/theme, merge them into a single bullet that integrates the key facts (context, consequences, and relevant figures/dates) instead of splitting them across several bullets—but after merges you must still reach **at least 10 bullets** whenever the source contains that many distinct stories/themes. A slightly longer bullet is preferred over fragmented repetition or an impoverished two-line summary.
 - **Special case - The Objective / Alvaro Nieto:** in `Summary`, output exactly the first 10 listed articles and ignore all remaining articles/sections.
 - For that special case, use exactly one bullet per article, with this strict pattern:
   - `- <Título del artículo> [Leer artículo](https://...)`
@@ -169,6 +169,7 @@ FINAL CHECK
 - Summary is always in Spanish. In verbatim mode, keep faithful structure/content and translate to Spanish when source is in another language.
 - No invented facts.
 - No filler lead-ins or nervous-recado phrasing; if one appears, rewrite that bullet/sentence to direct factual wording.
+- For **1440** in `summary` mode: `**Summary:**` has **at least 10** labeled bullets covering the top relevant stories (not a 1–2 line skim).
 
 SOURCE TEXT:
 

@@ -42813,3 +42813,123 @@ Skipping file due to parse/render error: /home/Jos/Desktop/Dev/newsletters/runs/
 Finished with partial success: 12 processed, 1 failed.
 [2026-05-15 14:10:44] OK    COMANDO 3: Summary -> HTML
 [2026-05-15 14:10:44] START COMANDO 4: Cursor cierre (intento 1/2)
+## Resumen
+
+### 1) Archivo del digest del 14 de mayo
+- Contenido de `index.html` copiado a `old/2026_05_14.html`.
+- Rutas actualizadas: `href="../style.css"` y `href="../old.html"` en ese archivo.
+
+### 2) `old.html`
+- Añadida la entrada **`14 de mayo de 2026`** → `old/2026_05_14.html`.
+
+### 3) Nuevo `index.html`
+- Plantilla nueva con **Viernes, 15 de mayo de 2026** en título y cabecera.
+- Artículos en el orden de `agent/context/articles.md` (solo los presentes en el staging): **1440**, **The Objective** (`id="the-objective"`), **Jardín Mental**, **Noahpinion**, **Made in Ancapia**, **Mathsurf Club**, **TLDR**, **Superhuman**, **HackerNoon**, **Xataka**, **Lenny's Newsletter**.
+- **The Code** no está en esa lista fija → no incluido.
+- Enlaces: digest 1440 (`https://join1440.com/digest/2026-05-15`); objetivo con primera nota enlazada y el resto a `theobjective.com`; boletín The Objective CT a home; TLDR/Xataka/Superhuman/HackerNoon con anchors en cada `<li>` según tocaba; enlace clickable a `mathsurf.club/talks`.
+- Se ignoró el comentario inicial de `articlesHtml.md` que contenía el texto `<article` para no romper el parseo.
+
+### 4) `agent/articlesHtml.md`
+- Dejado solo con la **línea de comentario** inicial (los `<article>` consumidos están fuera).
+
+### 5) `runs/`
+- Eliminado con `rm -rf` (no aparecía en el estado de git).
+
+### 6) Git
+- **Commit creado:** `Digest 2026-05-15` (`bd24ae9`), con `index.html`, `old.html`, `old/2026_05_14.html` y `logs/cron.log` (incluído porque pediste explícitamente `git add .`).
+- **`git push origin main` falló** aquí por `Permission denied (publickey)` con `git@github.com`. El commit está solo en local; cuando tengas la clave o el HTTPS configurados, ejecuta desde el repo:
+
+```bash
+git push origin main
+```
+
+¿Quieres que dejemos el último commit **sin** los cambios de `logs/cron.log` usando un nuevo commit que los revierta, o prefieres mantenerlo así?
+[2026-05-15 14:15:03] OK    COMANDO 4: Cursor cierre
+[2026-05-15 14:15:03] START COMANDO 5: Push automático (intento 1/2)
+[2026-05-15 14:15:03] No hay commits pendientes de push.
+[2026-05-15 14:15:03] OK    COMANDO 5: Push automático
+[2026-05-15 14:15:03] Proceso terminado correctamente.
+[2026-05-16 14:00:02] Entorno verificado:
+[2026-05-16 14:00:02] - codex: /home/Jos/.config/nvm/versions/node/v22.20.0/bin/codex
+[2026-05-16 14:00:02] - node: /home/Jos/.config/nvm/versions/node/v22.20.0/bin/node
+[2026-05-16 14:00:02] - cursor-agent: /home/Jos/.local/bin/cursor-agent
+[2026-05-16 14:00:02] START COMANDO 0: Seguridad (intento 1/2)
+Logged in using ChatGPT
+✓ Logged in as soler98@hotmail.es
+[2026-05-16 14:00:03] OK    COMANDO 0: Seguridad
+[2026-05-16 14:00:03] START COMANDO 1: Fetch raw (intento 1/2)
+Error: invalid_grant
+[2026-05-16 14:00:04] FAIL  COMANDO 1: Fetch raw (exit=1)
+[2026-05-16 14:00:07] START COMANDO 1: Fetch raw (intento 2/2)
+Error: invalid_grant
+[2026-05-16 14:00:08] FAIL  COMANDO 1: Fetch raw (exit=1)
+[2026-05-16 14:00:08] Abortando pipeline en: COMANDO 1: Fetch raw
+[2026-05-18 14:00:02] Entorno verificado:
+[2026-05-18 14:00:02] - codex: /home/Jos/.config/nvm/versions/node/v22.20.0/bin/codex
+[2026-05-18 14:00:02] - node: /home/Jos/.config/nvm/versions/node/v22.20.0/bin/node
+[2026-05-18 14:00:02] - cursor-agent: /home/Jos/.local/bin/cursor-agent
+[2026-05-18 14:00:02] START COMANDO 0: Seguridad (intento 1/2)
+Logged in using ChatGPT
+✓ Logged in as soler98@hotmail.es
+[2026-05-18 14:00:03] OK    COMANDO 0: Seguridad
+[2026-05-18 14:00:03] START COMANDO 1: Fetch raw (intento 1/2)
+Error: invalid_grant
+[2026-05-18 14:00:04] FAIL  COMANDO 1: Fetch raw (exit=1)
+[2026-05-18 14:00:07] START COMANDO 1: Fetch raw (intento 2/2)
+Error: invalid_grant
+[2026-05-18 14:00:07] FAIL  COMANDO 1: Fetch raw (exit=1)
+[2026-05-18 14:00:07] Abortando pipeline en: COMANDO 1: Fetch raw
+[2026-05-19 14:00:01] Entorno verificado:
+[2026-05-19 14:00:01] - codex: /home/Jos/.config/nvm/versions/node/v22.20.0/bin/codex
+[2026-05-19 14:00:01] - node: /home/Jos/.config/nvm/versions/node/v22.20.0/bin/node
+[2026-05-19 14:00:01] - cursor-agent: /home/Jos/.local/bin/cursor-agent
+[2026-05-19 14:00:01] START COMANDO 0: Seguridad (intento 1/2)
+Logged in using ChatGPT
+✓ Logged in as soler98@hotmail.es
+[2026-05-19 14:00:02] OK    COMANDO 0: Seguridad
+[2026-05-19 14:00:02] START COMANDO 1: Fetch raw (intento 1/2)
+Fetch completado.
+- query: label:newsletters is:unread after:1779105603
+- run: runs/2026-05-19
+- fetched: 13
+- skipped_in_manifest: 0
+- failed: 0
+- message_ids: 19e3fe4931cd8c1a, 19e3f6a14a577dc0, 19e3f5609f803bb9, 19e3ef7da40025a5, 19e3eee407130308, 19e3e80dd89a7201, 19e3c57eff454255, 19e3bdfae61641f0, 19e3bda0d09b8b9b, 19e3ba63397787fc, 19e3b333800e18ca, 19e3b2da20cc370a, 19e3b2cb7119e024
+[2026-05-19 14:00:04] OK    COMANDO 1: Fetch raw
+[2026-05-19 14:00:04] START COMANDO 2.1: Codex tramo 1/4 (intento 1/2)
+Reading additional input from stdin...
+OpenAI Codex v0.122.0 (research preview)
+--------
+workdir: /home/Jos/Desktop/Dev/newsletters
+model: gpt-5.2-codex
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR, /home/Jos/.codex/memories]
+reasoning effort: none
+reasoning summaries: none
+session id: 019e401b-857c-7b40-bb0e-4a8d37e2aeac
+--------
+user
+Execute @agent/codex.md. Process exactly one tranche for this execution using summary/codex-checklist.md and then stop.
+ERROR: {"type":"error","status":400,"error":{"type":"invalid_request_error","message":"The 'gpt-5.2-codex' model is not supported when using Codex with a ChatGPT account."}}
+ERROR: {"type":"error","status":400,"error":{"type":"invalid_request_error","message":"The 'gpt-5.2-codex' model is not supported when using Codex with a ChatGPT account."}}
+[2026-05-19 14:00:09] FAIL  COMANDO 2.1: Codex tramo 1/4 (exit=1)
+[2026-05-19 14:00:12] START COMANDO 2.1: Codex tramo 1/4 (intento 2/2)
+Reading additional input from stdin...
+OpenAI Codex v0.122.0 (research preview)
+--------
+workdir: /home/Jos/Desktop/Dev/newsletters
+model: gpt-5.2-codex
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR, /home/Jos/.codex/memories]
+reasoning effort: none
+reasoning summaries: none
+session id: 019e401b-9f4d-7720-824d-7e35e82252d1
+--------
+user
+Execute @agent/codex.md. Process exactly one tranche for this execution using summary/codex-checklist.md and then stop.
+ERROR: {"type":"error","status":400,"error":{"type":"invalid_request_error","message":"The 'gpt-5.2-codex' model is not supported when using Codex with a ChatGPT account."}}
+ERROR: {"type":"error","status":400,"error":{"type":"invalid_request_error","message":"The 'gpt-5.2-codex' model is not supported when using Codex with a ChatGPT account."}}
+[2026-05-19 14:00:15] FAIL  COMANDO 2.1: Codex tramo 1/4 (exit=1)
+[2026-05-19 14:00:15] Abortando pipeline en: COMANDO 2.1: Codex tramo 1/4

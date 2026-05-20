@@ -3,6 +3,11 @@ set -uo pipefail
 
 cd "/home/Jos/Desktop/newsletters"
 
+# Limpieza preventiva del run anterior
+if [ -d "runs" ]; then
+  rm -rf "runs"
+fi
+
 # Bootstrap de entorno para ejecuciones no interactivas (cron/systemd)
 safe_source() {
   local file="$1"
@@ -112,6 +117,10 @@ CODEX_BIN="$(resolve_cmd codex || true)"
 CURSOR_AGENT_BIN="$(resolve_cmd cursor-agent || true)"
 NODE_BIN="$(resolve_cmd node || true)"
 
+# El default del CLI puede cambiar tras actualizar Codex (p. ej. gpt-5.2-codex) y romper
+# cuentas ChatGPT. Fijamos un modelo compatible; override con CODEX_MODEL si hace falta.
+CODEX_MODEL="${CODEX_MODEL:-gpt-5.4}"
+
 missing=0
 if [ -z "$CODEX_BIN" ]; then
   log "Error: comando no encontrado -> codex"
@@ -132,6 +141,7 @@ fi
 
 log "Entorno verificado:"
 log "- codex: $CODEX_BIN"
+log "- codex model: $CODEX_MODEL"
 log "- node: $NODE_BIN"
 log "- cursor-agent: $CURSOR_AGENT_BIN"
 
@@ -220,16 +230,16 @@ run_or_exit "COMANDO 0: Seguridad" 2 "$CODEX_BIN login status && $CURSOR_AGENT_B
 run_or_exit "COMANDO 1: Fetch raw" 2 "$NODE_BIN scriptFetchNewsletters.js --credentials 'credentials/credentials.json' --token 'credentials/token.json' --hours 24 --max-results 50"
 
 # COMANDO 2.1: Codex tramo 1/4
-run_or_exit "COMANDO 2.1: Codex tramo 1/4" 2 "$CODEX_BIN exec \"Execute @agent/codex.md. Process exactly one tranche for this execution using summary/codex-checklist.md and then stop.\" < /dev/null"
+run_or_exit "COMANDO 2.1: Codex tramo 1/4" 2 "$CODEX_BIN exec -m \"$CODEX_MODEL\" \"Execute @agent/codex.md. Process exactly one tranche for this execution using summary/codex-checklist.md and then stop.\" < /dev/null"
 
 # COMANDO 2.2: Codex tramo 2/4
-run_or_exit "COMANDO 2.2: Codex tramo 2/4" 2 "$CODEX_BIN exec \"Execute @agent/codex.md. Process exactly one tranche for this execution using summary/codex-checklist.md and then stop.\" < /dev/null"
+run_or_exit "COMANDO 2.2: Codex tramo 2/4" 2 "$CODEX_BIN exec -m \"$CODEX_MODEL\" \"Execute @agent/codex.md. Process exactly one tranche for this execution using summary/codex-checklist.md and then stop.\" < /dev/null"
 
 # COMANDO 2.3: Codex tramo 3/4
-run_or_exit "COMANDO 2.3: Codex tramo 3/4" 2 "$CODEX_BIN exec \"Execute @agent/codex.md. Process exactly one tranche for this execution using summary/codex-checklist.md and then stop.\" < /dev/null"
+run_or_exit "COMANDO 2.3: Codex tramo 3/4" 2 "$CODEX_BIN exec -m \"$CODEX_MODEL\" \"Execute @agent/codex.md. Process exactly one tranche for this execution using summary/codex-checklist.md and then stop.\" < /dev/null"
 
 # COMANDO 2.4: Codex tramo 4/4
-run_or_exit "COMANDO 2.4: Codex tramo 4/4" 2 "$CODEX_BIN exec \"Execute @agent/codex.md. Process exactly one tranche for this execution using summary/codex-checklist.md and then stop.\" < /dev/null"
+run_or_exit "COMANDO 2.4: Codex tramo 4/4" 2 "$CODEX_BIN exec -m \"$CODEX_MODEL\" \"Execute @agent/codex.md. Process exactly one tranche for this execution using summary/codex-checklist.md and then stop.\" < /dev/null"
 
 # COMANDO 3: Summary -> HTML
 run_or_exit "COMANDO 3: Summary -> HTML" 2 "$NODE_BIN scriptSummaryToArticle.js --output agent/articlesHtml.md"
