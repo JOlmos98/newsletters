@@ -17,3 +17,4 @@ alwaysApply: true
 # Operational hygiene
 
 - If a change breaks this workflow, prioritize fixing it before closing the task.
+- After a successful digest commit (`Digest YYYY-MM-DD`), delete the `logs/` directory. Do this immediately after `git commit` succeeds; do not wait for `git push`, and do not include `logs/` in the digest commit.
